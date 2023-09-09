@@ -1,0 +1,2 @@
+maritalk==0.0.5
+langchain==0.0.285
