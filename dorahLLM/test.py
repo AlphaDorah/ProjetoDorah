@@ -1,5 +1,5 @@
 import os
-from maritalk import MariTalk
+from maritalk.model import MariTalk
 
 if __name__ == "__main__":
     model = MariTalk(os.environ["MARITALK_KEY"])
