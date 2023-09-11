@@ -18,7 +18,6 @@ def _google_search(search_term, api_key, cse_id, **kwargs):
 # Definition of the Wikipedia search func
 def _wikipedia_search(search_term, user):
     wiki =  wikipediaapi.Wikipedia(user, 'pt')
-
     page = wiki.page(search_term)
 
     return page
@@ -30,19 +29,17 @@ def perform(search_term):
         search_term = str(g_result['spelling']['correctedQuery'])
 
     w_page = _wikipedia_search(search_term, w_user)
+
+    links = []
+    for i in range(0, 5):
+        links.append(g_result['items'][i]['link'])
     
     if w_page.exists():
         term_sumary = w_page.summary
-
-        links = []
-        for i in range(0, 5):
-            links.append(g_result['items'][i]['link'])
-
         return term_sumary, links
-
-    return "Not Found :("
+    else:
+        return "Summary Not Found :(", links
     
 if __name__ == '__main__':
     search = perform("segund guerar")
-
     print(search)
