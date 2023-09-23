@@ -1,5 +1,5 @@
 import os
-from typing import Any, List, Optional
+from typing import Any, List, Mapping, Optional
 
 from langchain import LLMChain, PromptTemplate
 from langchain.callbacks.manager import CallbackManagerForLLMRun
@@ -25,11 +25,15 @@ class MariTalkLLM(LLM):
     ):
         if stop is None:
             text: str | None = self.pipeline.generate(
-                prompt, chat_mode=False, stopping_tokens=["\n"]
+                prompt,
+                chat_mode=False,
+                stopping_tokens=["\n"],
             )
         else:
             text: str | None = self.pipeline.generate(
-                prompt, chat_mode=False, stopping_tokens=stop
+                prompt,
+                chat_mode=False,
+                stopping_tokens=stop,
             )
 
         if text is None:
@@ -38,9 +42,12 @@ class MariTalkLLM(LLM):
         if stop is not None:
             text = enforce_stop_tokens(text, stop)
 
-        print(text)
+        return text
 
-        return text[len(prompt) :]
+    @property
+    def _identifying_params(self) -> Mapping[str, Any]:
+        """Get the identifying parameters."""
+        return {"model": "maritalk"}
 
 
 if __name__ == "__main__":
