@@ -1,8 +1,8 @@
 from langchain import LLMChain
-from maritalkllm import MariTalkLLM
+from dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import CommaSeparatedListOutputParser
-from ProjetoDorah.dorahSearch.search import perform
+from dorahSearch.search import perform
 
 
 def generate_topics_from_text(input_text):
