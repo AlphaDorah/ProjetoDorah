@@ -48,7 +48,7 @@ body
     margin: 30px 30px;
 }
 
-.botao-usuario, .botao-download, .botao-historico{
+.botao-usuario, .botao-download, .botao-historico, .botao-animacao{
     margin: 21px 1px;
 }
 
@@ -66,7 +66,7 @@ body
     width: auto;
 }
 
-.botao-download, .botao-historico{
+.botao-download, .botao-historico, .botao-animacao{
     float: right;
     width: 58px;
     height: 58px;
@@ -75,11 +75,11 @@ body
     border: 1px rgba(197, 199, 208, 0) solid;
 }
 
-.botao-historico:hover, .botao-download:hover, .botao-usuario:hover{
+.botao-historico:hover, .botao-download:hover, .botao-usuario:hover, .botao-animacao:hover{
     background-color: #E6E9EF;
 }
 
-.botao-historico img, .botao-download img{
+.botao-historico img, .botao-download img, .botao-animacao img{
     height: 30px;
     width: auto;
 }
