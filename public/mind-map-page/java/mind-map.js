@@ -1,6 +1,6 @@
 var total_temas = 0;
 
-function define_diagram() { 
+function define_diagram() {
     const $ = go.GraphObject.make;
 
     diagram =
@@ -15,7 +15,7 @@ function define_diagram() {
 
                 layout:
                     $(go.TreeLayout,
-                        { angle: 90, nodeSpacing: 10, layerSpacing: 40, layerStyle: go.TreeLayout.LayerUniform })
+                        { angle: 90, nodeSpacing: 15, layerSpacing: 60, layerStyle: go.TreeLayout.LayerUniform })
             });
 
     diagram.nodeTemplate =
@@ -89,7 +89,7 @@ function define_diagram() {
 
 function draw_map(temas, resumos) {
     total_temas = temas.length;
-    
+
     define_diagram();
 
     var nodeDataArray = [];
@@ -103,4 +103,17 @@ function draw_map(temas, resumos) {
     }
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+
+    //Setup map controls
+    document.getElementById('fitDiagram').addEventListener('click', () => {
+        diagram.scale = 1;
+        diagram.commandHandler.zoomToFit();
+        diagram.commandHandler.scrollToPart(diagram.findNodeForKey(0));
+
+        document.getElementById('zoom').value = 1;
+    });
+
+    document.getElementById('zoom').addEventListener('input', (event) => {
+        diagram.scale = event.target.value;
+    })
 }
