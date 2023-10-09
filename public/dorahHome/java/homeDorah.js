@@ -6,7 +6,7 @@ const speed = 100;
 
 function escrita(){
     placeholder += txt.charAt(i);
-    document.getElementById("email").setAttribute("placeholder", placeholder);
+    document.getElementById("theme").setAttribute("placeholder", placeholder);
     i++;
     setTimeout(escrita, speed);
 }
