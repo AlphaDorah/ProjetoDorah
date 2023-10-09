@@ -1,10 +1,11 @@
 from langchain import LLMChain
-from dorahLLM.maritalkllm import MariTalkLLM
+from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
-from dorahSearch.search import perform
+from src.dorahSearch.search import perform
 
-from dorahLLM.maritalk_topics import generate_topics_from_text
+from src.dorahLLM.maritalk_topics import generate_topics_from_text
 from langchain.document_loaders import BrowserlessLoader
+
 # import os
 
 
@@ -109,13 +110,15 @@ def summary_sites(subject):
 
     summaries = search[0]
     for i in range(5):
-        partial_summary = summary_text(subject, texts_date[i].page_content[500:8500])
+        partial_summary = summary_text(
+            subject, texts_date[i].page_content[500:8500]
+        )
         summaries += partial_summary
     final_summary = summary_text(subject, summaries)
     return final_summary
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     term = "Independência do Brasil"
     summary = summary_sites(term)
     print(f"Resumo:\n{summary}")
