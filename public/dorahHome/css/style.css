@@ -8,8 +8,9 @@ body
 {
     min-width: 1280px;
     min-height: 100vh;
-    font-family: "Figtree";
+    font-family: "Figtree Light";
     background: #d5c2ff;
+    overflow: hidden;
 }
 
 .body
@@ -29,9 +30,11 @@ body
 
 .header
 {
+    position: absolute;
     display: inline-block;
     width: 100%;
     min-height: 100px;
+    z-index: 2;
 }
 
 .logo
@@ -94,10 +97,9 @@ body
     border-radius: 30px;
     border: 2px solid rgba(255, 255, 255, 0.35);
     background: rgba(52, 1, 255, 0.10);
-    box-shadow: -80px 80px 100px 0px rgba(0,0,0,0.35);
+    box-shadow: -80px 80px 100px rgba(0,0,0,0.35);
     backdrop-filter: blur(50px);
     z-index: 1;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -118,14 +120,10 @@ body
     justify-content: space-between;
     gap: 59px;
     align-items: center;
-    left: 100px;
-    top: 50%;
     transform: translate(-50%, -50%);
     margin-bottom: 59px;
-    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .searchbar
@@ -166,7 +164,7 @@ input[type="text"]
 {
     display: flex;
     width: 86px;
-    width: 86px;
+    height: 86px;
     padding: 14px;
     justify-content: center;
     align-items: center;
