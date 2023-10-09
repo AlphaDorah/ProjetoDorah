@@ -9,7 +9,10 @@ from maritalk.model import MariTalk
 
 
 class MariTalkLLM(LLM):
-    pipeline: MariTalk = MariTalk(os.environ["MARITALK_KEY"])
+    pipeline: MariTalk
+
+    def __init__(self):
+        self.pipeline = MariTalk(os.environ["MARITALK_KEY"])
 
     @property
     def _llm_type(self) -> str:
