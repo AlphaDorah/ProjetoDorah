@@ -187,4 +187,7 @@ input[type="text"]
     background-color: #4F2D92;
     border: none;
     outline: none;
+    visibility: visible;
 }
+
+

@@ -4,6 +4,12 @@ const txt = "Digite um tema...";
 const speed = 100;
 let inputTheme;
 
+document.getElementById("themeInput").addEventListener("keydown", function (event){
+    if(event.key === "Enter")
+    {
+        getInput();
+    }
+})
 function writteanimation()
 {
         placeholder += txt.charAt(i);
