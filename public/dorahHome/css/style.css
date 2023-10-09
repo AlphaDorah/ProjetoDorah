@@ -86,7 +86,6 @@ body
 
 .container
 {
-    font-size: 45px;
     width: 1294px;
     height: 582px;
     flex-shrink: 0;
@@ -106,9 +105,17 @@ body
 
 }
 
-.container h1
+.searchcontainer h1
 {
-    font-size: 45px;
+    font-size: 50px;
+    font-family: "Figtree ExtraBold";
+    color: white;
+}
+
+.searchcontainer h2
+{
+    font-size: 24px;
+    font-family: "Figtree Light";
     color: white;
 }
 
