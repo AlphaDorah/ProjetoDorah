@@ -22,8 +22,28 @@ function writteanimation()
 
 function getInput()
 {
-    var input = document.getElementById("themeInput");
+    let input = document.getElementById("themeInput");
 
     inputTheme = input.value;
     alert("Tema inserido: " +inputTheme);
+}
+
+function getAnimationButton()
+{
+    alert("BOTÃO DE ANIMAÇÃO");
+}
+
+function getLoginButton()
+{
+    alert("BOTÃO DE LOGIN");
+}
+
+function getHistoryButton()
+{
+    alert("BOTÃO DE HISTÓRICO");
+}
+
+function getDownloadButton()
+{
+    alert("BOTÃO DE DOWNLOAD");
 }
