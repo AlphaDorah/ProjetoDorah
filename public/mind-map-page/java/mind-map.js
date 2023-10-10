@@ -116,4 +116,36 @@ function draw_map(temas, resumos) {
     document.getElementById('zoom').addEventListener('input', (event) => {
         diagram.scale = event.target.value;
     })
-}
+    // document.getElementById('bottom-to-json').addEventListener('click', () => {
+        document.getElementById('menu-download').addEventListener('click', () => {
+            var endModel = diagram.model.toJson(); //Converte o mapa mental em um json
+    
+            var blob = new Blob([endModel], { type: 'application/json' });
+            var temporaryA = document.createElement('a');
+            temporaryA.href = URL.createObjectURL(blob);
+            temporaryA.target = '_blank';
+            temporaryA.download = 'mapa_mental.json';
+            temporaryA.click();
+    
+            alert("Confira se inicia o download");
+        });
+    }
+    
+      function printDiagram() {
+        var svgWindow = window.open();
+        if (!svgWindow) return;  // failure to open a new Window
+        var bnds = diagram.documentBounds;
+        var x = bnds.x;
+        var y = bnds.y;
+        var printSize = new go.Size(bnds.right + 1, 530);
+        while (y < bnds.bottom) {
+          while (x < bnds.right) {
+            var svg = diagram.makeSvg({ scale: diagram.scale, position: new go.Point(x, y), size: printSize });
+            svgWindow.document.body.appendChild(svg);
+            x += printSize.width;
+          }
+          x = bnds.x;
+          y += printSize.height;
+        }
+        setTimeout(() => svgWindow.print(), 1);
+      }
