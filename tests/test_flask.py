@@ -1,3 +1,9 @@
-def test_request_example(client):
-    response = client.get("/hello")
-    assert b"<h2>Hello, World!</h2>" in response.data
+from app import create_app
+
+
+def test_create_app_has_debug_false(app):
+    assert app.config["DEBUG"] == False
+
+
+def test_create_app_has_testing_true(app):
+    assert app.config["TESTING"] == True

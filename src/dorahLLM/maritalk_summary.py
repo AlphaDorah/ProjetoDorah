@@ -1,23 +1,13 @@
 from langchain import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
-from src.dorahSearch.search import perform
-
+from browserless import text_sites
+from src.dorahSearch.google_api import get_links, _google_search
+from src.dorahSearch.wikipedia_api import get_sumary, _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
-from langchain.document_loaders import BrowserlessLoader
-
-# import os
-
-
-def text_sites(urls):
-    loader = BrowserlessLoader(
-        api_token="106e87dd-9a75-44a9-b7cf-c961b88a61de",
-        urls=urls,
-        text_content=True,
-    )
-    documents = loader.load()
-    return documents
-
+# to tests
+from langchain.llms.fake import FakeListLLM
+from langchain.agents import load_tools, initialize_agent, AgentType
 
 def summary_text(input_subject, input_text):
     template = """Você faz um resumo do texto sobre {subject}
@@ -104,23 +94,37 @@ Resumo:"""
     return output
 
 
-def summary_sites(subject):
-    search = perform(subject)
-    texts_date = text_sites(search[1])
+def summary_sites(term, llm_interface, load_interface, google_interface, wiki_interface):
 
-    summaries = search[0]
+    links = get_links(term, google_interface)
+    summaries = get_sumary(term, wiki_interface)
+
+    texts_date = load_interface(links)
     for i in range(5):
-        partial_summary = summary_text(
-            subject, texts_date[i].page_content[500:8500]
+        partial_summary = llm_interface(
+            term, texts_date[i].page_content[500:8500]
         )
         summaries += partial_summary
-    final_summary = summary_text(subject, summaries)
+    final_summary = llm_interface(term, summaries)
     return final_summary
 
 
-if __name__ == "__main__":
-    term = "Independência do Brasil"
-    summary = summary_sites(term)
-    print(f"Resumo:\n{summary}")
+def get_topics_from_sites(term):
+    summary = summary_sites(term, summary_sites, text_sites, _google_search, _wikipedia_search)
     topics = generate_topics_from_text(summary)
-    print(f"Tópicos:\n{topics}")
+    return topics
+
+
+def summary_text_test(input_subject, input_text):
+    if input_subject == "" or input_subject == "assunto não especificado" or input_text == "Texto incorente":
+        return ''
+
+    responses = ["Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."]
+    llm = FakeListLLM(responses=responses)
+    tools = load_tools(["python_repl"])
+    agent = initialize_agent(
+        tools=tools,
+        llm=llm,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+        )
+    return agent.run("Você faz um resumo do texto")

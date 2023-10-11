@@ -1,14 +1,15 @@
 # ProjetoDorah
 
 **Testes necessários**
+
 **Gabriel**
 1. Testar rotas de html
 2. Testar rotas de APIs para geração do Mapa
 3. Testar rotas de API para logar
 
-**Eric**
+**Éric**
 1. Testar formatação de pesquisa do google search
-2. Testar saida incorreta de tópicos da LLM - Eric
+2. Testar saida incorreta de tópicos da LLM
 3. *Integração:* Teste entre api e LLM
 
 **Rafael**
@@ -17,9 +18,9 @@
 3. Testar possiveis erros na pesquisa da wikipedia
 
 **Anna**
-1. Testar saida do resumo da LLM - Anna 
-2. Testar saida dos tópicos da LLM - Anna
-3. Testar quantidade da saida dos tópicos da LLM - Anna
+1. Testar saida do resumo da LLM
+2. Testar saida dos tópicos da LLM
+3. Testar quantidade da saida dos tópicos da LLM
 
 **Amanda**
 1. *Integração:*  Teste entre a LLM e os mecanismos de pesquisa
