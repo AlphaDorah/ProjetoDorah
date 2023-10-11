@@ -9,7 +9,7 @@ bp = Blueprint("index", __name__, url_prefix="/")
 
 @bp.route("/")
 def index():
-    return send_file("public/mind-map-page.html")
+    return send_file("public/dorahHome/homeDorah.html")
 
 
 @bp.route("/hello")
