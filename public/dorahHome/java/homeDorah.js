@@ -47,3 +47,9 @@ function getDownloadButton()
 {
     alert("BOTÃO DE DOWNLOAD");
 }
+
+function darkmode()
+{
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+}
