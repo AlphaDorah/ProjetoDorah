@@ -3,6 +3,8 @@ let placeholder = "";
 const txt = "Digite um tema...";
 const speed = 100;
 let inputTheme;
+let animationPaused = false;
+let loggedUser = false;
 
 document.getElementById("themeInput").addEventListener("keydown", function (event){
     if(event.key === "Enter")
@@ -30,12 +32,44 @@ function getInput()
 
 function getAnimationButton()
 {
-    alert("BOTÃO DE ANIMAÇÃO");
+    const animationBubble1 = document.querySelector(".bubble1");
+    const animationBubble2 = document.querySelector(".bubble2");
+    const animationBubble3 = document.querySelector(".bubble3");
+    const animationBubble4 = document.querySelector(".bubble4");
+
+    if(animationPaused === true)
+    {
+        animationBubble1.style.animationPlayState = "running";
+        animationBubble2.style.animationPlayState = "running";
+        animationBubble3.style.animationPlayState = "running";
+        animationBubble4.style.animationPlayState = "running";
+        animationPaused = false;
+    } else
+    {
+        animationBubble1.style.animationPlayState = "paused";
+        animationBubble2.style.animationPlayState = "paused";
+        animationBubble3.style.animationPlayState = "paused";
+        animationBubble4.style.animationPlayState = "paused";
+        animationPaused = true;
+    }
 }
+
+const historyView = document.getElementById("id.historyButton");
+const downloadView = document.getElementById("id.downloadButton");
 
 function getLoginButton()
 {
-    alert("BOTÃO DE LOGIN");
+    if(loggedUser === false)
+    {
+        historyView.style.display = "none";
+        downloadView.style.display = "none";
+        loggedUser = true;
+    } else
+    {
+        historyView.style.display = "block";
+        downloadView.style.display = "block";
+        loggedUser = false;
+    }
 }
 
 function getHistoryButton()
