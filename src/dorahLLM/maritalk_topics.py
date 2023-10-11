@@ -2,7 +2,12 @@ from langchain import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import CommaSeparatedListOutputParser
-from src.dorahSearch.search import perform
+
+#to tests
+from langchain.llms.fake import FakeListLLM
+from langchain.agents import load_tools
+from langchain.agents import initialize_agent
+from langchain.agents import AgentType
 
 
 def generate_topics_from_text(input_text):
@@ -79,10 +84,19 @@ Lista:"""
     return output
 
 
-if __name__ == "__main__":
-    term = "Segunda Guerra Mundial"
-    search = perform(term)
-    text_wikipedia = search[0]
-    topics = generate_topics_from_text(text_wikipedia)
-    print(topics)
-    print(f"Tamanho: {len(topics)}")
+def generate_topics_from_text_test(input_text):
+    if input_text == "" or input_text == "Texto incoerente.":
+        return ['']
+
+    responses = ["Final Answer: Revolução Liberal do Porto, Cortes Gerais e Extraordinárias, Dom Pedro I, Imperador, Autonomia das províncias, Assembleia Constituinte, Tratado de paz."]
+    llm = FakeListLLM(responses=responses)
+    tools = load_tools(["python_repl"])
+    agent = initialize_agent(
+        tools=tools,
+        llm=llm,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+    )
+    origin = agent.run("Você faz um resumo do texto")
+    output_parser = CommaSeparatedListOutputParser()
+    output = output_parser.parse(origin)
+    return output
