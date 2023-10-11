@@ -70,6 +70,8 @@ function getLoginButton()
         downloadView.style.display = "block";
         loggedUser = false;
     }
+
+    window.location.href = "/public/dorahLogin/login.html";
 }
 
 function getHistoryButton()
