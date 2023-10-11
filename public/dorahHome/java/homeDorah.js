@@ -81,9 +81,10 @@ function getDownloadButton()
 {
     alert("BOTÃO DE DOWNLOAD");
 }
-
-function darkmode()
-{
-    const body = document.body;
-    body.classList.toggle("dark-mode");
-}
+document.addEventListener("keydown", function (event){
+    if(event.key === "d" || event.key === "D")
+    {
+        const body = document.body;
+        body.classList.toggle("dark-mode");
+    }
+});
