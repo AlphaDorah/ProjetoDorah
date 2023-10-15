@@ -1,13 +1,14 @@
 from langchain import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
-from browserless import text_sites
+from src.dorahLLM.browserless_api import get_text_sites
 from src.dorahSearch.google_api import get_links, _google_search
 from src.dorahSearch.wikipedia_api import get_sumary, _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 # to tests
 from langchain.llms.fake import FakeListLLM
 from langchain.agents import load_tools, initialize_agent, AgentType
+
 
 def summary_text(input_subject, input_text):
     template = """Você faz um resumo do texto sobre {subject}
@@ -110,7 +111,7 @@ def summary_sites(term, llm_interface, load_interface, google_interface, wiki_in
 
 
 def get_topics_from_sites(term):
-    summary = summary_sites(term, summary_sites, text_sites, _google_search, _wikipedia_search)
+    summary = summary_sites(term, summary_text, get_text_sites, _google_search, _wikipedia_search)
     topics = generate_topics_from_text(summary)
     return topics
 
