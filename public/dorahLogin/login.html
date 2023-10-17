@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <title>Faça login com sua conta do Dorah</title>
     <link rel="icon" href="images/favicon.png" type="image/x-tcon">
+    <link href="css/bubbles.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href="javascript/login.js" type="text" rel="stylesheet"/>
 </head>
 <body>
+<div class="header">
+    <div class="center">
+        <div class="logo"><img src="images/icon.png"/></div>
+        <button class="botao-animacao" onclick="getAnimationButton()" id="animationButton"><img src="images/animation.png"/></button>
+    </div><!--center-->
+</div><!--header-->
 
+<div class="container">
+    <div class="blur">
+        <div class="cadastro">
+            <div class="cadastro-background">
+                <div class="cadastro-texto-botao">
+                    <div class="cadastro-texto">
+                        <h1>Dorah</h1>
+                        <h2>Bem vindo!</h2>
+                        <button class="botao-cadastro" typeof="button">Criar Conta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login"></div>
+    </div><!--blur-->
+</div><!--container-->
+
+<div>
+    <div class="bubble1"></div>
+    <div class="bubble2"></div>
+    <div class="bubble3"></div>
+    <div class="bubble4"></div>
+</div>
+
+<script src="javascript/login.js"></script>
 </body>
 </html>
