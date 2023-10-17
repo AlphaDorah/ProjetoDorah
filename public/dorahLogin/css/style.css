@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1920px;
+}
+
+body
+{
+    min-width: 1280px;
+    min-height: 100vh;
+    font-family: "Figtree";
+    background: #d5c2ff;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.body
+{
+    width: 100%;
+    height: 100%;
+    min-width: 1280px;
+}
+
+.center
+{
+    width: 100%;
+    min-width: 1280px;
+    height: 13.88%;
+    margin: 0 auto;
+}
+
+.header
+{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    min-height: 100px;
+    z-index: 2;
+}
+
+.logo
+{
+    float: left;
+}
+
+.logo img{
+    width: 46px;
+    margin: 30px 30px;
+}
+
+.botao-animacao{
+    margin-top: 21px;
+    margin-right: 30px;
+    float: right;
+    width: 58px;
+    height: 58px;
+    padding: 14px;
+    border-radius: 4px;
+    border: 1px rgba(197, 199, 208, 0) solid;
+}
+
+.botao-animacao:hover{
+    background-color: #E6E9EF;
+}
+
+.botao-animacao img{
+    height: 30px;
+    width: auto;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.blur{
+    display: inline-block;
+    width: 1294px;
+    height: 728px;
+    border-radius: 30px;
+    background: rgba(52, 1, 255, 0.10);
+    box-shadow: -80px 80px 100px 0px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(50px);
+    position: relative;
+    z-index: 1;
+}
+
+.cadastro
+{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.cadastro-background
+{
+    position: relative;
+    width: 25.5625rem;
+    height: 45.5rem;
+    flex-shrink: 0;
+    border-radius: 1.875rem 0rem 0rem 1.875rem;
+    background: linear-gradient(206deg, rgba(255, 255, 255, 0.30) -2.26%, rgba(254, 254, 254, 0.03) 102.61%);
+    align-items: center;
+}
+
+.cadastro-texto
+{
+    margin-bottom: 0.75rem;
+}
+.cadastro h1
+{
+    color: #000;
+    text-align: center;
+    font-family: Figtree;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.cadastro h2
+{
+    color: #000;
+    text-align: center;
+    font-family: Figtree;
+    font-size: 2.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cadastro-texto-botao
+{
+    margin-bottom: 19.62rem;
+}
+
+
+.botao-cadastro
+{
+    color: #000;
+    text-align: center;
+    font-family: Figtree;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.1375rem;
+    width: 13.1875rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: -10px 10px 20px 5px rgba(0, 0, 0, 0.15);
+    outline: none;
+    border: none;
+
+
+}
+
+.botao-cadastro:hover
+{
+
+}
