@@ -89,6 +89,7 @@ function writteanimation()
     }
 }
 
+
 writteanimation();
 
 function eraseMessage()
