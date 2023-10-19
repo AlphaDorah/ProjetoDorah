@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Figtree", Serif;
     max-width: 1920px;
 }
 
@@ -116,16 +117,24 @@ body.dark-mode
 
 .searchcontainer h1
 {
-    font-size: 50px;
-    font-family: "Figtree ExtraBold";
-    color: white;
+    color: #FFF;
+    text-align: center;
+    font-size: 2.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 3.25rem; /* 115.556% */
+    letter-spacing: -0.025rem;
 }
 
 .searchcontainer h2
 {
-    font-size: 24px;
-    font-family: "Figtree Light";
-    color: white;
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 3.25rem; /* 216.667% */
+    letter-spacing: -0.025rem;
 }
 
 .searchcontainer

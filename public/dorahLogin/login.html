@@ -11,25 +11,33 @@
 <body>
 <div class="header">
     <div class="center">
-        <div class="logo"><img src="images/icon.png"/></div>
-        <button class="botao-animacao" onclick="getAnimationButton()" id="animationButton"><img src="images/animation.png"/></button>
+        <div class="logo"><img src="images/icon.png" alt="DorahLogo"/></div>
+        <div class="botao-animacao" onclick="getAnimationButton()" id="animationButton"><img src="images/animation.png" alt="Botaodeanimacao"/></div>
     </div><!--center-->
 </div><!--header-->
 
 <div class="container">
     <div class="blur">
         <div class="cadastro">
-            <div class="cadastro-background">
-                <div class="cadastro-texto-botao">
-                    <div class="cadastro-texto">
-                        <h1>Dorah</h1>
-                        <h2>Bem vindo!</h2>
-                        <button class="botao-cadastro" typeof="button">Criar Conta</button>
-                    </div>
-                </div>
+            <div id="containerText" class="texto-cadastro">
+                <h1 id="textDorah">Dorah</h1>
+                <h2 id="textBV">Bem vindo!</h2>
             </div>
+            <button class="botao-cadastro" typeof="button">Criar Conta</button>
         </div>
-        <div class="login"></div>
+        <div class="login">
+            <h1>FAÇA LOGIN</h1>
+            <label for="emailInput"></label>
+            <input class="email-login" type="email" id="emailInput" placeholder="E-mail">
+            <label for="senhaInput"></label>
+            <input class="senha-login" type="password" id="senhaInput" placeholder="Senha">
+            <div class="opcao-senha">
+                <input class="lembrar" id="lembrar" type="checkbox">
+                <label for="lembrar">Lembre de mim</label>
+                <span>Esqueci senha?</span>
+            </div>
+            <button class="botao-entrar" typeof="button" id="loginButton" disabled onclick="getInput()">Entrar</button>
+        </div>
     </div><!--blur-->
 </div><!--container-->
 

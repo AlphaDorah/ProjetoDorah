@@ -9,7 +9,7 @@ body
 {
     min-width: 1280px;
     min-height: 100vh;
-    font-family: "Figtree";
+    font-family: "Figtree", serif;
     background: #d5c2ff;
     overflow: hidden;
     z-index: -1;
@@ -32,7 +32,7 @@ body
 
 .header
 {
-    position: absolute;
+    position: relative;
     display: inline-block;
     width: 100%;
     min-height: 100px;
@@ -41,6 +41,7 @@ body
 
 .logo
 {
+    position: absolute;
     float: left;
 }
 
@@ -50,8 +51,9 @@ body
 }
 
 .botao-animacao{
-    margin-top: 21px;
-    margin-right: 30px;
+    position: absolute;
+    right:30px;
+    top: 21px;
     float: right;
     width: 58px;
     height: 58px;
@@ -70,6 +72,7 @@ body
 }
 
 .container{
+    padding-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,7 +86,7 @@ body
     height: 728px;
     border-radius: 30px;
     background: rgba(52, 1, 255, 0.10);
-    box-shadow: -80px 80px 100px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(50px);
     position: relative;
     z-index: 1;
@@ -95,41 +98,35 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 3;
-}
-
-.cadastro-background
-{
-    position: relative;
+    flex-direction: column;
     width: 25.5625rem;
     height: 45.5rem;
     flex-shrink: 0;
-    border-radius: 1.875rem 0rem 0rem 1.875rem;
+    border-radius: 1.875rem 0 0 1.875rem;
     background: linear-gradient(206deg, rgba(255, 255, 255, 0.30) -2.26%, rgba(254, 254, 254, 0.03) 102.61%);
-    align-items: center;
+    z-index: 3;
 }
 
-.cadastro-texto
+.texto-cadastro
 {
     margin-bottom: 0.75rem;
 }
+
 .cadastro h1
 {
     color: #000;
     text-align: center;
-    font-family: Figtree;
     font-size: 3.75rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    padding-bottom: 2.94rem;
 }
 
 .cadastro h2
 {
     color: #000;
     text-align: center;
-    font-family: Figtree;
     font-size: 2.25rem;
     font-style: normal;
     font-weight: 400;
@@ -146,7 +143,6 @@ body
 {
     color: #000;
     text-align: center;
-    font-family: Figtree;
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
@@ -167,4 +163,132 @@ body
 .botao-cadastro:hover
 {
 
+}
+
+.login
+{
+    float:right;
+    width: 55.3125rem;
+    height: 45.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login h1{
+    color: white;
+    text-align: center;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.5625rem;
+    margin-bottom: 7.7rem;
+}
+
+.email-login,
+.senha-login
+{
+    width: 28.125rem;
+    height: 4.0625rem;
+    border-radius: 0.5rem;
+    border: 1px solid #C5C7D0;
+    background: #FFF;
+    text-align: center;
+    font-size: 1.25rem;
+    letter-spacing: 0.1375rem;
+    outline: none;
+}
+
+.email-login{
+    margin-bottom: 2.38rem;
+}
+
+.senha-login{
+    margin-bottom: 2.37rem;
+}
+
+.email-login:focus {
+    outline: 2px solid #784BD1;
+}
+
+.senha-login:focus {
+    outline: 2px solid #784BD1;
+}
+
+.opcao-senha{
+    width: 28.125rem;
+    height: 1.3125rem;
+    margin-bottom: 2.12rem;
+    position: relative;
+}
+
+.opcao-senha>label{
+    position: absolute;
+    top: -0.2rem;
+    left: 1.2475rem;
+    color: #000000;
+    font-size: 1.1875rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.11875rem;
+}
+
+.lembrar{
+    position: absolute;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    text-align: center;
+    border-radius: 0.125rem;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: #D9D9D9;
+}
+
+.lembrar:focus{
+    outline: 1px solid #784BD1;
+}
+
+
+.botao-entrar{
+    color: #FFF;
+    text-align: center;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 18.75rem;
+    height: 4.0625rem;
+    border-radius: 0.5rem;
+    background: #784BD1;
+    box-shadow: -10px 10px 20px 5px rgba(0, 0, 0, 0.15);
+    outline: none;
+    border: none;
+}
+
+.opcao-senha span{
+    position: absolute;
+    top: -0.2rem;
+    right: 0;
+    color: #000;
+    text-align: center;
+    font-size: 1.1875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.11875rem;
+    text-decoration-line: underline;
+}
+
+.botao-entrar:hover
+{
+    background-color: #4F2D92;
+}
+
+.botao-entrar:disabled
+{
+    color: #c9c6c6;
+    background-color: #717173;
 }
