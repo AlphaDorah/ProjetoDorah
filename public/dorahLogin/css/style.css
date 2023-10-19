@@ -109,7 +109,7 @@ body
 
 .texto-cadastro
 {
-    margin-bottom: 0.75rem;
+    margin-bottom: 19.63rem;
 }
 
 .cadastro h1
@@ -132,6 +132,7 @@ body
     font-weight: 400;
     line-height: normal;
 }
+
 
 .cadastro-texto-botao
 {
@@ -156,12 +157,11 @@ body
     box-shadow: -10px 10px 20px 5px rgba(0, 0, 0, 0.15);
     outline: none;
     border: none;
-
-
 }
 
 .botao-cadastro:hover
 {
+    background-color: white;
 
 }
 
