@@ -1,5 +1,9 @@
 let animationPaused = false;
 let inputEmail, inputPassword;
+let loginIsValid = false;
+let welcomeMessageM = "Bem vindo!";
+let welcomeMessageW = "Bem vinda!";
+let welcomeMessageMale = true;
 
 function getInput()
 {
@@ -57,49 +61,59 @@ document.addEventListener('DOMContentLoaded', function ()
         if(getPasswordInput.value && getEmailInput.value)
         {
             getLoginButton.removeAttribute('disabled');
+            loginIsValid = true;
         } else
         {
             getLoginButton.setAttribute('disabled', 'true');
+            loginIsValid = false;
         }
     }
 });
 
-/*
-document.addEventListener('DOMContentLoaded', function ()
-{
-    var contentH1 = document.getElementById('textDorah');
-    var contentH2 = document.getElementById('textBV');
+document.getElementById("senhaInput").addEventListener("keydown", function (event){
 
-    function getLuminance(color)
+    if(loginIsValid === true)
     {
-        var rgb = color.match(/\d+/g);
-        if (!rgb) return 0;
-        var r = parseInt(rgb[0]), g = parseInt(rgb[1]), b = parseInt(rgb[2]);
-        return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-   }
+        if(event.key === "Enter")
+        {
+            getInput();
+        }
+    }
+});
+/*
+function writteanimation()
+{
+    if(welcomeMessageMale === true)
+    {
+        eraseMessage();
 
-   function toggleColor()
-   {
-       var currentBackgroundColorH1 = getComputedStyle(contentH1).backgroundColor,
-           luminanceH1 = getLuminance(currentBackgroundColorH1),
-           currentBackgroundColorH2 = getComputedStyle(contentH2).backgroundColor,
-           luminanceH2 = getLuminance(currentBackgroundColorH2);
 
-       if (luminanceH1 > 0.0005) {
-           contentH1.style.color = '#000';
+    }
+}
 
-       } else {
-           contentH1.style.color = '#fff';
-       }
+writteanimation();
 
-       if (luminanceH2 > 0.0005) {
-           contentH2.style.color = '#000';
+function eraseMessage()
+{
+    placeholder += txt.charAt(i);
+    document.getElementById("textBV").setAttribute("text", welcomeMessageM);
+    i--;
+    setTimeout(eraseMessage, speed);
+}
 
-       } else {
-           contentH2.style.color = '#fff';
-       }
-   }
-
-   setInterval(toggleColor, 100);
-
-}); */
+function changeMessage()
+{
+    if(welcomeMessageMale === true)
+    {
+        placeholder += txt.charAt(i);
+        document.getElementById("textBV").setAttribute("text", welcomeMessageW);
+        i++;
+        setTimeout(eraseMessage, speed);
+    } else
+    {   placeholder += txt.charAt(i);
+        document.getElementById("textBV").setAttribute("text", welcomeMessageW);
+        i++;
+        setTimeout(eraseMessage, speed);
+    }
+}
+*/

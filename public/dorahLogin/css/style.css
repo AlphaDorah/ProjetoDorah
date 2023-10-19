@@ -85,7 +85,7 @@ body
     width: 1294px;
     height: 728px;
     border-radius: 30px;
-    background: rgba(52, 1, 255, 0.10);
+    background: rgba(169, 148, 255, 0.10);
     box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(50px);
     position: relative;
@@ -102,8 +102,8 @@ body
     width: 25.5625rem;
     height: 45.5rem;
     flex-shrink: 0;
-    border-radius: 1.875rem 0 0 1.875rem;
-    background: linear-gradient(206deg, rgba(255, 255, 255, 0.30) -2.26%, rgba(254, 254, 254, 0.03) 102.61%);
+    border-radius: 30px 0px 0px 30px;
+    background: linear-gradient(202deg, rgba(94, 0, 216, 0.30) 13.47%, rgba(129, 76, 197, 0.16) 58.9%, rgba(254, 254, 254, 0.03) 100%);
     z-index: 3;
 }
 
@@ -114,7 +114,7 @@ body
 
 .cadastro h1
 {
-    color: #000;
+    color: #ffffff;
     text-align: center;
     font-size: 3.75rem;
     font-style: normal;
@@ -125,12 +125,13 @@ body
 
 .cadastro h2
 {
-    color: #000;
+    color: #ffffff;
     text-align: center;
     font-size: 2.25rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition: opacity 3s;
 }
 
 
@@ -142,7 +143,7 @@ body
 
 .botao-cadastro
 {
-    color: #000;
+    color: #ffffff;
     text-align: center;
     font-size: 1.25rem;
     font-style: normal;
@@ -161,6 +162,7 @@ body
 
 .botao-cadastro:hover
 {
+    color: black;
     background-color: white;
 
 }
@@ -228,7 +230,7 @@ body
     position: absolute;
     top: -0.2rem;
     left: 1.2475rem;
-    color: #000000;
+    color: #ffffff;
     font-size: 1.1875rem;
     text-align: center;
     font-style: normal;
@@ -272,13 +274,17 @@ body
     position: absolute;
     top: -0.2rem;
     right: 0;
-    color: #000;
+    color: #fff;
     text-align: center;
     font-size: 1.1875rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.11875rem;
+}
+
+.opcao-senha span:hover
+{
     text-decoration-line: underline;
 }
 
@@ -292,3 +298,4 @@ body
     color: #c9c6c6;
     background-color: #717173;
 }
+
