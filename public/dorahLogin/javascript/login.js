@@ -86,8 +86,6 @@ function writteanimation()
     if(welcomeMessageMale === true)
     {
         eraseMessage();
-
-
     }
 }
 
