@@ -44,6 +44,8 @@ function getAnimationButton()
         animationBubble3.style.animationPlayState = "running";
         animationBubble4.style.animationPlayState = "running";
         animationPaused = false;
+        document.getElementById("id-toggleon").style.display = "block";
+        document.getElementById("id-toggleoff").style.display = "none";
     } else
     {
         animationBubble1.style.animationPlayState = "paused";
@@ -51,37 +53,34 @@ function getAnimationButton()
         animationBubble3.style.animationPlayState = "paused";
         animationBubble4.style.animationPlayState = "paused";
         animationPaused = true;
+        document.getElementById("id-toggleon").style.display = "none";
+        document.getElementById("id-toggleoff").style.display = "block";
     }
 }
 
-const historyView = document.getElementById("id.historyButton");
-const downloadView = document.getElementById("id.downloadButton");
+const historyView = document.getElementById("id-historybutton");
+const downloadView = document.getElementById("id-exportButton");
+const signupView = document.getElementById("id-signupButton");
 
 function getLoginButton()
 {
     if(loggedUser === false)
     {
-        historyView.style.display = "none";
-        downloadView.style.display = "none";
+        historyView.style.display  = "none";
+        downloadView.style.display  = "none";
+        signupView.style.display  = "none";
         loggedUser = true;
     } else
     {
-        historyView.style.display = "block";
-        downloadView.style.display = "block";
+        historyView.style.display  = "inline-flex";
+        downloadView.style.display = "inline-flex";
+        signupView.style.display = "inline-flex";
         loggedUser = false;
     }
-    window.location.href = "/public/dorahLogin/login.html";
+   /* window.location.href = "/public/dorahLogin/login.html";*/
 }
 
-function getHistoryButton()
-{
-    alert("BOTÃO DE HISTÓRICO");
-}
 
-function getDownloadButton()
-{
-    alert("BOTÃO DE DOWNLOAD");
-}
 document.addEventListener("keydown", function (event){
     if(event.key === "d" || event.key === "D")
     {
