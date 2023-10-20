@@ -55,7 +55,7 @@ body
     position: absolute;
     height: 48px;
     top: 50px;
-    right: 96px;
+    right: 66px;
     display: flex;
     justify-content: right;
     align-items: center;
@@ -85,6 +85,15 @@ body
     height: 48px;
 }
 
+.button-signup,
+.button-login,
+.button-animation,
+.button-download,
+.button-export,
+.button-history
+{
+    margin-left: 29px;
+}
 
 .button-animation,
 .button-login
@@ -103,7 +112,6 @@ body
     border-radius: 8px;
     border-color: transparent;
     background-color: transparent;
-    margin-right: 29px;
     fill: #000;
 }
 
@@ -123,7 +131,6 @@ body
     border-radius: 8px;
     border-color: transparent;
     background-color: transparent;
-    margin-right: 29px;
     fill: #000;
 }
 
@@ -143,7 +150,6 @@ body
     border-radius: 8px;
     border-color: transparent;
     background-color: transparent;
-    margin-right: 29px;
     fill: #000;
 }
 
