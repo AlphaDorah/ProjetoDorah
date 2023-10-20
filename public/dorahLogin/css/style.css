@@ -144,7 +144,7 @@ body
     width: 25.5625rem;
     height: 45.5rem;
     flex-shrink: 0;
-    border-radius: 1.875rem 0px 0px 1.875rem;
+    border-radius: 1.875rem 0 0 1.875rem;
     background: linear-gradient(202deg, rgba(94, 0, 216, 0.30) 13.47%, rgba(129, 76, 197, 0.16) 58.9%, rgba(254, 254, 254, 0.03) 100%);
     z-index: 3;
     border: 2px solid rgba(255, 255, 255, 0.35);
