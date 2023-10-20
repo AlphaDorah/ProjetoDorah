@@ -1,9 +1,6 @@
 let animationPaused = false;
 let inputEmail, inputPassword;
 let loginIsValid = false;
-let welcomeMessageM = "Bem vindo!";
-let welcomeMessageW = "Bem vinda!";
-let welcomeMessageMale = true;
 
 function getInput()
 {
@@ -29,6 +26,8 @@ function getAnimationButton()
         animationBubble2.style.animationPlayState = "running";
         animationBubble3.style.animationPlayState = "running";
         animationBubble4.style.animationPlayState = "running";
+        document.getElementById("id-toggleon").style.display = "block";
+        document.getElementById("id-toggleoff").style.display = "none";
         animationPaused = false;
     } else
     {
@@ -36,14 +35,10 @@ function getAnimationButton()
         animationBubble2.style.animationPlayState = "paused";
         animationBubble3.style.animationPlayState = "paused";
         animationBubble4.style.animationPlayState = "paused";
+        document.getElementById("id-toggleon").style.display = "none";
+        document.getElementById("id-toggleoff").style.display = "block";
         animationPaused = true;
     }
-}
-
-function isValidEmail(emailInput)
-{
-    var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    return emailRegex.test(emailInput);
 }
 
 document.addEventListener('DOMContentLoaded', function ()
@@ -51,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function ()
     const getEmailInput = document.getElementById('emailInput');
     const getPasswordInput = document.getElementById('senhaInput');
     const getLoginButton = document.getElementById('loginButton');
-    let email = document.getElementById('loginButton');
 
     getEmailInput.addEventListener('input', toggleButton);
     getPasswordInput.addEventListener('input', toggleButton);
