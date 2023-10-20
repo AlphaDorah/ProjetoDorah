@@ -1,4 +1,5 @@
-*{
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,7 +28,7 @@ body
 {
     position: relative;
     width: 100%;
-    height: 150px;
+    height: 120px;
 }
 
 .logo
@@ -113,8 +114,8 @@ body
     background-color: white;
 }
 
-.container{
-    padding-top: 30px;
+.container
+{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +123,8 @@ body
     z-index: 2;
 }
 
-.blur{
+.blur
+{
     display: inline-block;
     width: 1294px;
     height: 728px;
@@ -273,7 +275,8 @@ body
     position: relative;
 }
 
-.opcao-senha>label{
+.opcao-senha>label
+{
     position: absolute;
     top: -0.2rem;
     left: 1.2475rem;
@@ -286,7 +289,8 @@ body
     letter-spacing: 0.11875rem;
 }
 
-.lembrar{
+.lembrar
+{
     position: absolute;
     width: 0.9375rem;
     height: 0.9375rem;
@@ -296,12 +300,14 @@ body
     background: #D9D9D9;
 }
 
-.lembrar:focus{
+.lembrar:focus
+{
     outline: 1px solid #784BD1;
 }
 
 
-.botao-entrar{
+.botao-entrar
+{
     color: #FFF;
     text-align: center;
     font-size: 1.75rem;
@@ -317,7 +323,8 @@ body
     border: none;
 }
 
-.opcao-senha span{
+.opcao-senha span
+{
     position: absolute;
     top: -0.2rem;
     right: 0;
@@ -345,4 +352,3 @@ body
     color: #c9c6c6;
     background-color: #717173;
 }
-
