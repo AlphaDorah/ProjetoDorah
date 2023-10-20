@@ -15,15 +15,6 @@ body
     overflow: hidden;
 }
 
-body.dark-mode
-{
-    min-width: 1280px;
-    min-height: 100vh;
-    font-family: "Figtree";
-    background: #413953;
-    overflow: hidden;
-}
-
 .body
 {
     width: 100%;
