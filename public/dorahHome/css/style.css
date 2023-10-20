@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Figtree", Serif;
+    font-family: "Figtree", sans-serif;
     max-width: 1920px;
 }
 
@@ -10,7 +10,7 @@ body
 {
     min-width: 1280px;
     min-height: 100vh;
-    font-family: "Figtree";
+    font-family: "Figtree", sans-serif;
     background: #C8ADFF;
     overflow: hidden;
 }
@@ -161,7 +161,7 @@ body
 }
 input[type="text"]
 {
-    font-family: "Figtree";
+    font-family: "Figtree", sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -199,6 +199,38 @@ input[type="text"]
     visibility: visible;
 }
 
+.footer
+{
+    width: 770px;
+    height: 22px;
+    margin-right: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    bottom: 10px;
+}
 
+.link-footer
+{
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin-right: 36px;
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.link-footer:hover
+{
+    text-decoration-line: underline;
+}
 
 
