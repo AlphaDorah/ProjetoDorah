@@ -1,0 +1,6 @@
+<svg width="41" height="24" viewBox="0 0 41 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Toggle">
+<rect width="41" height="24" rx="12" fill="#0073EA"/>
+<path id="Knob" fill-rule="evenodd" clip-rule="evenodd" d="M29 21C33.9706 21 38 16.9706 38 12C38 7.02944 33.9706 3 29 3C24.0294 3 20 7.02944 20 12C20 16.9706 24.0294 21 29 21Z" fill="white"/>
+</g>
+</svg>

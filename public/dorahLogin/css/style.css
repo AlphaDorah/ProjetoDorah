@@ -23,53 +23,94 @@ body
     min-width: 1280px;
 }
 
-.center
-{
-    width: 100%;
-    min-width: 1280px;
-    height: 13.88%;
-    margin: 0 auto;
-}
-
 .header
 {
     position: relative;
-    display: inline-block;
     width: 100%;
-    min-height: 100px;
-    z-index: 2;
+    height: 150px;
 }
 
 .logo
 {
     position: absolute;
-    float: left;
+    width: 200px;
+    height: 42px;
+    left: 66px;
+    top: 55px;
+    display: flex;
+    align-items: center;
 }
 
-.logo img{
-    width: 46px;
-    margin: 30px 30px;
+.logo h1
+{
+    padding-left: 19px;
+    color: #FFF;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
 }
 
-.botao-animacao{
+.button-container
+{
     position: absolute;
-    right:30px;
-    top: 21px;
-    float: right;
-    width: 58px;
-    height: 58px;
-    padding: 14px;
-    border-radius: 4px;
-    border: 1px rgba(197, 199, 208, 0) solid;
+    height: 48px;
+    top: 50px;
+    right: 66px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }
 
-.botao-animacao:hover{
-    background-color: #E6E9EF;
+.button-animation
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    fill: #000;
 }
 
-.botao-animacao img{
-    height: 30px;
-    width: auto;
+.button-animation
+{
+    width: 113px;
+    height: 48px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-animation svg
+{
+    min-height: 26px;
+    min-width: 26px;
+}
+
+.button-animation img
+{
+    width: 41px;
+    height: 24px;
+}
+
+.button-animation:hover path
+{
+    fill: black;
+}
+
+.button-animation:hover
+{
+    color: black;
+    background-color: white;
 }
 
 .container{
