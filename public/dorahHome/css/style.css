@@ -11,7 +11,7 @@ body
     min-width: 1280px;
     min-height: 100vh;
     font-family: "Figtree", sans-serif;
-    background: #C8ADFF;
+    background: #ba9afc;
     overflow: hidden;
 }
 
@@ -22,67 +22,196 @@ body
     min-width: 1280px;
 }
 
-.center
-{
-    width: 100%;
-    min-width: 1280px;
-    height: 13.88%;
-    margin: 0 auto;
-}
-
 .header
 {
-    position: absolute;
-    display: inline-block;
+    position: relative;
     width: 100%;
-    min-height: 100px;
-    z-index: 2;
+    height: 150px;
 }
 
 .logo
 {
-    float: left;
+    position: absolute;
+    width: 200px;
+    height: 42px;
+    left: 66px;
+    top: 55px;
+    display: flex;
+    align-items: center;
 }
 
-.logo img{
-    width: 46px;
-    margin: 30px 30px;
+.logo h1
+{
+    padding-left: 19px;
+    color: #FFF;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
 }
 
-.botao-usuario, .botao-download, .botao-historico, .botao-animacao{
-    margin: 21px 1px;
+.button-container
+{
+    position: absolute;
+    height: 48px;
+    top: 50px;
+    right: 96px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }
 
-.botao-usuario{
-    float: right;
-    margin-right: 30px;
-    width: 58px;
-    height: 58px;
-    padding: 13px;
-    border-radius: 58px;
+.button-history
+{
+    width: 151px;
+    height: 48px;
 }
 
-.botao-usuario img{
-    height: 30px;
-    width: auto;
+.button-export
+{
+    width: 146px;
+    height: 48px;
 }
 
-.botao-download, .botao-historico, .botao-animacao{
-    float: right;
-    width: 58px;
-    height: 58px;
-    padding: 14px;
-    border-radius: 4px;
-    border: 1px rgba(197, 199, 208, 0) solid;
+.button-login
+{
+    width: 176px;
+    height: 48px;
 }
 
-.botao-historico:hover, .botao-download:hover, .botao-usuario:hover, .botao-animacao:hover{
-    background-color: #E6E9EF;
+.button-signup
+{
+    width: 174px;
+    height: 48px;
 }
 
-.botao-historico img, .botao-download img, .botao-animacao img{
-    height: 30px;
-    width: auto;
+
+.button-animation,
+.button-login
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 29px;
+    fill: #000;
+}
+
+.button-history
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 29px;
+    fill: #000;
+}
+
+.button-export
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 29px;
+    fill: #000;
+}
+
+.button-animation
+{
+    width: 113px;
+    height: 48px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-animation svg
+{
+    min-height: 26px;
+    min-width: 26px;
+}
+
+.button-animation img
+{
+    width: 41px;
+    height: 24px;
+}
+
+.button-history:hover path,
+.button-export:hover path,
+.button-animation:hover path,
+.button-login:hover path
+{
+    fill: black;
+}
+
+.button-history:hover,
+.button-export:hover,
+.button-animation:hover,
+.button-login:hover
+{
+    color: black;
+    background-color: white;
+}
+
+.button-signup
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border: 1px solid #FFF;
+    background-color: transparent;
+}
+
+.button-signup:hover
+{
+    color: black;
+    background-color: white;
+}
+
+.button-signup:hover path
+{
+    fill: black;
 }
 
 .container
@@ -199,6 +328,14 @@ input[type="text"]
     visibility: visible;
 }
 
+.center
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
 .footer
 {
     width: 770px;
@@ -210,7 +347,7 @@ input[type="text"]
     position: absolute;
     align-items: center;
     text-align: center;
-    bottom: 10px;
+    bottom: 41px;
 }
 
 .link-footer
@@ -232,5 +369,3 @@ input[type="text"]
 {
     text-decoration-line: underline;
 }
-
-
