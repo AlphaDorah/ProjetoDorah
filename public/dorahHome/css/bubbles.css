@@ -99,7 +99,7 @@
     height: 600px;
     flex-shrink: 0;
     border-radius: 600px;
-    background: radial-gradient(68.9% 68.9% at 77.33% 26.25%, #935DD9 0%, #6B00F7 100%);
+    background: radial-gradient(68.9% 68.9% at 77.33% 26.25%, #7A48BA 0%, #6B00F7 100%);
     /*filter: blur(4px); */
     z-index: 0;
     animation: animacaoBolha1 50s linear infinite;
@@ -114,7 +114,7 @@
     height: 350px;
     flex-shrink: 0;
     border-radius: 350px;
-    background: radial-gradient(57.78% 57.78% at 80.71% 28.14%, #6D4BCE 0%, #935DD9 100%);
+    background: radial-gradient(57.78% 57.78% at 80.71% 28.14%, #6D4BCE 0%, #A25DD9 100%);
     /*filter: blur(12.5px);*/
     z-index: -1;
     animation: animacaoBolha2 60s linear infinite;
@@ -129,7 +129,7 @@
     height: 300px;
     flex-shrink: 0;
     border-radius: 300px;
-    background: radial-gradient(52.7% 52.7% at 30.83% 76.67%, #703B88 0%, #703B88 100%);
+    background: radial-gradient(52.7% 52.7% at 30.83% 76.67%, #9C4FFF 0%, #7E1AE0 0%, #B000FF 100%);
     z-index: -3;
     animation: animacaoBolha3 30s linear infinite;
 }
@@ -143,7 +143,7 @@
     height: 500px;
     flex-shrink: 0;
     border-radius: 500px;
-    background: radial-gradient(54.4% 54.4% at 38.9% 63.5%, #B17FF1 0%, #7516A0 100%);
+    background: radial-gradient(54.4% 54.4% at 38.9% 63.5%, #CD7FF1 0%, #7D00DF 100%);
     z-index: -2;
     animation: animacaoBolha4 35s linear infinite;
 }

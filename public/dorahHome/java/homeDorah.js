@@ -11,7 +11,7 @@ document.getElementById("themeInput").addEventListener("keydown", function (even
     {
         getInput();
     }
-})
+});
 function writteanimation()
 {
         placeholder += txt.charAt(i);
@@ -70,7 +70,6 @@ function getLoginButton()
         downloadView.style.display = "block";
         loggedUser = false;
     }
-
     window.location.href = "/public/dorahLogin/login.html";
 }
 
