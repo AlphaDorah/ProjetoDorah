@@ -330,6 +330,7 @@ input[type="text"]
     background:#784BD1;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .button.primary:hover
