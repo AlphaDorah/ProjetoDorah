@@ -114,6 +114,7 @@ body
     border-color: transparent;
     background-color: transparent;
     fill: #000;
+    cursor: pointer;
 }
 
 .button-history
@@ -133,6 +134,7 @@ body
     border-color: transparent;
     background-color: transparent;
     fill: #000;
+    cursor: pointer;
 }
 
 .button-export
@@ -152,6 +154,7 @@ body
     border-color: transparent;
     background-color: transparent;
     fill: #000;
+    cursor: pointer;
 }
 
 .button-animation
@@ -208,6 +211,7 @@ body
     border-radius: 8px;
     border: 1px solid #FFF;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .button-signup:hover
