@@ -165,20 +165,19 @@ body
     text-align: center;
     font-size: 3.75rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
-    padding-bottom: 2.94rem;
+    margin-bottom: 1.31rem;
 }
 
 .cadastro h2
 {
     color: #ffffff;
     text-align: center;
-    font-size: 2.25rem;
+    font-size: 1.875rem;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     line-height: normal;
-    transition: opacity 2s;
 }
 
 .cadastro h3
@@ -187,7 +186,7 @@ body
     text-align: center;
     font-size: 19px;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 200;
     line-height: normal;
     letter-spacing: 2px;
     margin-bottom: 19px;
@@ -196,7 +195,7 @@ body
 
 .cadastro-texto-botao
 {
-    margin-bottom: 19.62rem;
+    margin-bottom: 14.25rem;
 }
 
 
@@ -245,10 +244,10 @@ body
     text-align: center;
     font-size: 3.75rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: 0.5625rem;
-    margin-bottom: 7.7rem;
+    margin-bottom: 6.13rem;
 }
 
 .email-login,
@@ -365,7 +364,7 @@ body
 
 .botao-entrar:disabled
 {
-    color: #c9c6c6;
-    background-color: #717173;
-    cursor: auto;
+    color: rgba(255, 255, 255, 0.50);;
+    background: rgba(0, 0, 0, 0.20);
+    cursor: not-allowed;
 }
