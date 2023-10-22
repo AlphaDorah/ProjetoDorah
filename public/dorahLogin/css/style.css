@@ -156,7 +156,7 @@ body
 
 .texto-cadastro
 {
-    margin-bottom: 19.63rem;
+    margin-bottom: 14.25rem;
 }
 
 .cadastro h1
@@ -179,6 +179,18 @@ body
     font-weight: 400;
     line-height: normal;
     transition: opacity 2s;
+}
+
+.cadastro h3
+{
+    color: #FFF;
+    text-align: center;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 2px;
+    margin-bottom: 19px;
 }
 
 
