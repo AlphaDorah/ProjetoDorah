@@ -6,10 +6,6 @@
 
 Obrigado por considerar contribuir para o nosso projeto! Este documento descreve as directrizes para contribuir para o nosso projeto. Por favor, leia-o cuidadosamente antes de fazer qualquer contribuição.
 
-## Código de Conduta
-
-Esperamos que todos os contribuidores respeitem o nosso Código de Conduta. Pode encontrá-lo no ficheiro CODE_OF_CONDUCT.md.
-
 ## Começar
 
 Antes de contribuir, por favor certifique-se que leu o ficheiro README.md e o ficheiro TESTS.md. Estes ficheiros contêm informação importante sobre o projeto e como correr testes.
