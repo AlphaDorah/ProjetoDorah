@@ -22,9 +22,11 @@ O projeto segue a seguinte estrutura de arquivos:
     ProjetoDorah/
     ├── app.py
     ├── README.md
+    ├── HELP.md
     ├── TESTS.md
     ├── CONTRIBUTING.md
     ├── requirements.txt
+    ... (outros ficheiros e pastas)
     ├── public/
     ├── src/
     │   ├── api/
