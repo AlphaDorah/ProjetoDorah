@@ -1,3 +1,7 @@
+from flask import url_for
+from flask.cli import with_appcontext
+
+
 def test_index(client):
     response = client.get("/")
     assert response.status_code == 200
@@ -11,6 +15,6 @@ def test_hello(client):
 
 
 def test_public(client):
-    response = client.get("/mind-map-page/css/mind-map-style.css")
+    response = client.get("/dorahHome/home.html")
     assert response.status_code == 200
-    assert b"body {" in response.data
+    assert b"<!DOCTYPE html>" in response.data

@@ -12,3 +12,7 @@ bp = Blueprint("generate", __name__, url_prefix="/api/generate")
 @bp.route("/")
 def index():
     return b"<h2>Hello, World!</h2>"
+
+@bp.route("/flashcard")
+def flashcard():
+    return b""
