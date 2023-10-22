@@ -33,7 +33,7 @@ O projeto segue a seguinte estrutura de arquivos:
 
 ## Branches
 
-O projeto tem duas branches principais: `master` e `dev`. A branch `master` contém o código estável e a branch `dev` contém o código em desenvolvimento. Para contribuir, por favor crie uma branch a partir da branch `dev` e faça um pull request para a branch `dev`.
+O projeto tem duas branches principais: `main` e `dev`. A branch `main` contém o código estável e a branch `dev` contém o código em desenvolvimento. Para contribuir, por favor crie uma branch a partir da branch `dev` e faça um pull request para a branch `dev`.
 As branches devem ser nomeadas da seguinte forma:
 
     ```
