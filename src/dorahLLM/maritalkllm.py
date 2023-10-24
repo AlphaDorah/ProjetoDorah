@@ -1,7 +1,8 @@
 import os
 from typing import Any, List, Mapping, Optional
 
-from langchain import LLMChain, PromptTemplate
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.llms.utils import enforce_stop_tokens
@@ -9,10 +10,7 @@ from maritalk.model import MariTalk
 
 
 class MariTalkLLM(LLM):
-    pipeline: MariTalk
-
-    def __init__(self):
-        self.pipeline = MariTalk(os.environ["MARITALK_KEY"])
+    pipeline: MariTalk = MariTalk(key="109375944891660204854$5af0b73347399d7279473dcd12dd0474890446c7f8d1d04e7dfe9114794fc9b6")
 
     @property
     def _llm_type(self) -> str:

@@ -1,4 +1,4 @@
-from langchain import LLMChain
+from langchain.chains import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
 from src.dorahLLM.browserless_api import get_text_sites
@@ -10,7 +10,16 @@ from langchain.llms.fake import FakeListLLM
 from langchain.agents import load_tools, initialize_agent, AgentType
 
 
-def summary_text(input_subject, input_text):
+def get_topics_from_sites(term):  # pra testes rápidos
+    links = get_links(term, _google_search)
+    summary = summary_sites(term, summary_text, get_text_sites, links, _wikipedia_search)
+    print(summary)
+    topics = generate_topics_from_text(summary)
+    print(topics)
+    return topics
+
+
+def summary_text(input_subject: str, input_text: str) -> str:
     template = """Você faz um resumo do texto sobre {subject}
 
 Texto sobre Ração animal: ""Ração animal é o alimento dado para animais, tais como gado e animais de estimação.
@@ -95,28 +104,30 @@ Resumo:"""
     return output
 
 
-def summary_sites(term, llm_interface, load_interface, google_interface, wiki_interface):
-
-    links = get_links(term, google_interface)
+def summary_sites(term: str, llm_interface, load_interface, links: list[str], wiki_interface) -> str:
     summaries = get_sumary(term, wiki_interface)
 
     texts_date = load_interface(links)
     for i in range(5):
+        length_text = len(texts_date[i].page_content)
+        if length_text == 0:
+            continue
+        page_init = length_text
+        if length_text > 18:
+            page_init = int(length_text / 18)  # inicio em 5,6% da pagina para evitar cabeçalho
+        page_end = 8000 + page_init  # impede limite tokens da Maritalk
+        if length_text < page_end:
+            page_end = length_text
+
         partial_summary = llm_interface(
-            term, texts_date[i].page_content[500:8500]
+            term, texts_date[i].page_content[page_init:page_end]
         )
         summaries += partial_summary
     final_summary = llm_interface(term, summaries)
     return final_summary
 
 
-def get_topics_from_sites(term):
-    summary = summary_sites(term, summary_text, get_text_sites, _google_search, _wikipedia_search)
-    topics = generate_topics_from_text(summary)
-    return topics
-
-
-def summary_text_test(input_subject, input_text):
+def summary_text_test(input_subject: str, input_text: str) -> str:
     if input_subject == "" or input_subject == "assunto não especificado" or input_text == "Texto incorente":
         return ''
 
@@ -129,3 +140,12 @@ def summary_text_test(input_subject, input_text):
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
         )
     return agent.run("Você faz um resumo do texto")
+
+
+if __name__ == "__main__":
+    one_term = "Independência do brasil"
+    urls = ['https://brasilescola.uol.com.br/historiab/independencia-brasil.htm', 'https://br.usembassy.gov/slide/brazil-national-day/independe%CC%82ncia-do-brasil-carrossel/', 'https://www.al.sp.gov.br/noticia/?07/09/2021/independencia-do-brasil-completa-199-anos-nesta-terca-feira--7-de-setembro', 'https://br.usembassy.gov/pt/dia-da-independencia-do-brasil-4/', 'https://www.amazon.com/Escravidao-Independencia-Brasil-Aurea-Portugues/dp/6559870529']
+    one_summary = summary_sites(one_term, summary_text, get_text_sites, urls, _wikipedia_search)
+    print(f"Resumo: \n{one_summary}")
+    one_topics = generate_topics_from_text(one_summary)
+    print(f"Tópicos: \n{one_topics}")
