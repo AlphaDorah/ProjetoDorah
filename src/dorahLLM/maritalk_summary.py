@@ -2,22 +2,14 @@ from langchain.chains import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
 from src.dorahLLM.browserless_api import get_text_sites
-from src.dorahSearch.google_api import get_links, _google_search
-from src.dorahSearch.wikipedia_api import get_sumary, _wikipedia_search
-from src.dorahLLM.maritalk_topics import generate_topics_from_text
-# to tests
+from src.dorahSearch.wikipedia_api import get_sumary
+
 from langchain.llms.fake import FakeListLLM
 from langchain.agents import load_tools, initialize_agent, AgentType
 
-
-def get_topics_from_sites(term):  # pra testes rápidos
-    links = get_links(term, _google_search)
-    summary = summary_sites(term, summary_text, get_text_sites, links, _wikipedia_search)
-    print(summary)
-    topics = generate_topics_from_text(summary)
-    print(topics)
-    return topics
-
+from src.dorahSearch.google_api import get_links, _google_search
+from src.dorahSearch.wikipedia_api import _wikipedia_search
+from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
 def summary_text(input_subject: str, input_text: str) -> str:
     template = """Você faz um resumo do texto sobre {subject}
@@ -107,22 +99,26 @@ Resumo:"""
 def summary_sites(term: str, llm_interface, load_interface, links: list[str], wiki_interface) -> str:
     summaries = get_sumary(term, wiki_interface)
 
-    texts_date = load_interface(links)
-    for i in range(5):
-        length_text = len(texts_date[i].page_content)
-        if length_text == 0:
-            continue
-        page_init = length_text
-        if length_text > 18:
-            page_init = int(length_text / 18)  # inicio em 5,6% da pagina para evitar cabeçalho
-        page_end = 8000 + page_init  # impede limite tokens da Maritalk
-        if length_text < page_end:
-            page_end = length_text
+    try:
+        list_doc = load_interface(links)
+        for text_date in list_doc:
+            length_text = len(text_date.page_content)
+            if length_text < 4:
+                continue
+            page_init = length_text
+            if length_text > 18:
+                page_init = int(length_text / 18)  # inicio em 5,6% da pagina para evitar cabeçalho
+            page_end = 8000 + page_init  # impede limite de tokens da Maritalk
+            if length_text < page_end:
+                page_end = length_text
+            partial_summary = llm_interface(term, text_date.page_content[page_init:page_end])
+            summaries += partial_summary
+    except (ValueError, TypeError):
+        # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
+        print("Browserless não carregou")
 
-        partial_summary = llm_interface(
-            term, texts_date[i].page_content[page_init:page_end]
-        )
-        summaries += partial_summary
+    if summaries == "Summary Not Found :(":
+        return ''
     final_summary = llm_interface(term, summaries)
     return final_summary
 
@@ -134,18 +130,14 @@ def summary_text_test(input_subject: str, input_text: str) -> str:
     responses = ["Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."]
     llm = FakeListLLM(responses=responses)
     tools = load_tools(["python_repl"])
-    agent = initialize_agent(
-        tools=tools,
-        llm=llm,
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
-        )
+    agent = initialize_agent(tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
     return agent.run("Você faz um resumo do texto")
 
 
 if __name__ == "__main__":
-    one_term = "Independência do brasil"
-    urls = ['https://brasilescola.uol.com.br/historiab/independencia-brasil.htm', 'https://br.usembassy.gov/slide/brazil-national-day/independe%CC%82ncia-do-brasil-carrossel/', 'https://www.al.sp.gov.br/noticia/?07/09/2021/independencia-do-brasil-completa-199-anos-nesta-terca-feira--7-de-setembro', 'https://br.usembassy.gov/pt/dia-da-independencia-do-brasil-4/', 'https://www.amazon.com/Escravidao-Independencia-Brasil-Aurea-Portugues/dp/6559870529']
+    one_term = "Brasil"
+    urls = get_links(one_term, _google_search)
     one_summary = summary_sites(one_term, summary_text, get_text_sites, urls, _wikipedia_search)
-    print(f"Resumo: \n{one_summary}")
+    print(f"Resumo: \n{one_summary}\n")
     one_topics = generate_topics_from_text(one_summary)
     print(f"Tópicos: \n{one_topics}")

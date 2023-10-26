@@ -10,7 +10,7 @@ from maritalk.model import MariTalk
 
 
 class MariTalkLLM(LLM):
-    pipeline: MariTalk = MariTalk(key="109375944891660204854$5af0b73347399d7279473dcd12dd0474890446c7f8d1d04e7dfe9114794fc9b6")
+    pipeline: MariTalk = MariTalk(key=os.environ["MARITALK_KEY"])
 
     @property
     def _llm_type(self) -> str:

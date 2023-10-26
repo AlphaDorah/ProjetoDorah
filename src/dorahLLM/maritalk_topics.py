@@ -2,8 +2,6 @@ from langchain.chains import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
 from langchain.output_parsers import CommaSeparatedListOutputParser
-
-# to tests
 from langchain.llms.fake import FakeListLLM
 from langchain.agents import load_tools
 from langchain.agents import initialize_agent
@@ -11,6 +9,9 @@ from langchain.agents import AgentType
 
 
 def generate_topics_from_text(input_text: str) -> list[str]:
+    if input_text == '':
+        return ['']
+
     template = """Você faz uma lista só com os tópicos das partes principais do texto.
 
 Texto: "Os polímeros são macromoléculas constituídas por unidades menores, os monômeros.
@@ -80,7 +81,8 @@ Lista:"""
 
     output_parser = CommaSeparatedListOutputParser()
     output = output_parser.parse(origin)
-
+    if len(output) > 6:
+        output = output[:6]
     return output
 
 
@@ -88,7 +90,7 @@ def generate_topics_from_text_test(input_text: str) -> list[str]:
     if input_text == "" or input_text == "Texto incoerente.":
         return ['']
 
-    responses = ["Final Answer: Revolução Liberal do Porto, Cortes Gerais e Extraordinárias, Dom Pedro I, Imperador, Autonomia das províncias, Assembleia Constituinte, Tratado de paz."]
+    responses = ["Final Answer: Revolução Liberal do Porto, Cortes Gerais e Extraordinárias, Dom Pedro I, Autonomia das províncias, Assembleia Constituinte, Tratado de paz."]
     llm = FakeListLLM(responses=responses)
     tools = load_tools(["python_repl"])
     agent = initialize_agent(
