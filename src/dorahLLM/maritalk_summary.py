@@ -103,11 +103,9 @@ def summary_sites(term: str, llm_interface, load_interface, links: list[str], wi
         list_doc = load_interface(links)
         for text_date in list_doc:
             length_text = len(text_date.page_content)
-            if length_text < 4:
+            if length_text < 18:
                 continue
-            page_init = length_text
-            if length_text > 18:
-                page_init = int(length_text / 18)  # inicio em 5,6% da pagina para evitar cabeçalho
+            page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
             page_end = 8000 + page_init  # impede limite de tokens da Maritalk
             if length_text < page_end:
                 page_end = length_text
@@ -115,7 +113,7 @@ def summary_sites(term: str, llm_interface, load_interface, links: list[str], wi
             summaries += partial_summary
     except (ValueError, TypeError):
         # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
-        print("Browserless não carregou")
+        pass
 
     if summaries == "Summary Not Found :(":
         return ''
