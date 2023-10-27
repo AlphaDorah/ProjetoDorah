@@ -27,7 +27,17 @@ function getInput()
     let input = document.getElementById("themeInput");
 
     inputTheme = input.value;
-    alert("Tema inserido: " +inputTheme);
+
+    if(inputTheme == "")
+    {
+        alert("Insira um tema para começarmos!");
+    }
+    else
+    {
+        link = "/mindmap?topic=" + inputTheme;
+
+        window.open(link, "_self");
+    }
 }
 
 function getAnimationButton()
@@ -77,7 +87,8 @@ function getLoginButton()
         signupView.style.display = "inline-flex";
         loggedUser = false;
     }
-   /* window.location.href = "/public/dorahLogin/login.html";*/
+   
+    window.open("/login", "_self");
 }
 
 
