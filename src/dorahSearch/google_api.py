@@ -629,10 +629,13 @@ def get_links(search_term, g_interface):
     search_term = str(g_result['spelling']['correctedQuery'])
 
   links = []
-  for i in range(0, 5):
+  i = 0
+  while len(links) < 3 and i < len(g_result['items']):
     link_i = g_result['items'][i]['link']
 
     if 'wiki' not in link_i and 'youtube' not in link_i:
       links.append(link_i)
+
+    i += 1
 
   return links

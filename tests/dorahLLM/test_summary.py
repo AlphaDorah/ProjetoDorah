@@ -1,7 +1,7 @@
 from src.dorahLLM.browserless_api import get_text_sites_test
 from src.dorahLLM.maritalk_summary import summary_text_test, summary_sites
 from src.dorahSearch.wikipedia_api import _wikipedia_search_test
-from src.dorahSearch.google_api import _google_search_test
+from src.dorahSearch.google_api import _google_search_test, get_links
 
 
 def test_load_site():
@@ -19,7 +19,8 @@ def test_output_summary_from_text():
 
 def test_summary_from_sites():
     term = "Independência do Brasil"
-    summary = summary_sites(term, summary_text_test, get_text_sites_test, _google_search_test, _wikipedia_search_test)
+    urls = get_links(term, _google_search_test)
+    summary = summary_sites(term, summary_text_test, get_text_sites_test, urls, _wikipedia_search_test)
     assert 'Independência do Brasil' in summary
 
 

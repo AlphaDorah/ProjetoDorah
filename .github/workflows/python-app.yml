@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "main", "dev" ]
 
+env:
+  MARITALK_KEY: 107292054666352856189$143928183b8b99ad7d4e2f9fe38f4c3e843461f2999306dfe35a4f50cfe7fe8a
+
 permissions:
   contents: read
 
