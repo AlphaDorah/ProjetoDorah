@@ -6,6 +6,8 @@ from flask import (
     render_template
 )
 
+from src.dorahLLM.maritalk_summary import perform_topics
+
 bp = Blueprint("index", __name__, url_prefix="/")
 
 
@@ -16,9 +18,13 @@ def index():
 
 @bp.route("/mindmap")
 def generate_map():
-    topic = str(request.args.get('topic'))
+    theme = str(request.args.get('topic'))
 
-    return render_template('/dorahMindMap/mindmap.html', topic=topic)
+    topics = perform_topics(theme)
+
+    print(topics)
+
+    return render_template('/dorahMindMap/mindmap.html', theme=theme, topics=topics)
 
 
 @bp.route("/login")
