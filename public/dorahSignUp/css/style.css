@@ -1,0 +1,368 @@
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1920px;
+}
+
+body
+{
+    min-width: 1280px;
+    min-height: 100vh;
+    font-family: 'Figtree', sans-serif;
+    background: #BA9AFC;
+    overflow: hidden;
+    z-index: -1;
+}
+
+
+.body
+{
+    width: 100%;
+    height: 100%;
+    min-width: 1280px;
+}
+
+.header
+{
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+.logo
+{
+    position: absolute;
+    width: 200px;
+    height: 42px;
+    left: 66px;
+    top: 55px;
+    display: flex;
+    align-items: center;
+}
+
+.logo h1
+{
+    padding-left: 19px;
+    color: #FFF;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.button-container
+{
+    position: absolute;
+    height: 48px;
+    top: 50px;
+    right: 66px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.button-animation
+{
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    fill: #000;
+    cursor: pointer;
+}
+
+.button-animation
+{
+    width: 113px;
+    height: 48px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-animation svg
+{
+    min-height: 26px;
+    min-width: 26px;
+}
+
+.button-animation img
+{
+    width: 41px;
+    height: 24px;
+}
+
+.button-animation:hover path
+{
+    fill: black;
+}
+
+.button-animation:hover
+{
+    color: black;
+    background-color: white;
+}
+
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.blur
+{
+    display: inline-block;
+    width: 1294px;
+    height: 728px;
+    border-radius: 30px;
+    background: rgba(169, 148, 255, 0.10);
+    box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(50px);
+    position: relative;
+    z-index: 1;
+}
+
+.cadastro
+{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 25.5625rem;
+    height: 45.5rem;
+    flex-shrink: 0;
+    border-radius: 1.875rem 0 0 1.875rem;
+    background: linear-gradient(202deg, rgba(94, 0, 216, 0.30) 13.47%, rgba(129, 76, 197, 0.16) 58.9%, rgba(254, 254, 254, 0.03) 100%);
+    z-index: 3;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-right: none;
+}
+
+.texto-cadastro
+{
+    margin-bottom: 14.25rem;
+}
+
+.cadastro h1
+{
+    color: #ffffff;
+    text-align: center;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 1.31rem;
+}
+
+.cadastro h2
+{
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.cadastro h3
+{
+    color: #FFF;
+    text-align: center;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    letter-spacing: 2px;
+    margin-bottom: 19px;
+}
+
+
+.cadastro-texto-botao
+{
+    margin-bottom: 14.25rem;
+}
+
+
+.botao-cadastro
+{
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.1375rem;
+    width: 13.1875rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #FFF;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.botao-cadastro:hover
+{
+    color: black;
+    background-color: white;
+
+}
+
+.cadastrar
+{
+    float:right;
+    width: 55.3125rem;
+    height: 45.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0 1.875rem 1.875rem 0;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-left: none;
+}
+
+.cadastrar h1{
+    color: white;
+    text-align: center;
+    font-size: 3.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.5625rem;
+}
+
+.email-cadastro,
+.senha-cadastro
+{
+    width: 28.125rem;
+    height: 4.0625rem;
+    border-radius: 0.5rem;
+    border: 1px solid #C5C7D0;
+    background: #FFF;
+    text-align: center;
+    font-size: 1.25rem;
+    letter-spacing: 0.1375rem;
+    outline: none;
+}
+
+.cadastrar h1,
+.email-cadastro,
+.senha-cadastro{
+    margin-bottom: 1.8rem;
+}
+
+.email-cadastro:focus {
+    outline: 2px solid #784BD1;
+}
+
+.senha-cadastro:focus {
+    outline: 2px solid #784BD1;
+}
+
+.opcao-senha{
+    width: 28.125rem;
+    height: 1.3125rem;
+    margin-bottom: 2.12rem;
+    position: relative;
+}
+
+.opcao-senha>label
+{
+    position: absolute;
+    top: -0.2rem;
+    left: 1.2475rem;
+    color: #ffffff;
+    font-size: 1.1875rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.11875rem;
+}
+
+.lembrar
+{
+    position: absolute;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    text-align: center;
+    border-radius: 0.125rem;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: #D9D9D9;
+    cursor: pointer;
+}
+
+.lembrar:focus
+{
+    outline: 1px solid #784BD1;
+}
+
+
+.botao-entrar
+{
+    color: #FFF;
+    text-align: center;
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 18.75rem;
+    height: 4.0625rem;
+    border-radius: 0.5rem;
+    background: #784BD1;
+    box-shadow: -10px 10px 20px 5px rgba(0, 0, 0, 0.15);
+    outline: none;
+    border: none;
+    cursor: pointer;;
+}
+
+.opcao-senha span
+{
+    position: absolute;
+    top: -0.2rem;
+    right: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.1875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.11875rem;
+    cursor: pointer;
+}
+
+.opcao-senha span:hover
+{
+    text-decoration-line: underline;
+}
+
+.botao-entrar:hover
+{
+    background-color: #4F2D92;
+}
+
+.botao-entrar:disabled
+{
+    color: rgba(255, 255, 255, 0.50);;
+    background: rgba(0, 0, 0, 0.20);
+    cursor: not-allowed;
+}
