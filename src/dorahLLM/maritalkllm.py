@@ -1,4 +1,3 @@
-import os
 from typing import Any, List, Mapping, Optional
 
 from langchain.chains import LLMChain
@@ -10,7 +9,7 @@ from maritalk.model import MariTalk
 
 
 class MariTalkLLM(LLM):
-    pipeline: MariTalk = MariTalk(key=os.environ["MARITALK_KEY"])
+    pipeline: MariTalk = MariTalk(key="115739193064709385838$fbd58565c39d9a32b7336de9cb4bdc8a572030dd285961d5130aa1a2a71a0e2f")
 
     @property
     def _llm_type(self) -> str:

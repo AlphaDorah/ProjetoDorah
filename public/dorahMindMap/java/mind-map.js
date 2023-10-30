@@ -44,7 +44,7 @@ function define_diagram() {
                         fill: "white", stroke: "black", strokeWidth: 3
                     }),
                 $(go.TextBlock, { font: "bold 15px sans-serif", stroke: "#757575", margin: 10 },
-                    new go.Binding("text", "sumary")),
+                    new go.Binding("text", "summary")),
             ),
             $("Button",
                 {
@@ -74,7 +74,7 @@ function define_diagram() {
         diagram.startTransaction("Add Node");
         var oldnode = adorn.adornedPart;
 
-        var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, sumary: `Resumo do subtema ${total_temas}` };
+        var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, summary: `Resumo do subtema ${total_temas}` };
         diagram.model.addNodeData(newdata);
         diagram.model.addLinkData({ from: oldnode.key, to: newdata.key })
 
@@ -87,18 +87,24 @@ function define_diagram() {
     }
 }
 
-function draw_map(temas, resumos) {
-    total_temas = temas.length;
+function draw_map(tema, topicos) {
+    total_temas = topicos.length + 1;
 
     define_diagram();
 
-    var nodeDataArray = [];
-    for (let i = 0; i < temas.length; i++) {
-        nodeDataArray.push({ key: i, text: temas[i], sumary: resumos[i] });
+    summary_placeholder = 'Clique em + para adicionar um resumo!'
+
+    var nodeDataArray = [{key: 0, text: tema, summary: summary_placeholder}];
+
+    for (let i = 0; i < topicos.length; i++) {
+        if(topicos[i] != tema)
+        {
+            nodeDataArray.push({ key: i + 1, text: topicos[i], summary: summary_placeholder });
+        }
     }
 
     var linkDataArray = [];
-    for (let i = 1; i < temas.length; i++) {
+    for (let i = 1; i <= topicos.length + 1; i++) {
         linkDataArray.push({ to: i, from: 0 });
     }
 
