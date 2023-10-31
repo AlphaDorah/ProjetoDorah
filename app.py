@@ -3,7 +3,7 @@ from flask import Flask
 
 
 def create_app(config_filename: Optional[str] = None):
-    app = Flask(__name__, template_folder='./public')
+    app = Flask(__name__, template_folder="./public")
     app.config.from_pyfile(config_filename) if config_filename else None
 
     from src.api.index import bp as index_bp

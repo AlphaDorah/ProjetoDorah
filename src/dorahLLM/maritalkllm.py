@@ -9,7 +9,9 @@ from maritalk.model import MariTalk
 
 
 class MariTalkLLM(LLM):
-    pipeline: MariTalk = MariTalk(key="115739193064709385838$fbd58565c39d9a32b7336de9cb4bdc8a572030dd285961d5130aa1a2a71a0e2f")
+    pipeline: MariTalk = MariTalk(
+        key="115739193064709385838$fbd58565c39d9a32b7336de9cb4bdc8a572030dd285961d5130aa1a2a71a0e2f"
+    )
 
     @property
     def _llm_type(self) -> str:
@@ -27,7 +29,7 @@ class MariTalkLLM(LLM):
             text: str | None = self.pipeline.generate(
                 prompt,
                 chat_mode=False,
-                stopping_tokens=["\n"],
+                stopping_tokens=[],
             )
         else:
             text: str | None = self.pipeline.generate(
