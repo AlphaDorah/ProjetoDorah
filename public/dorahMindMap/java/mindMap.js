@@ -78,6 +78,26 @@ function define_diagram() {
 
         window.open(link, "_self");
     }
+
+    function nodeStyle() {
+        return [
+          new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+          {
+            locationSpot: go.Spot.Center
+          }
+        ];
+      }
+
+    diagram.nodeTemplateMap.add("Comment",
+    $(go.Node, "Auto", nodeStyle(),
+        $(go.Shape, "RoundedRectangle", {
+            stroke: "#757575",
+            strokeWidth: 3,
+            fill: "lightyellow"
+        }),
+        $(go.TextBlock, {stroke: "brown", margin: 10, font: "18px sans-serif" },
+            new go.Binding("text"))
+    ));
 }
 
 function draw_map(nodes) {
@@ -198,3 +218,8 @@ document.addEventListener('DOMContentLoaded', function ()
         }
     });
 });
+
+function addCommentNote(){
+    var key = total_temas +1;
+    diagram.model.addNodeData({key: key, category:"Comment", text:"Comentário", loc: "0 0"});
+}
