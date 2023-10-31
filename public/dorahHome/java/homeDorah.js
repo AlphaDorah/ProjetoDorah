@@ -34,7 +34,7 @@ function getInput()
     }
     else
     {
-        link = "/mindmap?topic=" + inputTheme;
+        link = "/mindmap?topics=" + inputTheme + ';0generate';
 
         window.open(link, "_self");
     }
