@@ -67,7 +67,7 @@ div {
     height: 12vh;
     bottom: 1vh;
     left: 1vh;
-    text-align: ce;
+    text-align: left;
     background: gainsboro;   
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border-radius: 10px;
