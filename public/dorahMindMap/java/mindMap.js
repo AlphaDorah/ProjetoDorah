@@ -78,6 +78,26 @@ function define_diagram() {
 
         window.open(link, "_self");
     }
+
+    function nodeStyle() {
+        return [
+          new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+          {
+            locationSpot: go.Spot.Center
+          }
+        ];
+      }
+
+    diagram.nodeTemplateMap.add("Comment",
+    $(go.Node, "Auto", nodeStyle(),
+        $(go.Shape, "RoundedRectangle", {
+            stroke: "#757575",
+            strokeWidth: 3,
+            fill: "lightyellow"
+        }),
+        $(go.TextBlock, {stroke: "brown", margin: 10, font: "18px sans-serif" },
+            new go.Binding("text"))
+    ));
 }
 
 function draw_map(nodes) {
@@ -118,36 +138,88 @@ function draw_map(nodes) {
     document.getElementById('zoom').addEventListener('input', (event) => {
         diagram.scale = event.target.value;
     })
-    // document.getElementById('bottom-to-json').addEventListener('click', () => {
-        document.getElementById('menu-download').addEventListener('click', () => {
-            var endModel = diagram.model.toJson(); //Converte o mapa mental em um json
     
-            var blob = new Blob([endModel], { type: 'application/json' });
-            var temporaryA = document.createElement('a');
-            temporaryA.href = URL.createObjectURL(blob);
-            temporaryA.target = '_blank';
-            temporaryA.download = 'mapa_mental.json';
-            temporaryA.click();
+    document.getElementById('button-mindmap-json').addEventListener('click', () => {
+        var endModel = diagram.model.toJson(); //Converte o mapa mental em um json
+        var filename = 'mapa_mental.json';
+        var blob = new Blob([endModel], { type: 'application/json' });
+        downloadElement(filename, blob);
+    });
+
+    document.getElementById('button-mindmap-pdf').addEventListener('click', printDiagram); 
+
+    document.getElementById('button-mindmap-png').addEventListener("click", () => {
+        var blob = diagram.makeImageData({ background: "white", returnType: "blob", callback: downloadImage });
+    });
+}
+
+function downloadImage(blob){
+    var filename = 'mapa_mental.png';
+    downloadElement(filename, blob);
+}
+
+function downloadElement(filename, blob) {
+    var temporaryA = document.createElement('a');
+    temporaryA.style = "display: none";
+    temporaryA.href = URL.createObjectURL(blob);
+    temporaryA.target = '_blank';
+    temporaryA.download = filename;
+    temporaryA.click();
+    URL.revokeObjectURL(temporaryA.href);
     
-            alert("Confira se inicia o download");
-        });
-    }
+    alert("Confira se inicia o download");
+}
     
-      function printDiagram() {
-        var svgWindow = window.open();
-        if (!svgWindow) return;  // failure to open a new Window
-        var bnds = diagram.documentBounds;
-        var x = bnds.x;
-        var y = bnds.y;
-        var printSize = new go.Size(bnds.right + 1, 530);
-        while (y < bnds.bottom) {
-          while (x < bnds.right) {
-            var svg = diagram.makeSvg({ scale: diagram.scale, position: new go.Point(x, y), size: printSize });
-            svgWindow.document.body.appendChild(svg);
-            x += printSize.width;
-          }
-          x = bnds.x;
-          y += printSize.height;
+function printDiagram() {
+    var svgWindow = window.open();
+    if (!svgWindow) return; 
+    var bnds = diagram.documentBounds;
+    var x = bnds.x;
+    var y = bnds.y;
+    var printSize = new go.Size(bnds.right + 1, 530);
+    while (y < bnds.bottom) {
+        while (x < bnds.right) {
+        var svg = diagram.makeSvg({ scale: diagram.scale, position: new go.Point(x, y), size: printSize });
+        svgWindow.document.body.appendChild(svg);
+        x += printSize.width;
         }
-        setTimeout(() => svgWindow.print(), 1);
-      }
+        x = bnds.x;
+        y += printSize.height;
+    }
+    setTimeout(() => svgWindow.print(), 1);
+}
+
+function openDownloadMenu(){
+    let menuMobile = document.getElementById("downloadMenu");
+    if (!menuMobile.classList.contains('open')) {
+        menuMobile.classList.add('open');
+    }
+}
+
+function closeDownloadMenu(){
+    let menuMobile = document.getElementById("downloadMenu");
+    menuMobile.classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', function ()
+{
+    const getDiagramInput = document.getElementById('importMindMap');
+
+    getDiagramInput.addEventListener('change', function (){
+        const file = this.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function(){
+            diagram.model = go.Model.fromJson(reader.result);
+        }); 
+
+        if(file){
+            reader.readAsText(file)
+        }
+    });
+});
+
+function addCommentNote(){
+    var key = total_temas +1;
+    diagram.model.addNodeData({key: key, category:"Comment", text:"Comentário", loc: "0 0"});
+}
