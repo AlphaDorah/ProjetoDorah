@@ -70,42 +70,38 @@ function define_diagram() {
 
     function addNodeAndLink(e, obj) {
         var adorn = obj.part;
-
-        diagram.startTransaction("Add Node");
         var oldnode = adorn.adornedPart;
+        
+        link = window.location.href;
 
-        var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, summary: `Resumo do subtema ${total_temas}` };
-        diagram.model.addNodeData(newdata);
-        diagram.model.addLinkData({ from: oldnode.key, to: newdata.key })
+        link += ";" + String(oldnode.key) + "generate";
 
-        total_temas++;
-
-        diagram.commitTransaction("Add Node");
-
-        var newnode = diagram.findNodeForData(newdata);
-        if (newnode !== null) diagram.scrollToRect(newnode.actualBounds);
+        window.open(link, "_self");
     }
 }
 
-function draw_map(tema, topicos) {
-    total_temas = topicos.length + 1;
+function draw_map(nodes) {
+    total_temas = nodes.length;
 
     define_diagram();
 
-    summary_placeholder = 'Clique em + para adicionar um resumo!'
+    summary_placeholder = 'Clique em + para adicionar um resumo!';
 
-    var nodeDataArray = [{key: 0, text: tema, summary: summary_placeholder}];
-
-    for (let i = 0; i < topicos.length; i++) {
-        if(topicos[i] != tema)
+    var nodeDataArray = [{ key: 0, text: nodes[0], summary: summary_placeholder }];
+    for(let i = 1; i < nodes.length; i++)
+    {
+        content = String(nodes[i]).substring(1);
+        
+        if(content != nodes[0])
         {
-            nodeDataArray.push({ key: i + 1, text: topicos[i], summary: summary_placeholder });
+            nodeDataArray.push({ key: i, text: content, summary: summary_placeholder });
         }
     }
 
     var linkDataArray = [];
-    for (let i = 1; i <= topicos.length + 1; i++) {
-        linkDataArray.push({ to: i, from: 0 });
+    for(let i = 1; i < nodes.length; i++)
+    {
+        linkDataArray.push({ to: i, from: nodes[i][0] });
     }
 
     diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
