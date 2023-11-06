@@ -19,3 +19,15 @@ class Flashcard:
 
     def __hash__(self) -> int:
         return hash((self.question, self.answer))
+
+    def to_json(self) -> dict:
+        return {
+            "question": self.question,
+            "answer": self.answer,
+        }
+
+    def to_dict(self) -> dict:
+        return {
+            "question": self.question,
+            "answer": self.answer,
+        }
