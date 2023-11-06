@@ -11,6 +11,8 @@ from src.dorahSearch.google_api import get_links, _google_search
 from src.dorahSearch.wikipedia_api import _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
+from random import randint
+
 def summary_text(input_subject: str, input_text: str) -> str:
     template = """Você faz um resumo do texto sobre {subject}
 
@@ -121,6 +123,18 @@ def summary_sites(term: str, llm_interface, load_interface, links: list[str], wi
     return final_summary
 
 
+def perform_topics(topic):
+    one_term = topic
+    urls = get_links(one_term, _google_search)
+
+    url = urls[0]
+
+    one_summary = summary_sites(one_term, summary_text, get_text_sites, url, _wikipedia_search)
+    one_topics = generate_topics_from_text(one_summary)
+    
+    return one_topics
+
+
 def summary_text_test(input_subject: str, input_text: str) -> str:
     if input_subject == "" or input_subject == "assunto não especificado" or input_text == "Texto incorente":
         return ''
@@ -130,7 +144,6 @@ def summary_text_test(input_subject: str, input_text: str) -> str:
     tools = load_tools(["python_repl"])
     agent = initialize_agent(tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
     return agent.run("Você faz um resumo do texto")
-
 
 if __name__ == "__main__":
     one_term = "Brasil"

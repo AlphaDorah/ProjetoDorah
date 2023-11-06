@@ -1,0 +1,19 @@
+Gere um conjunto de flashcards com perguntas e respostas a partir do seguinte texto:
+
+A independência do Brasil aconteceu em 1822, tendo como grande marco o grito da independência que foi realizado por Pedro de Alcântara (D. Pedro I durante o Primeiro Reinado), às margens do Rio Ipiranga, no dia 7 de setembro de 1822. Com a independência do Brasil declarada, o país transformou-se em uma monarquia com a coroação de D. Pedro I.
+
+**Resultado**
+Pergunta: Quando ocorreu a independência do Brasil?
+Resposta: A independência do Brasil ocorreu em 7 de setembro de 1822.
+
+Pergunta: Quem declarou a independência do Brasil?
+Resposta: Pedro de Alcântara (D. Pedro I durante o Primeiro Reinado) declarou a independência do Brasil.
+
+END
+
+Gere um conjunto de flashcards com perguntas e respostas a partir do seguinte texto:
+
+{summary}
+
+**Resultado**
+
