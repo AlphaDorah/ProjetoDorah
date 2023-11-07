@@ -39,22 +39,23 @@ div {
 .zoom-range {
     -webkit-appearance: none;
     appearance: none;
-    background: rgba(0, 0, 0, .4);
+    background: #0073EA;
     cursor: pointer;
     width: 20vw;
-    height: 1vh;
+    height: 0.5vh;
     border-radius: 5px;
 }
+
 .zoom-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    background-color: gainsboro;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border: 3px solid #0073EA;
+    background-color: white;
     height: 20px;
     width: 20px;
     border-radius: 20px;
 }
-  
+
 
 .upper-bar {
     width: 100vw;
@@ -183,6 +184,22 @@ div {
     }
 }
 
+#pencil
+{
+    width: 64px;
+    height: 64px;
+    background-image: url("../images/lapis.png") ;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(1px);
+        background-image: url('../images/lapis.png');
+    }
+}
 #addNotes{
     width: 64px; 
     height: 64px;   
@@ -196,3 +213,22 @@ div {
         background-image: url('../images/nota_colorida.png');
     }
 }
+
+#highlighter
+{
+    width: 64px;
+    height: 64px;
+    background-image: url('../images/marca texto.png');
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(1px);
+        background-image: url('../images/marca texto.png');
+
+    }
+}
+

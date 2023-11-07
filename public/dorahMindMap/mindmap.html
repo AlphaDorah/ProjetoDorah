@@ -9,9 +9,9 @@
         <script src="https://unpkg.com/gojs/release/go.js"></script>
 
         <title>Dorah</title>
-        <link rel="icon" href="/dorahLogin/images/favicon.png" type="image/x-tcon">
-        <link rel="stylesheet" href="/dorahMindMap/css/mind-map-style.css">
-        <script src="/dorahMindMap/javascript/mindMap.js"></script>
+        <link rel="icon" href="images/favicon.png" type="image/x-tcon">
+        <link rel="stylesheet" href="css/mind-map-style.css">
+        <script src="javascript/mindMap.js"></script>
     </head>
 
     <body onload="draw_map({{nodes}})">
@@ -40,10 +40,10 @@
         </div>
 
         <div class="bottom-left-bar">
-            <button>Lápis</button>
-            <button>Marcatexto</button>
+            <button id="pencil"></button>
+            <button id="highlighter"></button>
             <button id="addNotes" onclick="addCommentNote()"></button>
-            <button>Adesivo</button>
+            <button>Washi Tape</button>
             <button>Edição</button>
         </div>
 
