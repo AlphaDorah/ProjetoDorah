@@ -2,12 +2,12 @@ from flask import Flask
 from flask.testing import FlaskCliRunner, FlaskClient
 import pytest
 
+from app import create_app
+
+
 import sys
 
 sys.path.append("..")
-
-
-from app import create_app
 
 
 @pytest.fixture

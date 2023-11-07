@@ -4,7 +4,7 @@ from flask import (
     send_from_directory,
     request,
     render_template,
-    redirect
+    redirect,
 )
 
 from src.dorahLLM.maritalk_summary import perform_topics
@@ -19,11 +19,11 @@ def index():
 
 @bp.route("/mindmap")
 def generate_map():
-    nodes = str(request.args.get('topics'))
-    nodes = nodes.split(';')
+    nodes = str(request.args.get("topics"))
+    nodes = nodes.split(";")
 
     for n in nodes:
-        if 'generate' in n:
+        if "generate" in n:
             i = int(n[0])
             if i == 0:
                 topic = nodes[0]
@@ -36,22 +36,22 @@ def generate_map():
 
             nodes.extend(topics)
 
-            new_url = 'mindmap?topics='
+            new_url = "mindmap?topics="
 
             for n in nodes:
-                if 'generate' not in n:
-                    new_url += n + ';'
-                    
+                if "generate" not in n:
+                    new_url += n + ";"
+
             new_url = new_url[:-1]
 
             return redirect(new_url)
-    
-    return render_template('/dorahMindMap/mindmap.html', nodes=nodes)
+
+    return render_template("/dorahMindMap/mindmap.html", nodes=nodes)
 
 
 @bp.route("/login")
 def open_login():
-    return render_template('/dorahLogin/login.html')
+    return render_template("/dorahLogin/login.html")
 
 
 @bp.route("/hello")

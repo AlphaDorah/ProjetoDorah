@@ -9,7 +9,6 @@ Para executar o teste de integração:
 """
 
 from abc import ABC, abstractmethod
-import os
 from langchain.prompts import PromptTemplate
 from src.dorahLLM.flashcard.flashcard import Flashcard
 
