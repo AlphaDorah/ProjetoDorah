@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     min-width: 100vh;
-    background: gainsboro;
+    background: #EBEBEB;
     font-family: system-ui;
 }
 
@@ -69,9 +69,9 @@ div {
     bottom: 1vh;
     left: 1vh;
     text-align: left;
-    background: gainsboro;   
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    border-radius: 10px;
+    background: transparent;
+    border-radius: 0;
+    border-right: 0.125rem solid #ACACAC;
     padding-left: 1vw;
 }
 
@@ -81,8 +81,7 @@ div {
     bottom: 1vh;
     right: 1vh;
     text-align: center;
-    background: gainsboro;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    background: transparent;
     border-radius: 10px;
 }
 
