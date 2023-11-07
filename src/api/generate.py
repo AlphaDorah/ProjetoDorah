@@ -2,8 +2,6 @@ from flask import (
     Blueprint,
     jsonify,
     request,
-    send_file,
-    send_from_directory,
 )
 from src.dorahLLM.flashcard.flashcard import Flashcard
 
@@ -31,11 +29,12 @@ def generate_flashcards():
         A list of dictionaries representing the generated flashcards.
         Each dictionary contains the flashcard's attributes, including the question and answer.
     """
-    summary_raw: str = request.get_json()["summary"]
-    if not summary_raw:
+
+    if request.get_json().get("summary") is None:
         return jsonify({"error": "Missing summary"}), 400
+    summary_raw: str = request.get_json()["summary"]
     generator = MaritalkFlashcardGenerator()
     processor = MaritalkProcessor(summary_raw)
     summary = processor.clean_text()
     flashcards: list[Flashcard] = generator.generate(summary)
-    return [flashcard.to_dict() for flashcard in flashcards], 200
+    return jsonify([flashcard.to_dict() for flashcard in flashcards]), 200
