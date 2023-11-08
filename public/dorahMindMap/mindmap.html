@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <script src="https://unpkg.com/gojs/release/go.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Dorah</title>
-        <link rel="icon" href="/dorahLogin/images/favicon.png" type="image/x-tcon">
-        <link rel="stylesheet" href="/dorahMindMap/css/mind-map-style.css">
-        <script src="/dorahMindMap/javascript/mindMap.js"></script>
-    </head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/gojs/release/go.js"></script>
 
-    <body onload="draw_map({{nodes}})">
-        <img class="logo" src="../dorahMindMap/images/DorahLogo_Transparent.png">
+    <title>Dorah</title>
+    <link rel="icon" href="/dorahLogin/images/favicon.png" type="image/x-tcon">
+    <link rel="stylesheet" href="/dorahMindMap/css/mind-map-style.css">
+    <script src="/dorahMindMap/javascript/mindMap.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
 
-        <div class="upper-bar">    
-            <button class="ico-button">
-                <i class='bx bx-history' ></i>
-            </button>
-            
-            <button class="ico-button" onclick="openDownloadMenu()">
-                <i class='bx bxs-download'></i>
-            </button>
+<body onload="draw_map({{nodes}})">
+<img class="logo" src="../dorahMindMap/images/DorahLogo_Transparent.png">
 
-            <button class="ico-button">
-                <i class='bx bxs-user-circle'></i>
-            </button>
-        </div>
+<div class="upper-bar">
+    <button class="ico-button">
+        <i class='bx bx-history' ></i>
+        Histórico
+    </button>
 
-        <div id="mind-map" class="mind-map">
-            <p>
-                <h1>
-                    Mapa mental
-                </h1>
-            </p>
-        </div>
+    <button class="ico-button" onclick="openDownloadMenu()">
+        <i class='bx bxs-download'></i>
+        Exportar
+    </button>
 
-        <div class="bottom-left-bar">
-            <button id="pencil"></button>
-            <button id="highlighter"></button>
-            <button id="addNotes" onclick="addCommentNote()"></button>
-            <button>Washi Tape</button>
-            <button>Edição</button>
-        </div>
+    <button class="ico-button">
+        <i class='bx bxs-user-circle'></i>
+    </button>
+</div>
 
-        <div class="bottom-right-bar">
-            <br>
+<div id="mind-map" class="mind-map">
+    <p>
+    <h1>
+        Mapa mental
+    </h1>
+    </p>
+</div>
 
-            <input id="zoom" class="zoom-range" type="range" min="0.5" max="3" step="0.01" value="1">
+<div class="bottom-left-bar">
+    <button id="pencil"></button>
+    <button id="highlighter"></button>
+    <button id="addNotes" onclick="addCommentNote()"></button>
+    <button>Washi Tape</button>
+    <button>Edição</button>
+</div>
 
-            <button id="fitDiagram" class="ico-button">
-                <i class="bx bx-collapse-alt"></i>
-            </button>
-        </div>
+<div class="bottom-right-bar">
+    <br>
 
-        <div id ="downloadMenu" class="menu">
-            <button id="close" class="ico-button" onclick="closeDownloadMenu()">
-                <i class="bx bx-x"></i>
-            </button>
-            <h2>Baixe</h2>
-            <p>Mapa mental:</p>
-            <button id="button-mindmap-json" class="button-menu">JSON</button>
-            <button id="button-mindmap-pdf" class="button-menu">IMPRIMIR (PDF)</button>
-            <button id="button-mindmap-png" class="button-menu">IMAGEM (PNG)</button>
-            <p>Flashcards:</p>
-            <button class="button-menu">DOWNLOAD</button>
-            <h2 id="importText">Importe</h2>
-            <label  for="importMindMap" class="button-menu" >MAPA MENTAL</label>
-            <input type="file" id="importMindMap">
-            <label for="importCards" class="button-menu">FLASHCARDS</label>
-            <input type="file" id="importCards">
-        </div>
-    </body>
+    <input id="zoom" class="zoom-range" type="range" min="0.5" max="3" step="0.01" value="1">
+
+    <button id="fitDiagram" class="ico-button">
+        <i class="bx bx-collapse-alt"></i>
+    </button>
+</div>
+
+<div id ="downloadMenu" class="menu">
+    <button id="close" class="ico-button" onclick="closeDownloadMenu()">
+        <i class="bx bx-x"></i>
+    </button>
+    <h2>Mapa mental</h2>
+    <button id="button-mindmap-json" class="button-menu">JSON</button>
+    <button id="button-mindmap-pdf" class="button-menu">Imprimir (PDF)</button>
+    <button id="button-mindmap-png" class="button-menu">Imagem (PNG)</button>
+    <h2>Flashcards</h2>
+    <button class="button-menu">Download</button>
+    <h2 id="importText">Importar Mapa Mental</h2>
+    <label  for="importMindMap" class="button-menu" >Mapa Mental</label>
+    <input type="file" id="importMindMap">
+    <label for="importCards" class="button-menu">Flashcards</label>
+    <input type="file" id="importCards">
+</div>
+</body>
 </html>

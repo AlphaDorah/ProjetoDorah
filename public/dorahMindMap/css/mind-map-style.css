@@ -4,7 +4,7 @@ body {
     align-items: center;
     min-width: 100vh;
     background: #EBEBEB;
-    font-family: system-ui;
+    font-family: Figtree, sans-serif;
 }
 
 .logo {
@@ -21,13 +21,22 @@ div {
 }
 
 .ico-button {
-    background: none;
-    border: none;
-    outline: none;
+    color: black;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    fill: #000;
     cursor: pointer;
-    font-size: 35px;
-    color: rgba(0, 0, 0, .6);
-    text-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 .ico-button:hover {
     color: rgba(0, 0, 0, .5);
@@ -99,22 +108,21 @@ div {
     position: absolute;
     display: none;
 
-    background: #c1a1ff;
+    background: #E6E9EF;
     width: 15vw; 
     top: 8vh;
     right: 20px;
     border-radius: 10px;
-    box-shadow: 3px 3px 3px rgb(0, 0, 0,0.5);
-    
+
     flex-direction: column;
     padding: 2vw;
     text-align: start;
     color: black;
 
     .button-menu{
-        text-align: center;
-        font-size: 11px;
-        font-weight: 900;
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
         letter-spacing: .05em;
         color: black;
         cursor: pointer;
@@ -124,11 +132,12 @@ div {
         appearance: none;
         background-color: transparent;
         position: relative;
-        border: 2px solid black; 
+        border: none;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
         &:focus,
         &:hover {
-            color: white;
-            border: 2px solid white;
+            color: black;
+            background-color: #CEBAF6;
             outline: 0;
         }
         &:active {
@@ -142,7 +151,7 @@ div {
         top: 10px;
         right: 10px;
         position: absolute;
-        padding: 0px;
+        padding: 0;
         font-size: 20px;
     }
 }
@@ -152,8 +161,8 @@ div {
 }
 
 .menu>h2{
+    margin-bottom: 2px;
     font-size: 19px;
-    margin: 0;
 }
 
 #importText{
@@ -230,4 +239,3 @@ div {
 
     }
 }
-
