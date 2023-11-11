@@ -251,11 +251,11 @@ function changeNotesColor(cor)
 }
 
 document.addEventListener('keydown', function(event){
-    if(event.key === 'c')
+    if(event.key === 'o')
     {
        changeNotesColor(1);     
     }
-    if(event.key === 'v')
+    if(event.key === 'p')
     {
         changeNotesColor(2);
     }
