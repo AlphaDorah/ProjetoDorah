@@ -53,16 +53,14 @@ def generate_map():
 def open_login():
     return render_template("/dorahLogin/login.html")
 
+@bp.route("/hello")
+def hello():
+    return "<h2>Hello, World!</h2>"
 
 @bp.route("/cadastro")
-def hello():
+def cadatro():
     return render_template("/dorahSignUp/signup.html")
-
 
 @bp.route("/<path:path>")
 def public(path):
     return send_from_directory("public", path)
-
-@bp.route("/hello")
-def hello():
-    return "<h2>Hello, World!</h2>"
