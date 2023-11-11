@@ -1,4 +1,5 @@
 var total_temas = 0;
+let note_color = "#FEFF9C";
 
 function define_diagram() {
     const $ = go.GraphObject.make;
@@ -21,19 +22,19 @@ function define_diagram() {
     diagram.nodeTemplate =
         $(go.Node, "Auto",
             $(go.Shape, "RoundedRectangle", {
-                stroke: "#757575",
-                strokeWidth: 3,
+                stroke: '#C5C7D0',
+                strokeWidth: 1,
                 fill: "white"
             }),
-            $(go.TextBlock, { margin: 10, font: "18px sans-serif" },
+            $(go.TextBlock, { margin: 10, font: "18px Figtree, sans-serif" },
                 new go.Binding("text"))
         );
 
     diagram.nodeTemplate.selectionAdornmentTemplate =
         $(go.Adornment, "Spot",
             $(go.Panel, "Auto",
-                $(go.Shape, "RoundedRectangle", { fill: null, stroke: "black", strokeWidth: 3 }),
-                $(go.Placeholder, { margin: 5 })
+                $(go.Shape, "RoundedRectangle", { fill: null, stroke: "#CB77FF", strokeWidth: 3 }), 
+                $(go.Placeholder, { margin: -2 })
             ),
             $(go.Panel, "Auto", {
                 alignment: go.Spot.Bottom,
@@ -43,7 +44,7 @@ function define_diagram() {
                     {
                         fill: "white", stroke: "black", strokeWidth: 3
                     }),
-                $(go.TextBlock, { font: "bold 15px sans-serif", stroke: "#757575", margin: 10 },
+                $(go.TextBlock, { font: "bold  15px Figtree, sans-serif", stroke: "#757575", margin: 10 },
                     new go.Binding("text", "summary")),
             ),
             $("Button",
@@ -57,15 +58,16 @@ function define_diagram() {
                     click: addNodeAndLink
                 },
                 $(go.TextBlock, "+",
-                    { font: "bold 15px sans-serif", stroke: "#757575" }),
+                    { font: "bold 15px Figtree, sans-serif", stroke: "#757575" }),
             )
-        );
+        ); 
 
     diagram.linkTemplate =
         $(go.Link,
             { routing: go.Link.Orthogonal, corner: 5, selectable: false },
-            $(go.Shape,
-                { strokeWidth: 3, stroke: "#757575" })
+            $(go.Shape, { strokeWidth: 3, stroke: "#D99BFF"}), //linhas
+            $(go.Shape, {toArrow: 'Chevron', fill: "#D99BFF", stroke: null})
+
         );
 
     function addNodeAndLink(e, obj) {
@@ -88,15 +90,15 @@ function define_diagram() {
         ];
       }
 
-    diagram.nodeTemplateMap.add("Comment",
-    $(go.Node, "Auto", nodeStyle(),
-        $(go.Shape, "RoundedRectangle", {
-            stroke: "#757575",
-            strokeWidth: 3,
-            fill: "lightyellow"
+    diagram.nodeTemplateMap.add("Comment", //Notas autoadesivas
+    $(go.Node, "Auto", nodeStyle(), 
+            {minSize: new go.Size(160, 160)},
+            $(go.Shape, "Rectangle", {
+            stroke:null,
+            fill: note_color
         }),
-        $(go.TextBlock, {stroke: "brown", margin: 10, font: "18px sans-serif" },
-            new go.Binding("text"))
+        $(go.TextBlock, {stroke: "black", margin: 10, editable: true, font: "16px Kalam, sans-serif" },
+            new go.Binding('text', 'text'))
     ));
 }
 
@@ -221,5 +223,33 @@ document.addEventListener('DOMContentLoaded', function ()
 
 function addCommentNote(){
     var key = total_temas +1;
-    diagram.model.addNodeData({key: key, category:"Comment", text:"Comentário", loc: "0 0"});
+    diagram.model.addNodeData({key: key, category:"Comment", text:"Clique duplo para editar", loc: "0 0"});
 }
+
+function changeNotesColor(cor)
+{
+    if(cor === 1)
+    {
+        note_color = "#FF65A3";
+        alert(cor);
+    }
+    
+    if(cor === 2)
+    {
+        note_color = "#FEFF9C";
+        alert(cor);
+    }
+}
+
+document.addEventListener('keydown', function(event){
+    if(event.key === 'c')
+    {
+       changeNotesColor(1);     
+    }
+    if(event.key === 'v')
+    {
+        changeNotesColor(2);
+    }
+})
+
+
