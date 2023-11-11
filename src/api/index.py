@@ -54,9 +54,9 @@ def open_login():
     return render_template("/dorahLogin/login.html")
 
 
-@bp.route("/cadastro")
+@bp.route("/hello")
 def hello():
-    return render_template("/dorahSignUp/signup.html")
+    return "<h2>Hello, World!</h2>"
 
 
 @bp.route("/<path:path>")

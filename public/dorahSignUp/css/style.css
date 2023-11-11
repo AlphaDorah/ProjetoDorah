@@ -9,6 +9,8 @@
 
 body
 {
+    min-width: 1280px;
+    min-height: 100vh;
     font-family: 'Figtree', sans-serif;
     background: #BA9AFC;
     overflow: hidden;
@@ -18,7 +20,9 @@ body
 
 .body
 {
+    width: 100%;
     height: 100%;
+    min-width: 1280px;
 }
 
 .header
@@ -124,10 +128,8 @@ body
 .blur
 {
     display: inline-block;
-    width: 80vw;
-    max-width: 1024px;
-    height: 70vh;
-    max-height: 512px;
+    width: 1294px;
+    height: 728px;
     border-radius: 30px;
     background: rgba(169, 148, 255, 0.10);
     box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
@@ -143,8 +145,8 @@ body
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 30%;
-    height: 100%;
+    width: 25.5625rem;
+    height: 45.5rem;
     flex-shrink: 0;
     border-radius: 1.875rem 0 0 1.875rem;
     background: linear-gradient(202deg, rgba(94, 0, 216, 0.30) 13.47%, rgba(129, 76, 197, 0.16) 58.9%, rgba(254, 254, 254, 0.03) 100%);
@@ -227,8 +229,8 @@ body
 .cadastrar
 {
     float:right;
-    width: 70%;
-    height: 100%;
+    width: 55.3125rem;
+    height: 45.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -265,7 +267,7 @@ body
 .cadastrar h1,
 .email-cadastro,
 .senha-cadastro{
-    margin-bottom: 4%;
+    margin-bottom: 1.8rem;
 }
 
 .email-cadastro:focus {
