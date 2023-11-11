@@ -214,12 +214,13 @@ div {
     }
 }
 #addNotes{
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     background-image: url('../images/NotaPB.png');
     background-position: center;
     background-size: cover;
     margin-right: 1.5vw;
+    margin-bottom: 30px;
     transition: transform 0.5s ease;
     &:hover {
         color: rgba(0, 0, 0, .5);
@@ -228,6 +229,27 @@ div {
     &:active {
         transform: translateY(15px);
         background-image: url('../images/NotaAmarela.png');
+    }
+}
+
+#washitape
+{
+    width: 64px;
+    height: 100%;
+    background-image: url('../images/WashiPB.png');
+    background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(15px);
+        background-image: url('../images/WashiTapePadrao.png');
     }
 }
 
