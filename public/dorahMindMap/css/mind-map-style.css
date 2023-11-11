@@ -196,9 +196,7 @@ div {
 {
     width: 64px;
     height: 64px;
-    background-image: url("../images/lapisDorah.png");
-    background-position: top;
-    background-size: cover;
+    background-image: url("../images/lapis.png") ;
     &:hover
     {
         color: rgba(0, 0, 0, .5);
@@ -207,7 +205,7 @@ div {
     &:active
     {
         transform: translateY(1px);
-        background-image: url('../images/lapisDorah.png');
+        background-image: url('../images/lapis.png');
     }
 }
 #addNotes{

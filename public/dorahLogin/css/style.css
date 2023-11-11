@@ -124,9 +124,8 @@ body
 {
     display: inline-block;
     width: 80vw;
-    max-width: 1024px;
+    max-width: 1280px;
     height: 70vh;
-    max-height: 512px;
     border-radius: 30px;
     background: rgba(169, 148, 255, 0.10);
     box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
@@ -242,7 +241,7 @@ body
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.5625rem;
-    margin-bottom: 5%;
+    margin-bottom: 6.13rem;
 }
 
 .email-login,
