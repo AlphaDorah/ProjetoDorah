@@ -9,11 +9,15 @@ body {
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    top: 0vh;
-    left: 0vh;
+    width: 55px;
+    aspect-ratio: 55 / 42;
+    top: 1.5vh;
+    left: 3.5vw;
     position: absolute;
+}
+
+.logo > path{
+    fill: black;
 }
 
 div {
@@ -49,7 +53,7 @@ div {
 .zoom-range {
     -webkit-appearance: none;
     appearance: none;
-    background: #0073EA;
+    background: linear-gradient(to right, #935CFF 0%, #935CFF 50%, #D3CCFF 50%, #D3CCFF 100%);
     cursor: pointer;
     width: 20vw;
     height: 0.5vh;
@@ -59,19 +63,154 @@ div {
 .zoom-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    border: 3px solid #0073EA;
+    border: 3px solid #935CFF;
     background-color: white;
     height: 20px;
     width: 20px;
     border-radius: 20px;
 }
 
-
-
 .upper-bar {
     width: 100vw;
+    height: 50px;
     top: 1vh;
     text-align: right;
+}
+
+.button-container
+{
+    position: absolute;
+    height: 48px;
+    top: 1px ;
+    right: 66px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.button-history
+{
+    width: 151px;
+    height: 48px;
+}
+
+.button-export
+{
+    width: 146px;
+    height: 48px;
+}
+
+.button-login
+{
+    width: 179px;
+    height: 48px;
+}
+
+.button-signup
+{
+    width: 174px;
+    height: 48px;
+}
+
+.button-signup,
+.button-login,
+.button-download,
+.button-export,
+.button-history
+{
+    margin-left: 29px;
+    color: black;
+}
+
+.button-login
+{
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-history
+{
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-export
+{
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border-color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-history:hover,
+.button-export:hover,
+.button-login:hover
+{
+    border: 1px solid black;
+    color: black;
+    background-color:transparent;
+}
+
+.button-signup
+{
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    display: inline-flex;
+    padding: 11px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    border-radius: 8px;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button-signup:hover
+{
+    color: white;
+    background-color: black;
+}
+
+.button-signup:hover > svg > path{
+    fill: white;
 }
 
 .bottom-left-bar {
@@ -273,5 +412,28 @@ div {
         transform: translateY(15px);
         background-image: url('../images/MarcaTextoRosa.png');
 
+    }
+}
+
+
+#edit
+{
+    width: 64px;
+    height: 100%;
+    background-image: url('../images/edit.png');
+    background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    border-right: 0.125rem solid #ACACAC;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(15px);
+        background-image: url('../images/edit.png');
     }
 }

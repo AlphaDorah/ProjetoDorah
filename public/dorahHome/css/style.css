@@ -38,6 +38,11 @@ body
     align-items: center;
 }
 
+.logo svg{
+    width: 55px;
+    aspect-ratio: 55/42;
+}
+
 .logo h1
 {
     padding-left: 19px;

@@ -1,5 +1,11 @@
 var total_temas = 0;
 note_color = "LightYellow";
+var zoomRange = document.getElementById('zoom')
+
+zoomRange.addEventListener('input', function() {
+    var percent = (zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min) * 100;
+    zoomRange.style.background = 'linear-gradient(to right, #0073EA 0%, #0073EA ' + percent + '%, white ' + percent + '%, white 100%)';
+});
 
 function getColor()
 {
@@ -38,7 +44,7 @@ function define_diagram() {
     diagram.nodeTemplate.selectionAdornmentTemplate =
         $(go.Adornment, "Spot",
             $(go.Panel, "Auto",
-                $(go.Shape, "RoundedRectangle", { fill: null, stroke: "#CB77FF", strokeWidth: 3 }), 
+                $(go.Shape, "RoundedRectangle", { fill: null, stroke: "#935CFF", strokeWidth: 3 }), 
                 $(go.Placeholder, { margin: -2 })
             ),
             $(go.Panel, "Auto", {
@@ -47,31 +53,31 @@ function define_diagram() {
             },
                 $(go.Shape, "RoundedRectangle",
                     {
-                        fill: "white", stroke: "black", strokeWidth: 3
+                        fill: "EBEBEB", stroke: "black", strokeWidth: 3
                     }),
-                $(go.TextBlock, { font: "bold  15px Figtree, sans-serif",  editable: true, stroke: "#757575", margin: 10 },
+                $(go.TextBlock, { font: "regular  10px Figtree, sans-serif",  editable: true, stroke: "#757575", margin: 10 },
                     new go.Binding("text", "summary")),
             ),
             $("Button",
                 {
                     alignment: go.Spot.Right,
-                    "ButtonBorder.figure": "Circle",
-                    "ButtonBorder.fill": "white",
-                    "ButtonBorder.stroke": "black",
+                    "ButtonBorder.figure": "RoundedRectangle",
+                    "ButtonBorder.fill": '#784BD1',
+                    "ButtonBorder.stroke": null,
                     "ButtonBorder.strokeWidth": 3,
 
                     click: addNodeAndLink
                 },
                 $(go.TextBlock, "+",
-                    { font: "bold 15px Figtree, sans-serif", stroke: "#757575" }),
+                    { font: "bold 15px Figtree, sans-serif", stroke: "white" }),
             )
         ); 
 
     diagram.linkTemplate =
         $(go.Link,
-            { routing: go.Link.Orthogonal, corner: 5, selectable: false },
-            $(go.Shape, { strokeWidth: 3, stroke: "#D99BFF"}), //linhas
-            $(go.Shape, {toArrow: 'Chevron', fill: "#D99BFF", stroke: null})
+            { routing: go.Link.Orthogonal, corner: 50, selectable: false },
+            $(go.Shape, { strokeWidth: 3, stroke: "#935CFF"}), //linhas
+            $(go.Shape, {toArrow: 'Chevron', fill: "#935CFF", stroke: null})
 
         );
 
