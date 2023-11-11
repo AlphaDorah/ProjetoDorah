@@ -208,21 +208,25 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(5px);
+        transform: translateY(15px);
         background-image: url('../images/lapisDorah.png');
     }
 }
 #addNotes{
-    width: 64px; 
-    height: 64px;   
-    background-image: url('../images/nota_preta.png');
+    width: 90px;
+    height: 90px;
+    background-image: url('../images/NotaPB.png');
+    background-position: center;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
     &:hover {
         color: rgba(0, 0, 0, .5);
     }
     &:focus,
     &:active {
-        transform: translateY(1px);
-        background-image: url('../images/nota_colorida.png');
+        transform: translateY(15px);
+        background-image: url('../images/NotaAmarela.png');
     }
 }
 
@@ -233,6 +237,8 @@ div {
     background-image: url('../images/MarcaTextoPB.png');
     background-position: top;
     background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
     &:hover
     {
         color: rgba(0, 0, 0, .5);
@@ -240,8 +246,8 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(1px);
-        background-image: url('../images/MarcaTextoPB.png');
+        transform: translateY(15px);
+        background-image: url('../images/MarcaTextoRosa.png');
 
     }
 }
