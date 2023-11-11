@@ -74,8 +74,8 @@ div {
 
 .bottom-left-bar {
     width: 59vw;
-    height: 12vh;
-    bottom: 1vh;
+    height: 13vh;
+    bottom: 0;
     left: 1vh;
     text-align: left;
     background: transparent;
@@ -195,10 +195,12 @@ div {
 #pencil
 {
     width: 64px;
-    height: 64px;
-    background-image: url("../images/lapisDorah.png");
+    height: 100%;
+    background-image: url("../images/lapisPB.png");
     background-position: top;
     background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
     &:hover
     {
         color: rgba(0, 0, 0, .5);
@@ -206,7 +208,7 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(1px);
+        transform: translateY(5px);
         background-image: url('../images/lapisDorah.png');
     }
 }
@@ -227,8 +229,10 @@ div {
 #highlighter
 {
     width: 64px;
-    height: 64px;
-    background-image: url('../images/marca texto.png');
+    height: 100%;
+    background-image: url('../images/MarcaTextoPB.png');
+    background-position: top;
+    background-size: cover;
     &:hover
     {
         color: rgba(0, 0, 0, .5);
@@ -237,7 +241,7 @@ div {
     &:active
     {
         transform: translateY(1px);
-        background-image: url('../images/marca texto.png');
+        background-image: url('../images/MarcaTextoPB.png');
 
     }
 }
