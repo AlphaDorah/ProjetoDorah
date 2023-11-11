@@ -62,3 +62,7 @@ def hello():
 @bp.route("/<path:path>")
 def public(path):
     return send_from_directory("public", path)
+
+@bp.route("/hello")
+def hello():
+    return "<h2>Hello, World!</h2>"
