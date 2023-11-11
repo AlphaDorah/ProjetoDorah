@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function ()
 
 function addCommentNote(){
     var key = total_temas +1;
-    diagram.model.addNodeData({key: key, category:"Comment", text:"Clique duplo para editar", loc: "0 0"});
+    diagram.model.addNodeData({key: key, category:"Comment", text:"Clique duas vezes\n para editar", loc: "0 0"});
 }
 
 function changeNotesColor(cor)
