@@ -5,6 +5,7 @@ body {
     min-width: 100vh;
     background: #EBEBEB;
     font-family: Figtree, sans-serif;
+    overflow: hidden;
 }
 
 .logo {

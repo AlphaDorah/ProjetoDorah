@@ -1,5 +1,10 @@
 var total_temas = 0;
-let note_color = "#FEFF9C";
+note_color = "LightYellow";
+
+function getColor()
+{
+    return note_color;
+}
 
 function define_diagram() {
     const $ = go.GraphObject.make;
@@ -44,7 +49,7 @@ function define_diagram() {
                     {
                         fill: "white", stroke: "black", strokeWidth: 3
                     }),
-                $(go.TextBlock, { font: "bold  15px Figtree, sans-serif", stroke: "#757575", margin: 10 },
+                $(go.TextBlock, { font: "bold  15px Figtree, sans-serif",  editable: true, stroke: "#757575", margin: 10 },
                     new go.Binding("text", "summary")),
             ),
             $("Button",
@@ -94,12 +99,16 @@ function define_diagram() {
     $(go.Node, "Auto", nodeStyle(), 
             {minSize: new go.Size(160, 160)},
             $(go.Shape, "Rectangle", {
-            stroke:null,
-            fill: note_color
-        }),
+                fill: note_color,
+                stroke: null
+
+            }),
         $(go.TextBlock, {stroke: "black", margin: 10, editable: true, font: "16px Kalam, sans-serif" },
             new go.Binding('text', 'text'))
     ));
+
+
+
 }
 
 function draw_map(nodes) {
@@ -153,6 +162,7 @@ function draw_map(nodes) {
     document.getElementById('button-mindmap-png').addEventListener("click", () => {
         var blob = diagram.makeImageData({ background: "white", returnType: "blob", callback: downloadImage });
     });
+
 }
 
 function downloadImage(blob){
@@ -189,6 +199,7 @@ function printDiagram() {
         y += printSize.height;
     }
     setTimeout(() => svgWindow.print(), 1);
+
 }
 
 function openDownloadMenu(){
@@ -230,14 +241,12 @@ function changeNotesColor(cor)
 {
     if(cor === 1)
     {
-        note_color = "#FF65A3";
-        alert(cor);
+        note_color = 'DeepPink';
     }
     
     if(cor === 2)
     {
-        note_color = "#FEFF9C";
-        alert(cor);
+        note_color = "LightYellow";
     }
 }
 
@@ -251,5 +260,6 @@ document.addEventListener('keydown', function(event){
         changeNotesColor(2);
     }
 })
+
 
 
