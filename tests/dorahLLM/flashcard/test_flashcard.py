@@ -34,3 +34,9 @@ def test_flashcard_hash():
     card3 = Flashcard("What is the capital of Argentina?", "Buenos Aires")
     assert hash(card1) == hash(card2)
     assert hash(card1) != hash(card3)
+
+
+def test_to_json():
+    obj = Flashcard("What is the capital of France?", "Paris")
+    expected = {"question": "What is the capital of France?", "answer": "Paris"}
+    assert obj.to_json() == expected

@@ -13,9 +13,11 @@ class Flashcard:
         return f"Flashcard(question={self.question}, answer={self.answer})"
 
     def __eq__(self, other: Any) -> bool:
-        if not isinstance(other, Flashcard):
-            return False
-        return self.question == other.question and self.answer == other.answer
+        return (
+            isinstance(other, Flashcard)
+            and self.question == other.question
+            and self.answer == other.answer
+        )
 
     def __hash__(self) -> int:
         return hash((self.question, self.answer))
