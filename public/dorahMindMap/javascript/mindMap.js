@@ -100,6 +100,10 @@ function define_diagram() {
 
             var newnode = diagram.findNodeForData(newdata);
             if (newnode !== null) diagram.scrollToRect(newnode.actualBounds);
+
+            link = window.location.href;
+            link += ";" +  oldnode.key + newdata.text;
+            window.open(link, "_self");
         }
         else{
             link = window.location.href;
