@@ -85,11 +85,30 @@ function define_diagram() {
         var adorn = obj.part;
         var oldnode = adorn.adornedPart;
         
-        link = window.location.href;
+        let buttonOn = document.getElementById("id-toggleon");
 
-        link += ";" + String(oldnode.key) + "generate";
+        if (buttonOn.style.display == "none"){
+            diagram.startTransaction("Add Node");
 
-        window.open(link, "_self");
+            var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, sumary: `Resumo do subtema ${total_temas}` };
+            diagram.model.addNodeData(newdata);
+            diagram.model.addLinkData({ from: oldnode.key, to: newdata.key })
+
+            total_temas++;
+
+            diagram.commitTransaction("Add Node");
+
+            var newnode = diagram.findNodeForData(newdata);
+            if (newnode !== null) diagram.scrollToRect(newnode.actualBounds);
+        }
+        else{
+            link = window.location.href;
+
+            link += ";" + String(oldnode.key) + "generate";
+
+            window.open(link, "_self");
+        }
+        
     }
 
     function nodeStyle() {
