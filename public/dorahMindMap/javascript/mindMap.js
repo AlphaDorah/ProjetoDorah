@@ -1,6 +1,6 @@
 var total_temas = 0;
 note_color = "LightYellow";
-var zoomRange = document.getElementById('zoom')
+var zoomRange = document.getElementById('zoom');
 
 zoomRange.addEventListener('input', function() {
     var percent = (zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min) * 100;
@@ -208,18 +208,7 @@ function printDiagram() {
 
 }
 
-function openDownloadMenu(){
-    let menuMobile = document.getElementById("downloadMenu");
-    if (!menuMobile.classList.contains('open')) {
-        menuMobile.classList.add('open');
-    }
-}
-
-function closeDownloadMenu(){
-    let menuMobile = document.getElementById("downloadMenu");
-    menuMobile.classList.remove('open');
-}
-
+// Importar JSON
 document.addEventListener('DOMContentLoaded', function ()
 {
     const getDiagramInput = document.getElementById('importMindMap');
@@ -229,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function ()
         const reader = new FileReader();
 
         reader.addEventListener('load', function(){
+            // a funcao que definitivamente carrega o mapa
             diagram.model = go.Model.fromJson(reader.result);
         }); 
 
@@ -266,6 +256,3 @@ document.addEventListener('keydown', function(event){
         changeNotesColor(2);
     }
 })
-
-
-

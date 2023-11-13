@@ -245,12 +245,16 @@ div {
 
 
 .menu{
-    z-index: 2;  
+    z-index: 4;  
     position: absolute;
     display: none;
 
+    /* display: flex; */
+    /* border-color: #000;
+    border-style: double; */
+
     background: #E6E9EF;
-    width: 15vw; 
+    /* width: 15vw;  */
     top: 8vh;
     right: 20px;
     border-radius: 10px;
@@ -297,6 +301,10 @@ div {
     }
 }
 
+#downloadMenu{
+    width: 15vw; 
+}
+
 .open{
     display: flex;
 }
@@ -325,11 +333,15 @@ div {
     background: none;
     border: none;
     cursor: pointer;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
     &:hover {
         color: rgba(0, 0, 0, .5);
     }
+    &:focus,
     &:active {
-        transform: translateY(1px);
+        transform: translateY(15px);
     }
 }
 
@@ -339,17 +351,9 @@ div {
     height: 100%;
     background-image: url("../images/lapisPB.png");
     background-position: top;
-    background-size: cover;
-    margin-right: 1.5vw;
-    transition: transform 0.5s ease;
-    &:hover
-    {
-        color: rgba(0, 0, 0, .5);
-    }
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/lapisDorah.png');
     }
 }
@@ -358,16 +362,9 @@ div {
     height: 80px;
     background-image: url('../images/NotaPB.png');
     background-position: center;
-    background-size: cover;
-    margin-right: 1.5vw;
     margin-bottom: 30px;
-    transition: transform 0.5s ease;
-    &:hover {
-        color: rgba(0, 0, 0, .5);
-    }
     &:focus,
     &:active {
-        transform: translateY(15px);
         background-image: url('../images/NotaAmarela.png');
     }
 }
@@ -378,17 +375,9 @@ div {
     height: 100%;
     background-image: url('../images/WashiPB.png');
     background-position: top;
-    background-size: cover;
-    margin-right: 1.5vw;
-    transition: transform 0.5s ease;
-    &:hover
-    {
-        color: rgba(0, 0, 0, .5);
-    }
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/WashiTapePadrao.png');
     }
 }
@@ -399,17 +388,9 @@ div {
     height: 100%;
     background-image: url('../images/MarcaTextoPB.png');
     background-position: top;
-    background-size: cover;
-    margin-right: 1.5vw;
-    transition: transform 0.5s ease;
-    &:hover
-    {
-        color: rgba(0, 0, 0, .5);
-    }
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/MarcaTextoRosa.png');
 
     }
@@ -422,18 +403,50 @@ div {
     height: 100%;
     background-image: url('../images/edit.png');
     background-position: top;
-    background-size: cover;
-    margin-right: 1.5vw;
-    transition: transform 0.5s ease;
     border-right: 0.125rem solid #ACACAC;
-    &:hover
-    {
-        color: rgba(0, 0, 0, .5);
-    }
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/edit.png');
     }
+}
+
+.controlExtraArea{
+    z-index: 2;
+    position: absolute;
+    right: 0px;
+    display: none;
+    background: #E6E9EF;
+    top: 10vh;
+    border-radius: 10px 0px 0px 10px;        
+    .ico-button{
+        font-size: 35px;
+        padding: 0px;
+    }
+}
+
+#extraArea {
+    z-index: 3;
+    width: 20vw;
+    right: 0px;
+    border-style: outset;
+
+    .controlIA {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+    }
+
+    .toggle-button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 10px 6px 0px;
+    }
+}
+
+.buttonCloseExtraArea{
+    display: flex;
+    z-index: 4;
+    right: 23vw; 
 }
