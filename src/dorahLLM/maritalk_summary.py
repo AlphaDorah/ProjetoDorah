@@ -127,7 +127,7 @@ def perform_topics(topic):
     one_term = topic
     urls = get_links(one_term, _google_search)
 
-    url = urls[0]
+    url = [urls[0]]
 
     one_summary = summary_sites(one_term, summary_text, get_text_sites, url, _wikipedia_search)
     one_topics = generate_topics_from_text(one_summary)
