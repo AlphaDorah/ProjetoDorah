@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function ()
         const reader = new FileReader();
 
         reader.addEventListener('load', function(){
-            // a funcao que definitivamente carrega o mapa
+            // funcao que carrega o json em mapa
             diagram.model = go.Model.fromJson(reader.result);
         }); 
 
