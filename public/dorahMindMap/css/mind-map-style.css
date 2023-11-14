@@ -249,12 +249,9 @@ div {
     position: absolute;
     display: none;
 
-    /* display: flex; */
-    /* border-color: #000;
-    border-style: double; */
+    word-wrap: break-word;
 
     background: #E6E9EF;
-    /* width: 15vw;  */
     top: 8vh;
     right: 20px;
     border-radius: 10px;
@@ -427,7 +424,7 @@ div {
 
 #extraArea {
     z-index: 3;
-    width: 20vw;
+    width: 15vw;
     right: 0px;
     border-style: outset;
 
@@ -448,5 +445,5 @@ div {
 .buttonCloseExtraArea{
     display: flex;
     z-index: 4;
-    right: 23vw; 
+    right: 18vw; 
 }

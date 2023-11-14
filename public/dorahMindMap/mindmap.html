@@ -22,7 +22,7 @@
     rel="stylesheet">
 </head>
 
-<body onload="draw_map({{nodes}})">
+<body onload="draw_map(['{{nodes}}'])">
   <svg class="logo">xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 55 42"
     fill="none"
@@ -138,29 +138,32 @@
     <input type="file" id="importCards">
   </div>
 
-  <div id="extraArea" class="menu">
-    <h2 style="margin: 0px">Anotações</h2>
-    <textarea name="extraNoteArea" id="extraNoteArea" cols="30" style="height: 37vh"></textarea>
-    <h2>Referências</h2>
-    <textarea name="referenceArea" id="referenceArea" cols="30" style="height: 15vh"></textarea>
-  <div class="controlIA">
-    
-    <button class="toggle-button" onclick="sugestionButton()">
+  <div id="extraArea" class="menu" >
+    <h2 style="margin: 0px">Referências</h2>
+    <a href="http://pt.wikipedia.org/wiki/" target="_blank" rel="external">http://pt.wikipedia.org/wiki/</a>
+    <a href="" target="_blank" rel="external"></a>
+
+    <label for="page" style="padding: 15px 0px 6px">Salve seus links de referência aqui:</label>
+    <input type="url" name="page" id="page" style="display: flex">
+    <input type="submit" value="Ok"  style="display: flex;">
+    <h2>Configurações</h2>
+    <div class="controlIA">
+      <button class="toggle-button" onclick="sugestionButton()">
+        <img
+        id="id-toggleon"
+        style="display: flex"
+        src="../dorahHome/images/toggleon.svg"
+        alt="toggleon"
+      />
       <img
-      id="id-toggleon"
-      style="display: flex"
-      src="../dorahHome/images/toggleon.svg"
-      alt="toggleon"
-    />
-    <img
-      id="id-toggleoff"
-      style="display: none"
-      src="../dorahHome/images/toggleoff.svg"
-      alt="toggleoff"
-    />
-    </button>
-    <p>Recomendações da IA</p>
-  </div>
+        id="id-toggleoff"
+        style="display: none"
+        src="../dorahHome/images/toggleoff.svg"
+        alt="toggleoff"
+      />
+      </button>
+      <p>Recomendações da IA</p>
+    </div>
   </div>
 
   <div class="controlExtraArea" style="display: flex">
