@@ -127,7 +127,13 @@
     <button class="button-menu">Download</button>
     <h2 id="importText">Importar Mapa Mental</h2>
     <label for="importMindMap" class="button-menu">Mapa Mental</label>
-    <input type="file" id="importMindMap">
+    <input 
+    type="file" 
+    id="importMindMap"
+    name="importMindMap"
+    accept=".json"
+    onchange="loadImportMindMap()"
+    />
     <label for="importCards" class="button-menu">Flashcards</label>
     <input type="file" id="importCards">
   </div>

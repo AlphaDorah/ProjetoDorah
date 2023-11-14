@@ -231,25 +231,22 @@ function printDiagram() {
 
 }
 
-// Importar JSON
-document.addEventListener('DOMContentLoaded', function ()
-{
-    const getDiagramInput = document.getElementById('importMindMap');
+function loadImportMindMap(){
+    var uploadFileMap = document.getElementById("importMindMap");
+    const file = uploadFileMap.files[0];
+    const reader = new FileReader();
 
-    getDiagramInput.addEventListener('change', function (){
-        const file = this.files[0];
-        const reader = new FileReader();
+    alert("Vai importar "+file.name);
 
-        reader.addEventListener('load', function(){
-            // funcao que carrega o json em mapa
-            diagram.model = go.Model.fromJson(reader.result);
-        }); 
-
-        if(file){
-            reader.readAsText(file)
-        }
+    reader.addEventListener('load', function () {
+        // funcao que carrega o json em mapa
+        diagram.model = go.Model.fromJson(reader.result);
     });
-});
+
+    if (file) {
+        reader.readAsText(file);
+    }    
+}
 
 function addCommentNote(){
     var key = total_temas +1;
