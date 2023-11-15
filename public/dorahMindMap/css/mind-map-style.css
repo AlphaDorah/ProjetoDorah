@@ -226,13 +226,19 @@ div {
 }
 
 .bottom-right-bar {
-    width: 39vw;
+    display: flex;
+    width: 36vw;
     height: 12vh;
     bottom: 1vh;
     right: 1vh;
     text-align: center;
     background: transparent;
     border-radius: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
 .mind-map {
@@ -436,4 +442,18 @@ div {
         transform: translateY(15px);
         background-image: url('../images/edit.png');
     }
+}
+
+.flashcard-menu {
+    border-color: #784bd1;
+    color: #784bd1;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Figtree';
 }

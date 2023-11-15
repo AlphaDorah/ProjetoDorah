@@ -11,7 +11,7 @@
     <title>Dorah</title>
     <link rel="icon" href="../dorahMindMap/images/favicon.png" type="image/x-tcon">
     <link rel="stylesheet" href="../dorahMindMap/css/mind-map-style.css">
-    <script src="../dorahMindMap/javascript/mindMap.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -145,6 +145,8 @@
     <button id="fitDiagram" class="ico-button">
         <i class="bx bx-collapse-alt"></i>
     </button>
+
+    {% include '/dorahMindMap/flashcard_button.html' %}
 </div>
 
 <div id ="downloadMenu" class="menu">
@@ -164,4 +166,5 @@
     <input type="file" id="importCards">
 </div>
 </body>
+<script src="/dorahMindMap/javascript/mindMap.js"></script>
 </html>

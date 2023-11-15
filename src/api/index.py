@@ -8,6 +8,7 @@ from flask import (
 )
 
 from src.dorahLLM.maritalk_summary import perform_topics
+from src.dorahLLM.flashcard.flashcard import Flashcard
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
@@ -49,17 +50,28 @@ def generate_map():
     return render_template("/dorahMindMap/mindmap.html", nodes=nodes)
 
 
+@bp.route("/flashcards")
+def flashcard():
+    flashcards = []
+    return render_template(
+        "/flashcardViewer/flashcardviewer.html", flashcards=flashcards
+    )
+
+
 @bp.route("/login")
 def open_login():
     return render_template("/dorahLogin/login.html")
+
 
 @bp.route("/hello")
 def hello():
     return "<h2>Hello, World!</h2>"
 
+
 @bp.route("/cadastro")
 def cadatro():
     return render_template("/dorahSignUp/signup.html")
+
 
 @bp.route("/<path:path>")
 def public(path):
