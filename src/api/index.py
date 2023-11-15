@@ -8,7 +8,6 @@ from flask import (
 )
 
 from src.dorahLLM.maritalk_summary import perform_topics
-from src.dorahLLM.flashcard.flashcard import Flashcard
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
