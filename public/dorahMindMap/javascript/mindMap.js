@@ -30,7 +30,7 @@ function define_diagram() {
     "undoManager.isEnabled": false,
     "commandHandler.deletesTree": true,
     "draggingTool.dragsTree": true,
-
+    "grid.visible": false,
 
     layout: $(go.TreeLayout, {
       angle: 90,
@@ -39,6 +39,12 @@ function define_diagram() {
       layerStyle: go.TreeLayout.LayerUniform,
     }),
   });
+
+  diagram.gridTemplate = $(
+    go.Panel, "Grid",
+    { gridCellSize: new go.Size(100, 100) },
+    $(go.Shape, "Ellipse", { width: 1, height: 1, stroke: "gray" })
+  );
 
   diagram.nodeTemplate = $(
     go.Node,
