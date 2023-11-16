@@ -457,3 +457,10 @@ div {
     border-radius: 5px;
     font-family: 'Figtree';
 }
+
+.vertical-bar
+{
+    width: 2px;
+    height: 90px;
+    background: #ACACAC;
+}
