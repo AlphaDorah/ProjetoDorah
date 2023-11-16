@@ -1,6 +1,6 @@
 var total_temas = 0;
 note_color = "LightYellow";
-line_color = "rgb(243,134,48)";
+line_color = "#935CFF";
 arrow_color = "#935CFF";
 var zoomRange = document.getElementById("zoom");
 if (!zoomRange) {
@@ -29,10 +29,14 @@ function define_diagram() {
     allowCopy: true,
     allowDelete: true,
     maxSelectionCount: 1,
-    "undoManager.isEnabled": false,
+    "undoManager.isEnabled": true,
     "commandHandler.deletesTree": true,
     "draggingTool.dragsTree": true,
     "grid.visible": false,
+    "animationManager.isEnabled": false,
+    "clickCreatingTool.archetypeNodeData": { text: "Clique duas vezes para editar", color: "white", stroke: "#C5C7D0", strokeWidth: 1, fill: "white", cursor: "pointer" },
+   "commandHandler.archetypeGroupData": { text: "Group", isGroup: true, color: "blue" },
+
 
 
     layout: $(go.TreeLayout, {
@@ -57,7 +61,10 @@ function define_diagram() {
       strokeWidth: 1,
       fill: "white",
       cursor: "pointer",
-    }),
+      fromLinkable: true, fromLinkableSelfNode: true, fromLinkableDuplicates: true,
+      toLinkable: true, toLinkableSelfNode: true, toLinkableDuplicates: true,
+    },
+    new go.Binding("fill", "color")),
     $(
       go.TextBlock,
       { margin: 10, cursor:"pointer", editable: true, font: "18px Figtree, sans-serif" },
@@ -121,7 +128,7 @@ function define_diagram() {
 
   diagram.linkTemplate = $(
     go.Link,
-    { routing: go.Link.Orthogonal, corner: 50, selectable: true },
+    { routing: go.Link.Orthogonal, corner: 50, selectable: true, relinkableFrom: true, relinkableTo: true},
     $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
     $(go.Shape, { toArrow:  "Chevron", name: "ARROW", fill: arrow_color, stroke: null })
   );
@@ -161,7 +168,7 @@ function define_diagram() {
       $(
         go.TextBlock,
         {
-          stroke: "black",
+          stroke: null,
           margin: 10,
           editable: true,
           font: "16px Kalam, sans-serif",
@@ -425,3 +432,20 @@ function changeArrowColor(colorNumber)
     }
 
 }
+diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+diagram.model.modelData = { test: true, hello: "world", version: 42 };
+diagram.select(diagram.nodes.first());
+
+ var inspector = new Inspector('myInspectorDiv', diagram,
+{
+          multipleSelection: true,
+          showSize: 4,
+          showAllProperties: true,
+          properties:
+   {
+   "color": { show: Inspector.showIfPresent, type: 'color' },
+   "choices": { show: false },
+   "password": { show: Inspector.showIfPresent, type: 'password' }
+  }
+});
+
