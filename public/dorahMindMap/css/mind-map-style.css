@@ -219,6 +219,8 @@ div {
     bottom: 0;
     left: 1vh;
     text-align: left;
+    display: flex;
+    align-items: center;
     background: transparent;
     border-radius: 0;
     border-right: 0.125rem solid #ACACAC;
@@ -366,7 +368,6 @@ div {
     background-position: center;
     background-size: cover;
     margin-right: 1.5vw;
-    margin-bottom: 30px;
     transition: transform 0.5s ease;
     &:hover {
         color: rgba(0, 0, 0, .5);
