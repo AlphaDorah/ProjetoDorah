@@ -296,8 +296,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+colorPalette = false;
 
 function addCommentNote() {
+  colorPalette = true;
   var key = total_temas + 1;
   diagram.model.addNodeData({
     key: key,
@@ -357,3 +359,29 @@ function generateFlashcards() {
 function openFlashcards() {
   window.open("/flashcards", "_blank");
 }
+
+
+function setColorPalette()
+{
+var colorButton1 = document.getElementById('color-button1');
+var colorButton2 = document.getElementById('color-button2');
+var colorButton3 = document.getElementById('color-button4');
+var colorButton4 = document.getElementById('color-button5');
+    if(colorPalette === true)
+    {
+        colorButton1.disabled = false;
+        colorButton2.disabled = false;
+        colorButton3.disabled = false;
+        colorButton4.disabled = false;
+
+    }
+    if(colorPalette === false)
+    {
+        colorButton1.disabled = true;
+        colorButton2.disabled = true;
+        colorButton3.disabled = true;
+        colorButton4.disabled = true;
+    }
+}
+
+setInterval(setColorPalette, 1000);

@@ -504,6 +504,10 @@ div {
         transform: scale(0.8);
         border-radius: 8px;
     }
+    &:disable
+    {
+       background: #6d6d6d;
+    }
 
 
 }
@@ -687,4 +691,5 @@ div {
         transform: scale(0.8);
         border-radius: 8px;
     }
+
 }
