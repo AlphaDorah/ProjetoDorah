@@ -422,16 +422,15 @@ div {
 }
 
 
-#edit
+#addText
 {
-    width: 64px;
-    height: 100%;
-    background-image: url('../images/edit.png');
+    width: 80px;
+    height: 80px;
+    background-image: url('../images/TextoBP.png');
     background-position: top;
     background-size: cover;
     margin-right: 1.5vw;
     transition: transform 0.5s ease;
-    border-right: 0.125rem solid #ACACAC;
     &:hover
     {
         color: rgba(0, 0, 0, .5);
@@ -440,7 +439,7 @@ div {
     &:active
     {
         transform: translateY(15px);
-        background-image: url('../images/edit.png');
+        background-image: url('../images/TextoColorido.png');
     }
 }
 
