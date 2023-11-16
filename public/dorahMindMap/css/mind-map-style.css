@@ -222,8 +222,6 @@ div {
     display: flex;
     align-items: center;
     background: transparent;
-    border-radius: 0;
-    border-right: 0.125rem solid #ACACAC;
     padding-left: 1vw;
 }
 
@@ -458,9 +456,235 @@ div {
     font-family: 'Figtree';
 }
 
+#eraser
+{
+    width: 64px;
+    height: 100%;
+    margin-right: 1.5vw;
+
+}
+
 .vertical-bar
 {
     width: 2px;
     height: 90px;
     background: #ACACAC;
+}
+
+#color-group
+{
+    margin-left: 23px;
+    width: 314px;
+    height: 80%;
+    flex-shrink: 0;
+    left-margin: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#color-button1
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 8px 0px 0px 8px;
+    background: #C5445B;
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+
+
+}
+
+#color-button2
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #E16432;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button3
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #F2CB2B;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button4
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #71C87A;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button5
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #709BF9;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button6
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #34508F;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button7
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #784BD1;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button8
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #DC1587;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button9
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #896952;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button10
+{
+    width: 31.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #000000;
+    border-radius: 0px 8px 8px 0px;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
 }
