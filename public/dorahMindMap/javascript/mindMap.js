@@ -112,7 +112,7 @@ function define_diagram() {
     go.Link,
     { routing: go.Link.Orthogonal, corner: 50, selectable: false },
     $(go.Shape, { strokeWidth: 3, stroke: "#935CFF" }), //linhas
-    $(go.Shape, { toArrow: "Chevron", fill: "#935CFF", stroke: null })
+    $(go.Shape, { toArrow:  "Chevron", name: "ARROW", fill: "#935CFF", stroke: null })
   );
 
   function addNodeAndLink(e, obj) {
@@ -403,3 +403,8 @@ function setColorPalette()
 }
 
 setInterval(setColorPalette, 1);
+
+function changeArrowColor()
+{
+    let
+}

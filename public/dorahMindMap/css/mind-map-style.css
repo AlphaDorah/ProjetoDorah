@@ -461,6 +461,11 @@ div {
     font-family: 'Figtree';
 }
 
+.flashcard-menu:hover {
+    color: #FFFFFF;
+    background-color: #784bd1;
+}
+
 #eraser
 {
     width: 64px;
