@@ -296,6 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
 colorPalette = false;
 
 function addCommentNote() {
@@ -306,27 +307,25 @@ function addCommentNote() {
     category: "Comment",
     text: "Clique duas vezes para editar",
     loc: "0 0",
+    id: "NotaAdesiva",
   });
 }
 
 function changeNotesColor(cor) {
-  if (cor === 1) {
-    note_color = "DeepPink";
-  }
+    let node = diagram.findNodeForKey("NotaAdesiva");
 
-  if (cor === 2) {
-    note_color = "LightYellow";
-  }
+    if(node !== null)
+    {
+        if(color === 1)
+        {
+            node.findObject("NotaAdesiva").fill = "#ff7e7e";
+        }
+        if(cor === 2)
+        {
+            node.findObject("NotaAdesiva").fill = "#ffd97e";
+        }
+    }
 }
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "o") {
-    changeNotesColor(1);
-  }
-  if (event.key === "p") {
-    changeNotesColor(2);
-  }
-});
 
 function generateFlashcards() {
   let body = {
@@ -363,25 +362,44 @@ function openFlashcards() {
 
 function setColorPalette()
 {
-var colorButton1 = document.getElementById('color-button1');
-var colorButton2 = document.getElementById('color-button2');
-var colorButton3 = document.getElementById('color-button4');
-var colorButton4 = document.getElementById('color-button5');
+    let colorButton1 = document.getElementById('color-button1');
+    let colorButton2 = document.getElementById('color-button2');
+    let colorButton3 = document.getElementById('color-button3');
+    let colorButton4 = document.getElementById('color-button4');
+    let colorButton5 = document.getElementById('color-button5');
+    let colorButton6 = document.getElementById('color-button6');
+    let colorButton7 = document.getElementById('color-button7');
+    let colorButton8 = document.getElementById('color-button8');
+    let colorButton9 = document.getElementById('color-button9');
+    let colorButton10 = document.getElementById('color-button10');
+
     if(colorPalette === true)
     {
-        colorButton1.disabled = false;
-        colorButton2.disabled = false;
-        colorButton3.disabled = false;
-        colorButton4.disabled = false;
+        colorButton1.style.display = 'block';
+        colorButton2.style.display = 'block';
+        colorButton3.style.display = 'block';
+        colorButton4.style.display = 'block';
+        colorButton5.style.display = 'block';
+        colorButton6.style.display = 'block';
+        colorButton7.style.display = 'block';
+        colorButton8.style.display = 'block';
+        colorButton9.style.display = 'block';
+        colorButton10.style.display = 'block';
 
     }
     if(colorPalette === false)
     {
-        colorButton1.disabled = true;
-        colorButton2.disabled = true;
-        colorButton3.disabled = true;
-        colorButton4.disabled = true;
+        colorButton1.style.display = 'none';
+        colorButton2.style.display = 'none';
+        colorButton3.style.display = 'none';
+        colorButton4.style.display = 'none';
+        colorButton5.style.display = 'none';
+        colorButton6.style.display = 'none';
+        colorButton7.style.display = 'none';
+        colorButton8.style.display = 'none';
+        colorButton9.style.display = 'none';
+        colorButton10.style.display = 'none';
     }
 }
 
-setInterval(setColorPalette, 1000);
+setInterval(setColorPalette, 1);

@@ -350,6 +350,7 @@ div {
     transition: transform 0.5s ease;
     &:hover
     {
+        transform: translateY(15px);
         color: rgba(0, 0, 0, .5);
     }
     &:focus,
@@ -368,6 +369,7 @@ div {
     margin-right: 1.5vw;
     transition: transform 0.5s ease;
     &:hover {
+        transform: translateY(15px);
         color: rgba(0, 0, 0, .5);
     }
     &:focus,
@@ -388,6 +390,7 @@ div {
     transition: transform 0.5s ease;
     &:hover
     {
+        transform: translateY(15px);
         color: rgba(0, 0, 0, .5);
     }
     &:focus,
@@ -410,6 +413,7 @@ div {
     &:hover
     {
         color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
     }
     &:focus,
     &:active
@@ -433,6 +437,7 @@ div {
     &:hover
     {
         color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
     }
     &:focus,
     &:active
@@ -460,7 +465,22 @@ div {
 {
     width: 64px;
     height: 100%;
+    background-image: url('../images/BorrachaPB.png');
+    background-position: top;
+    background-size: cover;
     margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(15px);
+        background-image: url('../images/BorrachaColorida.png');
+    }
 
 }
 
@@ -473,11 +493,12 @@ div {
 
 #color-group
 {
+    margin-right: 1.5vw;
     margin-left: 23px;
     width: 314px;
     height: 80%;
     flex-shrink: 0;
-    left-margin: 23px;
+    left-margin: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -485,7 +506,7 @@ div {
 
 #color-button1
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     border-radius: 8px 0px 0px 8px;
@@ -506,7 +527,7 @@ div {
     }
     &:disable
     {
-       background: #6d6d6d;
+       background: #000;
     }
 
 
@@ -514,7 +535,7 @@ div {
 
 #color-button2
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #E16432;
@@ -534,7 +555,7 @@ div {
 
 #color-button3
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #F2CB2B;
@@ -554,7 +575,7 @@ div {
 
 #color-button4
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #71C87A;
@@ -574,7 +595,7 @@ div {
 
 #color-button5
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #709BF9;
@@ -594,7 +615,7 @@ div {
 
 #color-button6
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #34508F;
@@ -614,7 +635,7 @@ div {
 
 #color-button7
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #784BD1;
@@ -634,7 +655,7 @@ div {
 
 #color-button8
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #DC1587;
@@ -654,7 +675,7 @@ div {
 
 #color-button9
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #896952;
@@ -674,7 +695,7 @@ div {
 
 #color-button10
 {
-    width: 31.5px;
+    width: 29.5px;
     height: 90px;
     flex-shrink: 0;
     background: #000000;
