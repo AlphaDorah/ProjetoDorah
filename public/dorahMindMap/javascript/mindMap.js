@@ -24,12 +24,13 @@ function define_diagram() {
   const $ = go.GraphObject.make;
 
   diagram = new go.Diagram("mind-map", {
-    allowCopy: false,
+    allowCopy: true,
     allowDelete: true,
     maxSelectionCount: 1,
-    "undoManager.isEnabled": true,
+    "undoManager.isEnabled": false,
     "commandHandler.deletesTree": true,
     "draggingTool.dragsTree": true,
+
 
     layout: $(go.TreeLayout, {
       angle: 90,
