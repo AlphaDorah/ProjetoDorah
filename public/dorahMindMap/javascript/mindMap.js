@@ -1,5 +1,7 @@
 var total_temas = 0;
 note_color = "LightYellow";
+line_color = "rgb(243,134,48)";
+arrow_color = "#935CFF";
 var zoomRange = document.getElementById("zoom");
 if (!zoomRange) {
   console.log("zoomRange not found");
@@ -32,6 +34,7 @@ function define_diagram() {
     "draggingTool.dragsTree": true,
     "grid.visible": false,
 
+
     layout: $(go.TreeLayout, {
       angle: 90,
       nodeSpacing: 15,
@@ -53,10 +56,11 @@ function define_diagram() {
       stroke: "#C5C7D0",
       strokeWidth: 1,
       fill: "white",
+      cursor: "pointer",
     }),
     $(
       go.TextBlock,
-      { margin: 10, font: "18px Figtree, sans-serif" },
+      { margin: 10, cursor:"pointer", editable: true, font: "18px Figtree, sans-serif" },
       new go.Binding("text")
     )
   );
@@ -117,9 +121,9 @@ function define_diagram() {
 
   diagram.linkTemplate = $(
     go.Link,
-    { routing: go.Link.Orthogonal, corner: 50, selectable: false },
-    $(go.Shape, { strokeWidth: 3, stroke: "#935CFF" }), //linhas
-    $(go.Shape, { toArrow:  "Chevron", name: "ARROW", fill: "#935CFF", stroke: null })
+    { routing: go.Link.Orthogonal, corner: 50, selectable: true },
+    $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
+    $(go.Shape, { toArrow:  "Chevron", name: "ARROW", fill: arrow_color, stroke: null })
   );
 
   function addNodeAndLink(e, obj) {
@@ -146,14 +150,13 @@ function define_diagram() {
 
   diagram.nodeTemplateMap.add(
     "Comment", //Notas autoadesivas
-    $(
-      go.Node,
-      "Auto",
+    $(go.Node,"Auto",
       nodeStyle(),
       { minSize: new go.Size(160, 160) },
       $(go.Shape, "Rectangle", {
         fill: note_color,
         stroke: null,
+
       }),
       $(
         go.TextBlock,
@@ -409,9 +412,16 @@ function setColorPalette()
     }
 }
 
-setInterval(setColorPalette, 1);
+//setInterval(setColorPalette, 1);
 
-function changeArrowColor()
+function changeArrowColor(colorNumber)
 {
-    let
+    if(colorNumber === 1)
+    {
+        arrow_color = "rgb(224,228,204)";
+        line_color = "rgb(224,228,204)";
+        diagram.requestUpdate();
+        diagram.rebuildParts;
+    }
+
 }
