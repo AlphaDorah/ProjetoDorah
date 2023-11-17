@@ -125,7 +125,7 @@ div {
 .button-login
 {
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
@@ -143,7 +143,7 @@ div {
 .button-history
 {
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
@@ -161,10 +161,10 @@ div {
 .button-export
 {
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 22px;
+    line-height: 16px;
     display: inline-flex;
     padding: 11px 16px;
     justify-content: center;
@@ -188,7 +188,7 @@ div {
 .button-signup
 {
     font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
@@ -219,20 +219,26 @@ div {
     bottom: 0;
     left: 1vh;
     text-align: left;
+    display: flex;
+    align-items: center;
     background: transparent;
-    border-radius: 0;
-    border-right: 0.125rem solid #ACACAC;
     padding-left: 1vw;
 }
 
 .bottom-right-bar {
-    width: 39vw;
+    display: flex;
+    width: 36vw;
     height: 12vh;
     bottom: 1vh;
     right: 1vh;
     text-align: center;
     background: transparent;
     border-radius: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
 .mind-map {
@@ -348,6 +354,14 @@ div {
     height: 100%;
     background-image: url("../images/lapisPB.png");
     background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        transform: translateY(15px);
+        color: rgba(0, 0, 0, .5);
+    }
     &:focus,
     &:active
     {
@@ -359,7 +373,13 @@ div {
     height: 80px;
     background-image: url('../images/NotaPB.png');
     background-position: center;
-    margin-bottom: 30px;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover {
+        transform: translateY(15px);
+        color: rgba(0, 0, 0, .5);
+    }
     &:focus,
     &:active {
         background-image: url('../images/NotaAmarela.png');
@@ -372,6 +392,14 @@ div {
     height: 100%;
     background-image: url('../images/WashiPB.png');
     background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        transform: translateY(15px);
+        color: rgba(0, 0, 0, .5);
+    }
     &:focus,
     &:active
     {
@@ -385,6 +413,14 @@ div {
     height: 100%;
     background-image: url('../images/MarcaTextoPB.png');
     background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
+    }
     &:focus,
     &:active
     {
@@ -393,6 +429,79 @@ div {
     }
 }
 
+
+#addText
+{
+    width: 80px;
+    height: 80px;
+    background-image: url('../images/TextoBP.png');
+    background-position: top;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(15px);
+        background-image: url('../images/TextoColorido.png');
+    }
+}
+
+.flashcard-menu {
+    border-color: #784bd1;
+    color: #784bd1;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-style: solid;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Figtree';
+}
+
+.flashcard-menu:hover {
+    color: #FFFFFF;
+    background-color: #784bd1;
+}
+
+#eraser
+{
+    width: 64px;
+    height: 100%;
+    background-image: url('../images/BorrachaPB.png');
+    background-position: top;
+
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
+    &:hover
+    {
+        color: rgba(0, 0, 0, .5);
+        transform: translateY(15px);
+    }
+    &:focus,
+    &:active
+    {
+        transform: translateY(15px);
+        background-image: url('../images/BorrachaColorida.png');
+    }
+
+}
+
+.vertical-bar
+{
+    width: 2px;
+    height: 90px;
+    background: #ACACAC;
+}
 
 #edit
 {
@@ -446,4 +555,227 @@ div {
     display: flex;
     z-index: 4;
     right: 18vw; 
+}
+
+#color-group
+{
+    margin-right: 1.5vw;
+    margin-left: 23px;
+    width: 314px;
+    height: 80%;
+    flex-shrink: 0;
+    left-margin: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#color-button1
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 8px 0px 0px 8px;
+    background: #C5445B;
+    border: none;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+    &:disable
+    {
+       background: #000;
+    }
+
+
+}
+
+#color-button2
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #E16432;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button3
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #F2CB2B;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button4
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #71C87A;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button5
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #709BF9;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button6
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #34508F;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button7
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #784BD1;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button8
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #DC1587;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button9
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #896952;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
+}
+
+#color-button10
+{
+    width: 29.5px;
+    height: 90px;
+    flex-shrink: 0;
+    background: #000000;
+    border-radius: 0px 8px 8px 0px;
+    border: none;
+    transition: transform 0.3s ease;
+    &:hover
+    {
+        transform: scale(1.1);
+    }
+    &:focus,
+    &:active
+    {
+        transform: scale(0.8);
+        border-radius: 8px;
+    }
 }

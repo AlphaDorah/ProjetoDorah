@@ -9,8 +9,8 @@ from langchain.agents import AgentType
 
 
 def generate_topics_from_text(input_text: str) -> list[str]:
-    if input_text == '':
-        return ['']
+    if input_text == "":
+        return [""]
 
     template = """Você faz uma lista só com os tópicos das partes principais do texto.
 
@@ -83,20 +83,22 @@ Lista:"""
     output = output_parser.parse(origin)
     if len(output) > 6:
         output = output[:6]
+
+    print(output)
     return output
 
 
 def generate_topics_from_text_test(input_text: str) -> list[str]:
     if input_text == "" or input_text == "Texto incoerente.":
-        return ['']
+        return [""]
 
-    responses = ["Final Answer: Revolução Liberal do Porto, Cortes Gerais e Extraordinárias, Dom Pedro I, Autonomia das províncias, Assembleia Constituinte, Tratado de paz."]
+    responses = [
+        "Final Answer: Revolução Liberal do Porto, Cortes Gerais e Extraordinárias, Dom Pedro I, Autonomia das províncias, Assembleia Constituinte, Tratado de paz."
+    ]
     llm = FakeListLLM(responses=responses)
     tools = load_tools(["python_repl"])
     agent = initialize_agent(
-        tools=tools,
-        llm=llm,
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+        tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
     )
     origin = agent.run("Você faz um resumo do texto")
     output_parser = CommaSeparatedListOutputParser()

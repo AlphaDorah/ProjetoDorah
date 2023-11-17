@@ -8,6 +8,7 @@ from flask import (
 )
 
 from src.dorahLLM.maritalk_summary import perform_topics
+from src.dorahSearch.google_api import get_links, _google_search
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
@@ -46,20 +47,33 @@ def generate_map():
 
             return redirect(new_url)
 
-    return render_template("/dorahMindMap/mindmap.html", nodes=nodes)
+    links = get_links(nodes[0], _google_search)
+
+    return render_template("/dorahMindMap/mindmap.html", nodes=nodes, links=links)
+
+
+@bp.route("/flashcards")
+def flashcard():
+    flashcards = []
+    return render_template(
+        "/flashcardViewer/flashcardviewer.html", flashcards=flashcards
+    )
 
 
 @bp.route("/login")
 def open_login():
     return render_template("/dorahLogin/login.html")
 
+
 @bp.route("/hello")
 def hello():
     return "<h2>Hello, World!</h2>"
 
+
 @bp.route("/cadastro")
 def cadatro():
     return render_template("/dorahSignUp/signup.html")
+
 
 @bp.route("/<path:path>")
 def public(path):

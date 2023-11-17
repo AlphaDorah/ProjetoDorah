@@ -2,24 +2,21 @@
 <html lang="pt">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/gojs/release/go.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/gojs/release/go.js"></script>
 
-  <title>Dorah</title>
-  <link rel="icon" href="../dorahMindMap/images/favicon.png" type="image/x-tcon">
-  <link rel="stylesheet" href="../dorahMindMap/css/mind-map-style.css">
-  <script src="../dorahMindMap/javascript/mindMap.js"></script>
-  <script src="../dorahMindMap/javascript/displaysControl.js"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+    <title>Dorah</title>
+    <link rel="icon" href="../dorahMindMap/images/favicon.png" type="image/x-tcon">
+    <link rel="stylesheet" href="../dorahMindMap/css/mind-map-style.css">
+    <script src="../dorahMindMap/javascript/displaysControl.js"></script>
+    <script src="../dorahMindMap/javascript/mindMap.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kalam:wght@300;400;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body onload="draw_map({{nodes}})">
@@ -49,8 +46,7 @@
       d="M53.0811 32.7012L41.4575 23.78C38.9826 21.8815 36.5707 26.0854 39.0359 27.9597L50.6595 36.8808C53.1295 38.7745 55.5463 34.5706 53.0811 32.7012Z"
       fill="white" />
   </svg>
-
-  <div class="upper-bar">
+<div class="upper-bar">
     <div class="button-container">
       <button class="button-history" id="id-historybutton">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -102,8 +98,22 @@
     <button id="highlighter"></button>
     <button id="addNotes" onclick="addCommentNote()"></button>
     <button id="washitape"></button>
-    <button id="edit"></button>
-  </div>
+    <button id="addText"></button>
+    <button id="eraser"></button>
+    <class class="vertical-bar"></class>
+    <class id="color-group">
+        <button id="color-button1" onclick="changeArrowColor(1)"></button>
+        <button id="color-button2" onclick="changeNoteColor(2)"></button>
+        <button id="color-button3"></button>
+        <button id="color-button4"></button>
+        <button id="color-button5"></button>
+        <button id="color-button6"></button>
+        <button id="color-button7"></button>
+        <button id="color-button8"></button>
+        <button id="color-button9"></button>
+        <button id="color-button10"></button>
+    </class>
+</div>
 
   <div class="bottom-right-bar">
     <br>
@@ -113,7 +123,9 @@
     <button id="fitDiagram" class="ico-button">
       <i class="bx bx-collapse-alt"></i>
     </button>
-  </div>
+
+    {% include '/dorahMindMap/flashcard_button.html' %}
+</div>
 
   <div id="downloadMenu" class="menu">
     <button id="close" class="ico-button" onclick="closeDownloadMenu()">
@@ -136,45 +148,45 @@
     />
     <label for="importCards" class="button-menu">Flashcards</label>
     <input type="file" id="importCards">
-  </div>
+<div id="extraArea" class="menu" >
+  <h2 style="margin: 0px">Referências</h2>
+  <a href="{{links[0]}}" target="_blank" rel="external">{{links[0]}}</a>
+  <a href="{{links[1]}}" target="_blank" rel="external">{{links[1]}}</a>
+  <a href="{{links[2]}}" target="_blank" rel="external">{{links[2]}}</a>
 
-  <div id="extraArea" class="menu" >
-    <h2 style="margin: 0px">Referências</h2>
-    <a href="http://pt.wikipedia.org/wiki/" target="_blank" rel="external">http://pt.wikipedia.org/wiki/</a>
-    <label for="page" style="padding: 15px 0px 6px">Salve seus links de referência aqui:</label>
-    <input type="url" name="page" id="page" style="display: flex">
-    <button  class="button-menu">Ok</button>
-    <h2>Configurações</h2>
-    <div class="controlIA">
-      <button class="toggle-button" onclick="sugestionButton()">
-        <img
-        id="id-toggleon"
-        style="display: flex"
-        src="../dorahHome/images/toggleon.svg"
-        alt="toggleon"
-      />
+  <label for="page" style="padding: 15px 0px 6px">Salve seus links de referência aqui:</label>
+  <input type="url" name="page" id="page" style="display: flex">
+  <input type="submit" value="Ok"  style="display: flex;">
+  <h2>Configurações</h2>
+  <div class="controlIA">
+    <button class="toggle-button" onclick="sugestionButton()">
       <img
-        id="id-toggleoff"
-        style="display: none"
-        src="../dorahHome/images/toggleoff.svg"
-        alt="toggleoff"
-      />
-      </button>
-      <p>Recomendações da IA</p>
-    </div>
+      id="id-toggleon"
+      style="display: flex"
+      src="../dorahHome/images/toggleon.svg"
+      alt="toggleon"
+    />
+    <img
+      id="id-toggleoff"
+      style="display: none"
+      src="../dorahHome/images/toggleoff.svg"
+      alt="toggleoff"
+    />
+    </button>
+    <p>Recomendações da IA</p>
   </div>
+</div>
 
-  <div class="controlExtraArea" style="display: flex">
-    <button class="ico-button" onclick="openExtraArea()">
-      <i class="bx bx-chevron-left"></i>
-    </button>
-  </div>
-  <div id="controlExtraArea" class="controlExtraArea">
-    <button class="ico-button" onclick="closeExtraArea()">
-      <i class="bx bx-chevron-right"></i>
-    </button>
-  </div>
+<div class="controlExtraArea" style="display: flex">
+  <button class="ico-button" onclick="openExtraArea()">
+    <i class="bx bx-chevron-left"></i>
+  </button>
+</div>
+<div id="controlExtraArea" class="controlExtraArea">
+  <button class="ico-button" onclick="closeExtraArea()">
+    <i class="bx bx-chevron-right"></i>
+  </button>
+</div>
 
 </body>
-
 </html>

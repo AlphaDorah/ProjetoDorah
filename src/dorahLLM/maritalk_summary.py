@@ -12,6 +12,7 @@ from src.dorahSearch.wikipedia_api import _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
 
+
 def summary_text(input_subject: str, input_text: str) -> str:
     template = """Você faz um resumo do texto sobre {subject}
 
@@ -94,10 +95,13 @@ Resumo:"""
     chain = LLMChain(prompt=prompt, llm=model)
     output_date = chain(inputs={"subject": input_subject, "input": input_text})
     output = output_date["text"]
+    print(output)
     return output
 
 
-def summary_sites(term: str, llm_interface, load_interface, links: list[str], wiki_interface) -> str:
+def summary_sites(
+    term: str, llm_interface, load_interface, links: list[str], wiki_interface
+) -> str:
     summaries = get_sumary(term, wiki_interface)
 
     try:
@@ -110,14 +114,16 @@ def summary_sites(term: str, llm_interface, load_interface, links: list[str], wi
             page_end = 8000 + page_init  # impede limite de tokens da Maritalk
             if length_text < page_end:
                 page_end = length_text
-            partial_summary = llm_interface(term, text_date.page_content[page_init:page_end])
+            partial_summary = llm_interface(
+                term, text_date.page_content[page_init:page_end]
+            )
             summaries += partial_summary
     except (ValueError, TypeError):
         # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
         pass
 
     if summaries == "Summary Not Found :(":
-        return ''
+        return ""
     final_summary = llm_interface(term, summaries)
     return final_summary
 
@@ -128,18 +134,28 @@ def perform_topics(topic):
 
     url = [urls[0]]
 
-    one_summary = summary_sites(one_term, summary_text, get_text_sites, url, _wikipedia_search)
+    one_summary = summary_sites(
+        one_term, summary_text, get_text_sites, url, _wikipedia_search
+    )
     one_topics = generate_topics_from_text(one_summary)
-    
+
     return one_topics
 
 
 def summary_text_test(input_subject: str, input_text: str) -> str:
-    if input_subject == "" or input_subject == "assunto não especificado" or input_text == "Texto incorente":
-        return ''
+    if (
+        input_subject == ""
+        or input_subject == "assunto não especificado"
+        or input_text == "Texto incorente"
+    ):
+        return ""
 
-    responses = ["Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."]
+    responses = [
+        "Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."
+    ]
     llm = FakeListLLM(responses=responses)
     tools = load_tools(["python_repl"])
-    agent = initialize_agent(tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
+    agent = initialize_agent(
+        tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+    )
     return agent.run("Você faz um resumo do texto")
