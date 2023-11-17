@@ -139,7 +139,13 @@ function define_diagram() {
 
     link = window.location.href;
 
-    link += ";" + String(oldnode.key) + "generate";
+    if (buttonOn.style.display == "none"){
+            var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, sumary: `Resumo do subtema ${total_temas}` };
+            link += ";" +  oldnode.key + newdata.text;
+     }
+     else{
+            link += ";" + String(oldnode.key) + "generate";
+     }
 
     window.open(link, "_self");
   }
@@ -285,34 +291,23 @@ function printDiagram() {
   setTimeout(() => svgWindow.print(), 1);
 }
 
-function openDownloadMenu() {
-  let menuMobile = document.getElementById("downloadMenu");
-  if (!menuMobile.classList.contains("open")) {
-    menuMobile.classList.add("open");
-  }
-}
 
-function closeDownloadMenu() {
-  let menuMobile = document.getElementById("downloadMenu");
-  menuMobile.classList.remove("open");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const getDiagramInput = document.getElementById("importMindMap");
-
-  getDiagramInput.addEventListener("change", function () {
-    const file = this.files[0];
+function loadImportMindMap(){
+    var uploadFileMap = document.getElementById("importMindMap");
+    const file = uploadFileMap.files[0];
     const reader = new FileReader();
 
-    reader.addEventListener("load", function () {
-      diagram.model = go.Model.fromJson(reader.result);
+    alert("Vai importar "+file.name);
+
+    reader.addEventListener('load', function () {
+        // funcao que carrega o json em mapa
+        diagram.model = go.Model.fromJson(reader.result);
     });
 
     if (file) {
-      reader.readAsText(file);
-    }
-  });
-});
+        reader.readAsText(file);
+    }    
+}
 
 colorPalette = false;
 
@@ -448,4 +443,3 @@ diagram.select(diagram.nodes.first());
    "password": { show: Inspector.showIfPresent, type: 'password' }
   }
 });
-

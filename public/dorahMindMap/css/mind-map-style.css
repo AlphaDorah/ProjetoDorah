@@ -251,12 +251,13 @@ div {
 
 
 .menu{
-    z-index: 2;  
+    z-index: 4;  
     position: absolute;
     display: none;
 
+    word-wrap: break-word;
+
     background: #E6E9EF;
-    width: 15vw; 
     top: 8vh;
     right: 20px;
     border-radius: 10px;
@@ -303,6 +304,10 @@ div {
     }
 }
 
+#downloadMenu{
+    width: 15vw; 
+}
+
 .open{
     display: flex;
 }
@@ -331,11 +336,15 @@ div {
     background: none;
     border: none;
     cursor: pointer;
+    background-size: cover;
+    margin-right: 1.5vw;
+    transition: transform 0.5s ease;
     &:hover {
         color: rgba(0, 0, 0, .5);
     }
+    &:focus,
     &:active {
-        transform: translateY(1px);
+        transform: translateY(15px);
     }
 }
 
@@ -356,7 +365,6 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/lapisDorah.png');
     }
 }
@@ -374,7 +382,6 @@ div {
     }
     &:focus,
     &:active {
-        transform: translateY(15px);
         background-image: url('../images/NotaAmarela.png');
     }
 }
@@ -396,7 +403,6 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/WashiTapePadrao.png');
     }
 }
@@ -418,7 +424,6 @@ div {
     &:focus,
     &:active
     {
-        transform: translateY(15px);
         background-image: url('../images/MarcaTextoRosa.png');
 
     }
@@ -473,6 +478,7 @@ div {
     height: 100%;
     background-image: url('../images/BorrachaPB.png');
     background-position: top;
+
     background-size: cover;
     margin-right: 1.5vw;
     transition: transform 0.5s ease;
@@ -772,5 +778,4 @@ div {
         transform: scale(0.8);
         border-radius: 8px;
     }
-
 }
