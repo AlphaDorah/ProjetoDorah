@@ -497,6 +497,60 @@ div {
     background: #ACACAC;
 }
 
+#edit
+{
+    width: 64px;
+    height: 100%;
+    background-image: url('../images/edit.png');
+    background-position: top;
+    border-right: 0.125rem solid #ACACAC;
+    &:focus,
+    &:active
+    {
+        background-image: url('../images/edit.png');
+    }
+}
+
+.controlExtraArea{
+    z-index: 2;
+    position: absolute;
+    right: 0px;
+    display: none;
+    background: #E6E9EF;
+    top: 10vh;
+    border-radius: 10px 0px 0px 10px;        
+    .ico-button{
+        font-size: 35px;
+        padding: 0px;
+    }
+}
+
+#extraArea {
+    z-index: 3;
+    width: 15vw;
+    right: 0px;
+    border-style: outset;
+
+    .controlIA {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+    }
+
+    .toggle-button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 10px 6px 0px;
+    }
+}
+
+.buttonCloseExtraArea{
+    display: flex;
+    z-index: 4;
+    right: 18vw; 
+}
+
 #color-group
 {
     margin-right: 1.5vw;

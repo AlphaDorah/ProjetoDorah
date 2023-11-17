@@ -8,6 +8,7 @@ from flask import (
 )
 
 from src.dorahLLM.maritalk_summary import perform_topics
+from src.dorahSearch.google_api import get_links, _google_search
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
@@ -46,7 +47,9 @@ def generate_map():
 
             return redirect(new_url)
 
-    return render_template("/dorahMindMap/mindmap.html", nodes=nodes)
+    links = get_links(nodes[0], _google_search)
+
+    return render_template("/dorahMindMap/mindmap.html", nodes=nodes, links=links)
 
 
 @bp.route("/flashcards")
