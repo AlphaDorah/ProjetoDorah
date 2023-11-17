@@ -134,6 +134,7 @@ function define_diagram() {
   );
 
   function addNodeAndLink(e, obj) {
+    let buttonOn = document.getElementById("id-toggleon");
     var adorn = obj.part;
     var oldnode = adorn.adornedPart;
 
