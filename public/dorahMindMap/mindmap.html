@@ -22,7 +22,7 @@
     rel="stylesheet">
 </head>
 
-<body onload="draw_map(['{{nodes}}'])">
+<body onload="draw_map({{nodes}})">
   <svg class="logo">xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 55 42"
     fill="none"
@@ -141,11 +141,9 @@
   <div id="extraArea" class="menu" >
     <h2 style="margin: 0px">Referências</h2>
     <a href="http://pt.wikipedia.org/wiki/" target="_blank" rel="external">http://pt.wikipedia.org/wiki/</a>
-    <a href="" target="_blank" rel="external"></a>
-
     <label for="page" style="padding: 15px 0px 6px">Salve seus links de referência aqui:</label>
     <input type="url" name="page" id="page" style="display: flex">
-    <input type="submit" value="Ok"  style="display: flex;">
+    <button  class="button-menu">Ok</button>
     <h2>Configurações</h2>
     <div class="controlIA">
       <button class="toggle-button" onclick="sugestionButton()">
