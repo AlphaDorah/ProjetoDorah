@@ -4,6 +4,7 @@ from flask import (
     request,
 )
 from src.dorahLLM.flashcard.flashcard import Flashcard
+from src.dorahLLM.flashcard.flashcard_summary import FlashcardSummarizer
 
 from src.dorahLLM.flashcard.flashcardgenerator import MaritalkFlashcardGenerator
 from src.dorahLLM.flashcard.textprocessor import MaritalkProcessor
@@ -15,6 +16,24 @@ bp = Blueprint("generate", __name__, url_prefix="/api/generate")
 @bp.route("/")
 def index():
     return b"<h2>Hello, World!</h2>"
+
+
+@bp.route("/flashcard/summary")
+def generate_summary():
+    """
+    Generates a summary based on a term provided in the query.
+
+    Parameters:
+        None
+
+    Returns:
+        A dictionary containing the generated summary.
+    """
+    term = request.args.get("term")
+    if term is None:
+        return jsonify({"error": "Missing term"}), 400
+    summary = FlashcardSummarizer().summary(term)
+    return jsonify({"summary": summary}), 200
 
 
 @bp.route("/flashcard", methods=["POST"])

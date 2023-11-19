@@ -34,10 +34,19 @@ function define_diagram() {
     "draggingTool.dragsTree": true,
     "grid.visible": false,
     "animationManager.isEnabled": false,
-    "clickCreatingTool.archetypeNodeData": { text: "Clique duas vezes para editar", color: "white", stroke: "#C5C7D0", strokeWidth: 1, fill: "white", cursor: "pointer" },
-   "commandHandler.archetypeGroupData": { text: "Group", isGroup: true, color: "blue" },
-
-
+    "clickCreatingTool.archetypeNodeData": {
+      text: "Clique duas vezes para editar",
+      color: "white",
+      stroke: "#C5C7D0",
+      strokeWidth: 1,
+      fill: "white",
+      cursor: "pointer",
+    },
+    "commandHandler.archetypeGroupData": {
+      text: "Group",
+      isGroup: true,
+      color: "blue",
+    },
 
     layout: $(go.TreeLayout, {
       angle: 90,
@@ -48,7 +57,8 @@ function define_diagram() {
   });
 
   diagram.gridTemplate = $(
-    go.Panel, "Grid",
+    go.Panel,
+    "Grid",
     { gridCellSize: new go.Size(100, 100) },
     $(go.Shape, "Ellipse", { width: 1, height: 1, stroke: "gray" })
   );
@@ -56,18 +66,31 @@ function define_diagram() {
   diagram.nodeTemplate = $(
     go.Node,
     "Auto",
-    $(go.Shape, "RoundedRectangle", {
-      stroke: "#C5C7D0",
-      strokeWidth: 1,
-      fill: "white",
-      cursor: "pointer",
-      fromLinkable: true, fromLinkableSelfNode: true, fromLinkableDuplicates: true,
-      toLinkable: true, toLinkableSelfNode: true, toLinkableDuplicates: true,
-    },
-    new go.Binding("fill", "color")),
+    $(
+      go.Shape,
+      "RoundedRectangle",
+      {
+        stroke: "#C5C7D0",
+        strokeWidth: 1,
+        fill: "white",
+        cursor: "pointer",
+        fromLinkable: true,
+        fromLinkableSelfNode: true,
+        fromLinkableDuplicates: true,
+        toLinkable: true,
+        toLinkableSelfNode: true,
+        toLinkableDuplicates: true,
+      },
+      new go.Binding("fill", "color")
+    ),
     $(
       go.TextBlock,
-      { margin: 10, cursor:"pointer", editable: true, font: "18px Figtree, sans-serif" },
+      {
+        margin: 10,
+        cursor: "pointer",
+        editable: true,
+        font: "18px Figtree, sans-serif",
+      },
       new go.Binding("text")
     )
   );
@@ -128,9 +151,20 @@ function define_diagram() {
 
   diagram.linkTemplate = $(
     go.Link,
-    { routing: go.Link.Orthogonal, corner: 50, selectable: true, relinkableFrom: true, relinkableTo: true},
+    {
+      routing: go.Link.Orthogonal,
+      corner: 50,
+      selectable: true,
+      relinkableFrom: true,
+      relinkableTo: true,
+    },
     $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
-    $(go.Shape, { toArrow:  "Chevron", name: "ARROW", fill: arrow_color, stroke: null })
+    $(go.Shape, {
+      toArrow: "Chevron",
+      name: "ARROW",
+      fill: arrow_color,
+      stroke: null,
+    })
   );
 
   function addNodeAndLink(e, obj) {
@@ -140,13 +174,16 @@ function define_diagram() {
 
     link = window.location.href;
 
-    if (buttonOn.style.display == "none"){
-            var newdata = { key: total_temas + 1, text: `Novo Subtema ${total_temas}`, sumary: `Resumo do subtema ${total_temas}` };
-            link += ";" +  oldnode.key + newdata.text;
-     }
-     else{
-            link += ";" + String(oldnode.key) + "generate";
-     }
+    if (buttonOn.style.display == "none") {
+      var newdata = {
+        key: total_temas + 1,
+        text: `Novo Subtema ${total_temas}`,
+        sumary: `Resumo do subtema ${total_temas}`,
+      };
+      link += ";" + oldnode.key + newdata.text;
+    } else {
+      link += ";" + String(oldnode.key) + "generate";
+    }
 
     window.open(link, "_self");
   }
@@ -164,13 +201,14 @@ function define_diagram() {
 
   diagram.nodeTemplateMap.add(
     "Comment", //Notas autoadesivas
-    $(go.Node,"Auto",
+    $(
+      go.Node,
+      "Auto",
       nodeStyle(),
       { minSize: new go.Size(160, 160) },
       $(go.Shape, "Rectangle", {
         fill: note_color,
         stroke: null,
-
       }),
       $(
         go.TextBlock,
@@ -292,22 +330,21 @@ function printDiagram() {
   setTimeout(() => svgWindow.print(), 1);
 }
 
+function loadImportMindMap() {
+  var uploadFileMap = document.getElementById("importMindMap");
+  const file = uploadFileMap.files[0];
+  const reader = new FileReader();
 
-function loadImportMindMap(){
-    var uploadFileMap = document.getElementById("importMindMap");
-    const file = uploadFileMap.files[0];
-    const reader = new FileReader();
+  alert("Vai importar " + file.name);
 
-    alert("Vai importar "+file.name);
+  reader.addEventListener("load", function () {
+    // funcao que carrega o json em mapa
+    diagram.model = go.Model.fromJson(reader.result);
+  });
 
-    reader.addEventListener('load', function () {
-        // funcao que carrega o json em mapa
-        diagram.model = go.Model.fromJson(reader.result);
-    });
-
-    if (file) {
-        reader.readAsText(file);
-    }    
+  if (file) {
+    reader.readAsText(file);
+  }
 }
 
 colorPalette = false;
@@ -325,122 +362,77 @@ function addCommentNote() {
 }
 
 function changeNotesColor(cor) {
-    let node = diagram.findNodeForKey("NotaAdesiva");
+  let node = diagram.findNodeForKey("NotaAdesiva");
 
-    if(node !== null)
-    {
-        if(color === 1)
-        {
-            node.findObject("NotaAdesiva").fill = "#ff7e7e";
-        }
-        if(cor === 2)
-        {
-            node.findObject("NotaAdesiva").fill = "#ffd97e";
-        }
+  if (node !== null) {
+    if (color === 1) {
+      node.findObject("NotaAdesiva").fill = "#ff7e7e";
     }
+    if (cor === 2) {
+      node.findObject("NotaAdesiva").fill = "#ffd97e";
+    }
+  }
 }
 
-function generateFlashcards() {
-  let body = {
-    summary:
-      "O Brasil é um país de dimensões continentais que fica na América do Sul. É o quinto maior país do mundo em extensão territorial (8.515.767 km²) e o sexto em população (cerca de 210 milhões de habitantes).",
-  };
+function setColorPalette() {
+  let colorButton1 = document.getElementById("color-button1");
+  let colorButton2 = document.getElementById("color-button2");
+  let colorButton3 = document.getElementById("color-button3");
+  let colorButton4 = document.getElementById("color-button4");
+  let colorButton5 = document.getElementById("color-button5");
+  let colorButton6 = document.getElementById("color-button6");
+  let colorButton7 = document.getElementById("color-button7");
+  let colorButton8 = document.getElementById("color-button8");
+  let colorButton9 = document.getElementById("color-button9");
+  let colorButton10 = document.getElementById("color-button10");
 
-  document.getElementById("generate-flashcards").classList.add("disabled");
-  document.getElementById("generate-flashcards").innerHTML =
-    "Gerando Flashcards...";
-  document.getElementById("generate-flashcards").disabled = true;
-  console.log("Gerando flashcards...");
-
-  fetch("/api/generate/flashcard", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  }).then(async function (response) {
-    let flashcard = await response.json();
-    localStorage.setItem("ProjetoDorahFlashcards", JSON.stringify(flashcard));
-
-    console.log("Flashcards gerados!");
-    document.getElementById("generate-flashcards").classList.remove("disabled");
-    document.getElementById("generate-flashcards").innerHTML =
-      "Gerar Flashcards";
-    document.getElementById("generate-flashcards").disabled = false;
-  });
-}
-
-function openFlashcards() {
-  window.open("/flashcards", "_blank");
-}
-
-
-function setColorPalette()
-{
-    let colorButton1 = document.getElementById('color-button1');
-    let colorButton2 = document.getElementById('color-button2');
-    let colorButton3 = document.getElementById('color-button3');
-    let colorButton4 = document.getElementById('color-button4');
-    let colorButton5 = document.getElementById('color-button5');
-    let colorButton6 = document.getElementById('color-button6');
-    let colorButton7 = document.getElementById('color-button7');
-    let colorButton8 = document.getElementById('color-button8');
-    let colorButton9 = document.getElementById('color-button9');
-    let colorButton10 = document.getElementById('color-button10');
-
-    if(colorPalette === true)
-    {
-        colorButton1.style.display = 'block';
-        colorButton2.style.display = 'block';
-        colorButton3.style.display = 'block';
-        colorButton4.style.display = 'block';
-        colorButton5.style.display = 'block';
-        colorButton6.style.display = 'block';
-        colorButton7.style.display = 'block';
-        colorButton8.style.display = 'block';
-        colorButton9.style.display = 'block';
-        colorButton10.style.display = 'block';
-
-    }
-    if(colorPalette === false)
-    {
-        colorButton1.style.display = 'none';
-        colorButton2.style.display = 'none';
-        colorButton3.style.display = 'none';
-        colorButton4.style.display = 'none';
-        colorButton5.style.display = 'none';
-        colorButton6.style.display = 'none';
-        colorButton7.style.display = 'none';
-        colorButton8.style.display = 'none';
-        colorButton9.style.display = 'none';
-        colorButton10.style.display = 'none';
-    }
+  if (colorPalette === true) {
+    colorButton1.style.display = "block";
+    colorButton2.style.display = "block";
+    colorButton3.style.display = "block";
+    colorButton4.style.display = "block";
+    colorButton5.style.display = "block";
+    colorButton6.style.display = "block";
+    colorButton7.style.display = "block";
+    colorButton8.style.display = "block";
+    colorButton9.style.display = "block";
+    colorButton10.style.display = "block";
+  }
+  if (colorPalette === false) {
+    colorButton1.style.display = "none";
+    colorButton2.style.display = "none";
+    colorButton3.style.display = "none";
+    colorButton4.style.display = "none";
+    colorButton5.style.display = "none";
+    colorButton6.style.display = "none";
+    colorButton7.style.display = "none";
+    colorButton8.style.display = "none";
+    colorButton9.style.display = "none";
+    colorButton10.style.display = "none";
+  }
 }
 
 //setInterval(setColorPalette, 1);
 
-function changeArrowColor(colorNumber)
-{
-    if(colorNumber === 1)
-    {
-        arrow_color = "rgb(224,228,204)";
-        line_color = "rgb(224,228,204)";
-        diagram.requestUpdate();
-        diagram.rebuildParts;
-    }
-
+function changeArrowColor(colorNumber) {
+  if (colorNumber === 1) {
+    arrow_color = "rgb(224,228,204)";
+    line_color = "rgb(224,228,204)";
+    diagram.requestUpdate();
+    diagram.rebuildParts;
+  }
 }
 diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
 diagram.model.modelData = { test: true, hello: "world", version: 42 };
 diagram.select(diagram.nodes.first());
 
- var inspector = new Inspector('myInspectorDiv', diagram,
-{
-          multipleSelection: true,
-          showSize: 4,
-          showAllProperties: true,
-          properties:
-   {
-   "color": { show: Inspector.showIfPresent, type: 'color' },
-   "choices": { show: false },
-   "password": { show: Inspector.showIfPresent, type: 'password' }
-  }
+var inspector = new Inspector("myInspectorDiv", diagram, {
+  multipleSelection: true,
+  showSize: 4,
+  showAllProperties: true,
+  properties: {
+    color: { show: Inspector.showIfPresent, type: "color" },
+    choices: { show: false },
+    password: { show: Inspector.showIfPresent, type: "password" },
+  },
 });

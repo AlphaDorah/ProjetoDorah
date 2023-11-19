@@ -70,7 +70,7 @@ h1 {
   display: none;
   margin-right: 2px;
   margin-bottom: 1em;
-  width: 400px;
+  width: 90vw;
   > .front,
   > .back {
     display: block;
@@ -78,7 +78,7 @@ h1 {
     width: inherit;
     background-size: cover !important;
     background-position: center !important;
-    min-height: 300px;
+    min-height: 80vh;
     padding-top: 0.5em;
     background: #fff;
     border-radius: 10px;

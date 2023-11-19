@@ -12,7 +12,6 @@ from src.dorahSearch.wikipedia_api import _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
 
-
 def summary_text(input_subject: str, input_text: str) -> str:
     template = """Você faz um resumo do texto sobre {subject}
 
