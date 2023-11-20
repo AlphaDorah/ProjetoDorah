@@ -222,6 +222,48 @@ function define_diagram() {
       )
     )
   );
+   
+  diagram.nodeTemplateMap.add("FreehandDrawing",
+    $(go.Part,
+      { locationSpot: go.Spot.Center, isLayoutPositioned: false },
+      new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+      {
+        selectionAdorned: true,
+        selectionObjectName: "SHAPE",
+        selectionAdornmentTemplate:
+          $(go.Adornment, "Auto",
+            $(go.Shape, { stroke: "dodgerblue", fill: null }),
+            $(go.Placeholder, { margin: -1 }))
+      },
+      { resizable: true, resizeObjectName: "SHAPE" },
+      { rotatable: true, rotateObjectName: "SHAPE" },
+      { reshapable: true },
+      $(go.Shape,
+        { name: "SHAPE", fill: null, strokeWidth: 1.5 },
+        new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
+        new go.Binding("angle").makeTwoWay(),
+        new go.Binding("geometryString", "geo").makeTwoWay(),
+        new go.Binding("fill"),
+        new go.Binding("stroke"),
+        new go.Binding("strokeWidth"))
+    ));
+  var tool = new FreehandDrawingTool();
+  tool.archetypePartData = { category: "FreehandDrawing", stroke: 'black', strokeWidth: 4 };
+  tool.isBackgroundOnly = false;
+  tool.isEnabled = false;
+  diagram.toolManager.mouseMoveTools.insertAt(0, tool);
+}
+
+function modeFreeDrawing(color, size) {
+  var tool = diagram.toolManager.findTool("FreehandDrawing");
+
+  if (tool.isEnabled && color == tool.archetypePartData.stroke) {
+    tool.isEnabled = false;
+  }
+  else {
+    tool.archetypePartData = { category: "FreehandDrawing", stroke: color, strokeWidth: size };
+    tool.isEnabled = true;
+  }
 }
 
 function draw_map(nodes) {

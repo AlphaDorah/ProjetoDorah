@@ -7,6 +7,7 @@
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://unpkg.com/gojs/release/go.js"></script>
+    <script src="https://gojs.net/latest/extensions/FreehandDrawingTool.js"></script>
 
     <title>Dorah</title>
     <link rel="icon" href="../dorahMindMap/images/favicon.png" type="image/x-tcon">
@@ -99,8 +100,8 @@
   </div>
 
   <div class="bottom-left-bar">
-    <button id="pencil"></button>
-    <button id="highlighter"></button>
+    <button id="pencil" onclick="modeFreeDrawing('black', 3)"></button>
+    <button id="highlighter" onclick="modeFreeDrawing('rgb(255, 255, 0, 0.30)', 40)"></button>
     <button id="addNotes" onclick="addCommentNote()"></button>
     <button id="washitape"></button>
     <button id="addText"></button>
