@@ -7,7 +7,7 @@ from flask import (
     redirect,
 )
 
-from src.dorahLLM.maritalk_summary import perform_topics
+from src.dorahLLM.maritalk_summary import perform_summary, perform_topics
 from src.dorahSearch.google_api import get_links, _google_search
 
 bp = Blueprint("index", __name__, url_prefix="/")
@@ -22,8 +22,17 @@ def index():
 def generate_map():
     nodes = str(request.args.get("topics"))
     nodes = nodes.split(";")
+    if '' in nodes:
+        nodes.remove('')
 
-    for n in nodes:
+    summary_nodes = str(request.args.get("summaries"))
+    summary_nodes = summary_nodes.split(";")
+    if '' in summary_nodes:
+        summary_nodes.remove('')
+
+    summaries = []
+
+    for i, n in enumerate(nodes):
         if "generate" in n:
             i = int(n[0])
             if i == 0:
@@ -43,13 +52,27 @@ def generate_map():
                 if "generate" not in n:
                     new_url += n + ";"
 
-            new_url = new_url[:-1]
+            new_url = new_url + '&summaries='
+
+            for s in summary_nodes:
+                new_url += s + ';'
 
             return redirect(new_url)
+        else:
+            s = "Clique em '+' para adicionar um resumo aqui!"
+
+            if str(i) in summary_nodes:
+                if i == 0:
+                    topic = nodes[i]
+                else:
+                    topic = nodes[i][1:]
+                s = perform_summary(topic)
+
+            summaries.append(s)
 
     links = get_links(nodes[0], _google_search)
 
-    return render_template("/dorahMindMap/mindmap.html", nodes=nodes, links=links)
+    return render_template("/dorahMindMap/mindmap.html", nodes=nodes, summaries=summaries, links=links)
 
 
 @bp.route("/flashcards")
