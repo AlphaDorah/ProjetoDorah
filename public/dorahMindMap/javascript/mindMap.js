@@ -134,13 +134,29 @@ function define_diagram() {
     $(
       "Button",
       {
-        alignment: go.Spot.Right,
+        alignment: go.Spot.BottomRight,
         "ButtonBorder.figure": "RoundedRectangle",
         "ButtonBorder.fill": "#784BD1",
         "ButtonBorder.stroke": null,
         "ButtonBorder.strokeWidth": 3,
 
         click: addNodeAndLink,
+      },
+      $(go.TextBlock, "v", {
+        font: "bold 15px Figtree, sans-serif",
+        stroke: "white",
+      })
+    ),
+    $(
+      "Button",
+      {
+        alignment: go.Spot.TopRight,
+        "ButtonBorder.figure": "RoundedRectangle",
+        "ButtonBorder.fill": "#784BD1",
+        "ButtonBorder.stroke": null,
+        "ButtonBorder.strokeWidth": 3,
+
+        click: addSummary,
       },
       $(go.TextBlock, "+", {
         font: "bold 15px Figtree, sans-serif",
@@ -173,6 +189,7 @@ function define_diagram() {
     var oldnode = adorn.adornedPart;
 
     link = window.location.href;
+    link = link.split("&");
 
     if (buttonOn.style.display == "none") {
       var newdata = {
@@ -180,12 +197,24 @@ function define_diagram() {
         text: `Novo Subtema ${total_temas}`,
         sumary: `Resumo do subtema ${total_temas}`,
       };
-      link += ";" + oldnode.key + newdata.text;
+      link[0] += oldnode.key + newdata.text + ";";
     } else {
-      link += ";" + String(oldnode.key) + "generate";
+      link[0] += String(oldnode.key) + "generate" + ";";
     }
 
-    window.open(link, "_self");
+    window.open(link[0] + "&" + link[1], "_self");
+  }
+
+  function addSummary(e, obj) {
+    var adorn = obj.part;
+    var node = adorn.adornedPart;
+
+    link = window.location.href;
+    link = link.split("&");
+
+    link[1] += String(node.key) + ";";
+
+    window.open(link[0] + "&" + link[1], "_self");
   }
 
   function nodeStyle() {
@@ -266,15 +295,13 @@ function modeFreeDrawing(color, size) {
   }
 }
 
-function draw_map(nodes) {
+function draw_map(nodes, summaries) {
   total_temas = nodes.length;
 
   define_diagram();
 
-  summary_placeholder = "Clique em + para adicionar um resumo!";
-
   var nodeDataArray = [
-    { key: 0, text: nodes[0], summary: summary_placeholder },
+    { key: 0, text: nodes[0], summary: summaries[0] },
   ];
   for (let i = 1; i < nodes.length; i++) {
     content = String(nodes[i]).substring(1);
@@ -283,7 +310,7 @@ function draw_map(nodes) {
       nodeDataArray.push({
         key: i,
         text: content,
-        summary: summary_placeholder,
+        summary: summaries[i],
       });
     }
   }
