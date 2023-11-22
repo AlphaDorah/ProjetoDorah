@@ -342,9 +342,12 @@ div {
 }
 
 #pencil {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   width: 64px;
   height: 100%;
-  background-image: url("../images/lapisPB.png");
   background-position: top;
   background-size: cover;
   margin-right: 1.5vw;
@@ -353,9 +356,11 @@ div {
     transform: translateY(15px);
     color: rgba(0, 0, 0, 0.5);
   }
-  &:focus,
-  &:active {
+  &:checked {
     background-image: url("../images/lapisDorah.png");
+  }
+  &:not(:checked) {
+    background-image: url("../images/lapisPB.png");
   }
 }
 #addNotes {
@@ -395,9 +400,12 @@ div {
 }
 
 #highlighter {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
   width: 64px;
   height: 100%;
-  background-image: url("../images/MarcaTextoPB.png");
   background-position: top;
   background-size: cover;
   margin-right: 1.5vw;
@@ -406,9 +414,11 @@ div {
     color: rgba(0, 0, 0, 0.5);
     transform: translateY(15px);
   }
-  &:focus,
-  &:active {
+  &:checked {
     background-image: url("../images/MarcaTextoRosa.png");
+  }
+  &:not(:checked) {
+    background-image: url("../images/MarcaTextoPB.png");
   }
 }
 
