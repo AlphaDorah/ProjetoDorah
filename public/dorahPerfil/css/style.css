@@ -51,7 +51,8 @@ header{
 }
 
 .sec-header{
-    width: ;
+    width: 88vw;
+    height: 40px;
     display: flex;
     justify-items: center;
     align-items: center;
@@ -64,22 +65,25 @@ h2{
 
 .button-perfil{
     width: 160px;
+    height: 38px;
     color: black;
-    font-feature-settings: 'clig' off, 'liga' off;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
-    display: inline-flex;
     padding: 11px 16px;
+    border-radius: 8px;
+    border: 1px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 11px;
-    border-radius: 8px;
-    border-color: transparent;
-    background-color: transparent;
-    fill: #000;
-    cursor: pointer;
+    margin-left: 66vw;
+}
+
+.button-perfil:hover{
+    background-color: #ffffff;
 }
 
 .flash1,
