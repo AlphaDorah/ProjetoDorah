@@ -94,8 +94,12 @@ def hello():
 
 
 @bp.route("/cadastro")
-def cadatro():
+def cadastro():
     return render_template("/dorahSignUp/signup.html")
+
+@bp.route("/perfil")
+def perfil():
+    return render_template("/dorahPerfil/dorahperfil.html")
 
 
 @bp.route("/<path:path>")
