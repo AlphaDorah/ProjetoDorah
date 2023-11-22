@@ -242,7 +242,7 @@ function define_diagram() {
       $(
         go.TextBlock,
         {
-          stroke: null,
+          stroke:'black',
           margin: 10,
           editable: true,
           font: "16px Kalam, sans-serif",

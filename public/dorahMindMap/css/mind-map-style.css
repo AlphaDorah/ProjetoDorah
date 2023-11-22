@@ -504,7 +504,7 @@ div {
   position: absolute;
   right: 0px;
   display: none;
-  background: #e6e9ef;
+  background: #EBEBEB;
   top: 10vh;
   border-radius: 10px 0px 0px 10px;
   .ico-button {
@@ -517,8 +517,8 @@ div {
   z-index: 3;
   width: 15vw;
   right: 0px;
-  border-style: outset;
-
+  border: none;
+  background-color: #EBEBEB;
   .controlIA {
     display: flex;
     position: relative;
