@@ -101,7 +101,7 @@
     border-radius: 538px;
     background: radial-gradient(68.9% 68.9% at 77.33% 26.25%, #7A48BA 0%, #6B00F7 100%);
     filter: blur(178.75px);
-    z-index: 0;
+    z-index: -1;
     animation: animacaoBolha1 50s linear infinite;
 }
 
@@ -116,7 +116,7 @@
     border-radius: 350px;
     background: radial-gradient(57.78% 57.78% at 80.71% 28.14%, #6D4BCE 0%, #A25DD9 100%);
     filter: blur(127.94999694824219px);
-    z-index: -1;
+    z-index: -2;
     animation: animacaoBolha2 60s linear infinite;
 }
 
@@ -146,6 +146,6 @@
     border-radius: 500px;
     background: radial-gradient(54.4% 54.4% at 38.9% 63.5%, #CD7FF1 0%, #7D00DF 100%);
     filter: blur(208.25px);
-    z-index: -2;
+    z-index: -4;
     animation: animacaoBolha4 35s linear infinite;
 }
