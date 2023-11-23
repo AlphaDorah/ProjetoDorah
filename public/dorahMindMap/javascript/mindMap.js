@@ -283,15 +283,43 @@ function define_diagram() {
   diagram.toolManager.mouseMoveTools.insertAt(0, tool);
 }
 
-function modeFreeDrawing(color, size) {
+function modePencilDrawing() {
+  var color_pencil = 'black';
+  var size_pencil =  3;
   var tool = diagram.toolManager.findTool("FreehandDrawing");
-
-  if (tool.isEnabled && color == tool.archetypePartData.stroke) {
+  var pencil = document.getElementById("pencil");
+  var highlighter = document.getElementById("highlighter");
+  
+  if(pencil.checked) {
+    tool.archetypePartData = { category: "FreehandDrawing", stroke: color_pencil, strokeWidth: size_pencil };
+    tool.isEnabled = true;
+  }
+  else{
     tool.isEnabled = false;
   }
-  else {
-    tool.archetypePartData = { category: "FreehandDrawing", stroke: color, strokeWidth: size };
+
+  if(highlighter.checked) {
+    highlighter.checked = false;
+  }
+}
+
+function modeHighlighterDrawing() {
+  var color_highlighter = 'rgb(255, 255, 0, 0.30)';
+  var size_highlighter =  40;
+  var tool = diagram.toolManager.findTool("FreehandDrawing");
+  var highlighter = document.getElementById("highlighter");
+  var pencil = document.getElementById("pencil");
+  
+  if(highlighter.checked) {
+    tool.archetypePartData = { category: "FreehandDrawing", stroke: color_highlighter, strokeWidth: size_highlighter };
     tool.isEnabled = true;
+  }
+  else{
+    tool.isEnabled = false;
+  }
+
+  if(pencil.checked) {
+    pencil.checked = false;
   }
 }
 
