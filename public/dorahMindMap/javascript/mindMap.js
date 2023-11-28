@@ -1,22 +1,7 @@
-var total_temas = 0;
-note_color = "LightYellow";
-line_color = "#935CFF";
-arrow_color = "#935CFF";
-var zoomRange = document.getElementById("zoom");
-if (!zoomRange) {
-  console.log("zoomRange not found");
-}
-
-zoomRange.addEventListener("input", function () {
-  var percent =
-    ((zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min)) * 100;
-  zoomRange.style.background =
-    "linear-gradient(to right, #0073EA 0%, #0073EA " +
-    percent +
-    "%, white " +
-    percent +
-    "%, white 100%)";
-});
+let total_temas = 0;
+let note_color = "LightYellow";
+let line_color = "#935CFF";
+let arrow_color = "#935CFF";
 
 function getColor() {
   return note_color;
@@ -188,7 +173,7 @@ function define_diagram() {
     var adorn = obj.part;
     var oldnode = adorn.adornedPart;
 
-    link = window.location.href;
+    let link = window.location.href;
     link = link.split("&");
 
     if (buttonOn.style.display == "none") {
@@ -209,7 +194,7 @@ function define_diagram() {
     var adorn = obj.part;
     var node = adorn.adornedPart;
 
-    link = window.location.href;
+    let link = window.location.href;
     link = link.split("&");
 
     link[1] += String(node.key) + ";";
@@ -242,7 +227,7 @@ function define_diagram() {
       $(
         go.TextBlock,
         {
-          stroke:'black',
+          stroke: "black",
           margin: 10,
           editable: true,
           font: "16px Kalam, sans-serif",
@@ -251,74 +236,95 @@ function define_diagram() {
       )
     )
   );
-   
-  diagram.nodeTemplateMap.add("FreehandDrawing",
-    $(go.Part,
+
+  diagram.nodeTemplateMap.add(
+    "FreehandDrawing",
+    $(
+      go.Part,
       { locationSpot: go.Spot.Center, isLayoutPositioned: false },
-      new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+      new go.Binding("location", "loc", go.Point.parse).makeTwoWay(
+        go.Point.stringify
+      ),
       {
         selectionAdorned: true,
         selectionObjectName: "SHAPE",
-        selectionAdornmentTemplate:
-          $(go.Adornment, "Auto",
-            $(go.Shape, { stroke: "dodgerblue", fill: null }),
-            $(go.Placeholder, { margin: -1 }))
+        selectionAdornmentTemplate: $(
+          go.Adornment,
+          "Auto",
+          $(go.Shape, { stroke: "dodgerblue", fill: null }),
+          $(go.Placeholder, { margin: -1 })
+        ),
       },
       { resizable: true, resizeObjectName: "SHAPE" },
       { rotatable: true, rotateObjectName: "SHAPE" },
       { reshapable: true },
-      $(go.Shape,
+      $(
+        go.Shape,
         { name: "SHAPE", fill: null, strokeWidth: 1.5 },
-        new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
+        new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(
+          go.Size.stringify
+        ),
         new go.Binding("angle").makeTwoWay(),
         new go.Binding("geometryString", "geo").makeTwoWay(),
         new go.Binding("fill"),
         new go.Binding("stroke"),
-        new go.Binding("strokeWidth"))
-    ));
+        new go.Binding("strokeWidth")
+      )
+    )
+  );
   var tool = new FreehandDrawingTool();
-  tool.archetypePartData = { category: "FreehandDrawing", stroke: 'black', strokeWidth: 4 };
+  tool.archetypePartData = {
+    category: "FreehandDrawing",
+    stroke: "black",
+    strokeWidth: 4,
+  };
   tool.isBackgroundOnly = false;
   tool.isEnabled = false;
   diagram.toolManager.mouseMoveTools.insertAt(0, tool);
 }
 
 function modePencilDrawing() {
-  var color_pencil = 'black';
-  var size_pencil =  3;
+  var color_pencil = "black";
+  var size_pencil = 3;
   var tool = diagram.toolManager.findTool("FreehandDrawing");
   var pencil = document.getElementById("pencil");
   var highlighter = document.getElementById("highlighter");
-  
-  if(pencil.checked) {
-    tool.archetypePartData = { category: "FreehandDrawing", stroke: color_pencil, strokeWidth: size_pencil };
+
+  if (pencil.checked) {
+    tool.archetypePartData = {
+      category: "FreehandDrawing",
+      stroke: color_pencil,
+      strokeWidth: size_pencil,
+    };
     tool.isEnabled = true;
-  }
-  else{
+  } else {
     tool.isEnabled = false;
   }
 
-  if(highlighter.checked) {
+  if (highlighter.checked) {
     highlighter.checked = false;
   }
 }
 
 function modeHighlighterDrawing() {
-  var color_highlighter = 'rgb(255, 255, 0, 0.30)';
-  var size_highlighter =  40;
+  var color_highlighter = "rgb(255, 255, 0, 0.30)";
+  var size_highlighter = 40;
   var tool = diagram.toolManager.findTool("FreehandDrawing");
   var highlighter = document.getElementById("highlighter");
   var pencil = document.getElementById("pencil");
-  
-  if(highlighter.checked) {
-    tool.archetypePartData = { category: "FreehandDrawing", stroke: color_highlighter, strokeWidth: size_highlighter };
+
+  if (highlighter.checked) {
+    tool.archetypePartData = {
+      category: "FreehandDrawing",
+      stroke: color_highlighter,
+      strokeWidth: size_highlighter,
+    };
     tool.isEnabled = true;
-  }
-  else{
+  } else {
     tool.isEnabled = false;
   }
 
-  if(pencil.checked) {
+  if (pencil.checked) {
     pencil.checked = false;
   }
 }
@@ -328,11 +334,9 @@ function draw_map(nodes, summaries) {
 
   define_diagram();
 
-  var nodeDataArray = [
-    { key: 0, text: nodes[0], summary: summaries[0] },
-  ];
+  var nodeDataArray = [{ key: 0, text: nodes[0], summary: summaries[0] }];
   for (let i = 1; i < nodes.length; i++) {
-    content = String(nodes[i]).substring(1);
+    const content = String(nodes[i]).substring(1);
 
     if (content != nodes[0]) {
       nodeDataArray.push({
@@ -444,10 +448,10 @@ function loadImportMindMap() {
   }
 }
 
-colorPalette = false;
+setColorPalette = false;
 
 function addCommentNote() {
-  colorPalette = true;
+  const colorPalette = true;
   var key = total_temas + 1;
   diagram.model.addNodeData({
     key: key,
@@ -462,7 +466,7 @@ function changeNotesColor(cor) {
   let node = diagram.findNodeForKey("NotaAdesiva");
 
   if (node !== null) {
-    if (color === 1) {
+    if (cor === 1) {
       node.findObject("NotaAdesiva").fill = "#ff7e7e";
     }
     if (cor === 2) {
@@ -513,8 +517,8 @@ function setColorPalette() {
 
 function changeArrowColor(colorNumber) {
   if (colorNumber === 1) {
-    arrow_color = "rgb(224,228,204)";
-    line_color = "rgb(224,228,204)";
+    const arrow_color = "rgb(224,228,204)";
+    const line_color = "rgb(224,228,204)";
     diagram.requestUpdate();
     diagram.rebuildParts;
   }
