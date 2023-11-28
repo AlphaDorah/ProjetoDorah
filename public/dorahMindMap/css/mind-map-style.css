@@ -415,7 +415,7 @@ div {
     transform: translateY(15px);
   }
   &:checked {
-    background-image: url("../images/MarcaTextoRosa.png");
+    background-image: url("../images/MarcaTextoAmarelo.png");
   }
   &:not(:checked) {
     background-image: url("../images/MarcaTextoPB.png");
