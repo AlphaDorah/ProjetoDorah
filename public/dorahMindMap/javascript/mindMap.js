@@ -90,6 +90,12 @@ function define_diagram() {
         fill: null,
         stroke: "#935CFF",
         strokeWidth: 3,
+        fromLinkable: true,
+        fromLinkableSelfNode: true,
+        fromLinkableDuplicates: true,
+        toLinkable: true,
+        toLinkableSelfNode: true,
+        toLinkableDuplicates: true
       }),
       $(go.Placeholder, { margin: -2 })
     ),
@@ -112,6 +118,7 @@ function define_diagram() {
           editable: true,
           stroke: "#757575",
           margin: 10,
+          editable: true
         },
         new go.Binding("text", "summary")
       )
