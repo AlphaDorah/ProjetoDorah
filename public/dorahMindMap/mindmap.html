@@ -19,17 +19,17 @@
     />
     <link rel="stylesheet" href="/dorahMindMap/css/mind-map-style.css" />
     <script>
-      const nodes = {{nodes|tojson|safe}}
-      console.log(nodes)
+      const theme = "{{theme}}";
     </script>
     <script src="/dorahMindMap/javascript/displaysControl.js"></script>
+    <script src="/dorahMindMap/javascript/mapdef.js"></script>
     <script src="/dorahMindMap/javascript/mindMap.js"></script>
     <script src="/dorahMindMap/javascript/flashcards.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
   </head>
 
-  <body onload="draw_map({{nodes}}, {{summary}})">
+  <body onload="init_map('{{theme}}')">
     {% include "/logo.html" %}
     <div class="upper-bar">
       <div class="button-container">
@@ -178,9 +178,6 @@
     </div>
     <div id="extraArea" class="menu">
       <h2 style="margin: 0px">Referências</h2>
-      <a href="{{links[0]}}" target="_blank" rel="external">{{links[0]}}</a>
-      <a href="{{links[1]}}" target="_blank" rel="external">{{links[1]}}</a>
-      <a href="{{links[2]}}" target="_blank" rel="external">{{links[2]}}</a>
 
       <label for="page" style="padding: 15px 0px 6px"
         >Salve seus links de referência aqui:</label
