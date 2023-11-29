@@ -94,14 +94,51 @@ function define_diagram() {
           $(go.Shape, { alignment: go.Spot.BottomRight, cursor: "sw-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" })
         );
 
-      var nodeRotateAdornmentTemplate =
-        $(go.Adornment,
-          { locationSpot: go.Spot.Center, locationObjectName: "ELLIPSE" },
-          $(go.Shape, "Ellipse", { name: "ELLIPSE", cursor: "pointer", desiredSize: new go.Size(7, 7), fill: "lightblue", stroke: "deepskyblue" }),
-          $(go.Shape, { geometryString: "M3.5 7 L3.5 30", isGeometryPositioned: true, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] })
-        );
+var nodeRotateAdornmentTemplate =
+    $(go.Adornment,
+    { locationSpot: go.Spot.Center, locationObjectName: "ELLIPSE" },
+        $(go.Shape, "Ellipse", { name: "ELLIPSE", cursor: "pointer", desiredSize: new go.Size(7, 7), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { geometryString: "M3.5 7 L3.5 30", isGeometryPositioned: true, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] })
+    );
 
 
+function showSmallPorts(node, show) {
+    node.ports.each(port => {
+        if (port.portId !== "") {  // don't change the default port, which is the big shape
+            port.fill = show ? "rgba(0,0,0,.3)" : null;
+        }
+    });
+}
+
+var nodeSelectionAdornmentTemplate =
+    $(go.Adornment, "Auto",
+        $(go.Shape, { fill: null, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] }),
+    $(go.Placeholder)
+);
+
+var linkSelectionAdornmentTemplate =
+    $(go.Adornment, "Link",
+        $(go.Shape,
+            { isPanelMain: true, fill: null, stroke: "deepskyblue", strokeWidth: 0 })  // use selection object's strokeWidth
+);
+
+
+function makePort(name, spot, output, input)
+{
+
+    return $(go.Shape, "Circle",
+    {
+        fill: null,  // not seen, by default; set to a translucent gray by showSmallPorts, defined below
+        stroke: null,
+        desiredSize: new go.Size(7, 7),
+        alignment: spot,  // align the port on the main Shape
+        alignmentFocus: spot,  // just inside the Shape
+        portId: name,  // declare this object to be a "port"
+        fromSpot: spot, toSpot: spot,  // declare where links may connect at this port
+        fromLinkable: output, toLinkable: input,  // declare whether the user may draw links to/from here
+        cursor: "pointer"  // show a different cursor to indicate potential link point
+    });
+}
   diagram.nodeTemplate =
   $(go.Node, "Auto",
     new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
@@ -113,8 +150,7 @@ function define_diagram() {
     $(go.Panel, "Auto",
     { name: 'PANEL'},
         new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
-        $(
-          go.Shape,
+        $(go.Shape,
           "RoundedRectangle",
           {
             stroke: "#C5C7D0",
@@ -127,6 +163,7 @@ function define_diagram() {
             toLinkable: true,
             toLinkableSelfNode: true,
             toLinkableDuplicates: true,
+
           },
           new go.Binding("fill", "color")
         ),
@@ -137,23 +174,21 @@ function define_diagram() {
         editable: true,
         font: "18px Figtree, sans-serif",
       },
-       new go.Binding("text").makeTwoWay())
+       new go.Binding("text").makeTwoWay()),
+
+
+        makePort("T", go.Spot.Top, false, true),
+        makePort("L", go.Spot.Left, true, true),
+        makePort("R", go.Spot.Right, true, true),
+        makePort("B", go.Spot.Bottom, true, false),
+        {
+            mouseEnter: (e, node) => showSmallPorts(node, true),
+            mouseLeave: (e, node) => showSmallPorts(node, false)
+        }
     ),
 
-  );
 
-function showSmallPorts(node, show) {
-    node.ports.each(port => {
-        if (port.portId !== "") {  // don't change the default port, which is the big shape
-            port.fill = show ? "rgba(0,0,0,.3)" : null;
-        }
-    });
-}
 
- var nodeSelectionAdornmentTemplate =
-  $(go.Adornment, "Auto",
-        $(go.Shape, { fill: null, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] }),
-    $(go.Placeholder)
   );
 
   diagram.nodeTemplate.selectionAdornmentTemplate = $(
@@ -173,7 +208,8 @@ function showSmallPorts(node, show) {
         toLinkableSelfNode: true,
         toLinkableDuplicates: true
       }),
-      $(go.Placeholder, { margin: -2 })
+      $(go.Placeholder, { margin: -2 }),
+
     ),
 
     $(
@@ -183,6 +219,25 @@ function showSmallPorts(node, show) {
         alignment: go.Spot.Bottom,
         alignmentFocus: go.Spot.Top,
       },
+      $(go.Shape, "RoundedRectangle", {
+        fill: "#EBEBEB",
+        stroke: "black",
+        strokeWidth: 2,
+      }),
+
+        $(
+        go.TextBlock,
+        {
+          font: "regular  10px Figtree, sans-serif",
+          editable: true,
+          stroke: "#757575",
+          margin: 10,
+          maxSize: new go.Size(400, NaN),
+            wrap: go.TextBlock.WrapDesiredSize
+        },
+        new go.Binding("text", "summary")
+      )
+
     ),
     $(
       "Button",
@@ -216,19 +271,22 @@ function showSmallPorts(node, show) {
         stroke: "white",
       })
     ),
-
   );
 
-  diagram.linkTemplate = $(
-    go.Link,
+  diagram.linkTemplate =
+  $(go.Link,
     {
       selectable: true,
       relinkableFrom: true,
       relinkableTo: true,
       routing: go.Link.Orthogonal,
       corner: 50,
-      toShortLength: 3
+      toShortLength: 3,
+      reshapable: true,
+      curve: go.Link.Orthogonal,
+      selectionAdornmentTemplate: linkSelectionAdornmentTemplate
     },
+    new go.Binding("points").makeTwoWay(),
     $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
     $(go.Shape, {
       toArrow: "Chevron",
