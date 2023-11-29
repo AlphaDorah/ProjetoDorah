@@ -175,6 +175,7 @@ function showSmallPorts(node, show) {
       }),
       $(go.Placeholder, { margin: -2 })
     ),
+
     $(
       go.Panel,
       "Auto",
@@ -182,22 +183,6 @@ function showSmallPorts(node, show) {
         alignment: go.Spot.Bottom,
         alignmentFocus: go.Spot.Top,
       },
-      $(go.Shape, "RoundedRectangle", {
-        fill: "EBEBEB",
-        stroke: "black",
-        strokeWidth: 3,
-      }),
-      $(
-        go.TextBlock,
-        {
-          font: "regular  10px Figtree, sans-serif",
-          editable: true,
-          stroke: "#757575",
-          margin: 10,
-          editable: true
-        },
-        new go.Binding("text", "summary")
-      )
     ),
     $(
       "Button",
@@ -206,11 +191,11 @@ function showSmallPorts(node, show) {
         "ButtonBorder.figure": "RoundedRectangle",
         "ButtonBorder.fill": "#784BD1",
         "ButtonBorder.stroke": null,
-        "ButtonBorder.strokeWidth": 3,
+        "ButtonBorder.strokeWidth": 2,
 
         click: addNodeAndLink,
       },
-      $(go.TextBlock, "v", {
+      $(go.TextBlock, "v Expandir o mapa", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
@@ -226,11 +211,12 @@ function showSmallPorts(node, show) {
 
         click: addSummary,
       },
-      $(go.TextBlock, "+", {
+      $(go.TextBlock, "+ Adicionar Resumo", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
-    )
+    ),
+
   );
 
   diagram.linkTemplate = $(
