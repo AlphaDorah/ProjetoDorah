@@ -646,3 +646,5 @@ var inspector = new Inspector("myInspectorDiv", diagram, {
     password: { show: Inspector.showIfPresent, type: "password" },
   },
 });
+
+document.getElementById("id-historybutton").style.display = "none";
