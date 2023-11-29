@@ -6,6 +6,9 @@ let inputTheme;
 let animationPaused = false;
 let loggedUser = false;
 
+document.getElementById("id-historybutton").style.display = "none";
+document.getElementById("id-exportButton").style.display = "none";
+
 document.getElementById("themeInput").addEventListener("keydown", function (event){
     if(event.key === "Enter")
     {
