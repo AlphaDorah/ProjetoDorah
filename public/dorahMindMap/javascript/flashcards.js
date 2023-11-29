@@ -6,7 +6,7 @@ function generateFlashcards() {
   console.log("Gerando flashcards...");
 
   try {
-    summarizeText(nodes[0]).then((summary) => {
+    summarizeText(theme).then((summary) => {
       console.log("Sumário gerado! " + summary);
 
       fetch("/api/generate/flashcard", {
