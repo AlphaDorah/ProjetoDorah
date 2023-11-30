@@ -7,6 +7,9 @@ if (!zoomRange) {
   console.log("zoomRange not found");
 }
 
+
+document.getElementById("id-historybutton").style.display = "none";
+
 zoomRange.addEventListener("input", function () {
   var percent =
     ((zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min)) * 100;
@@ -141,11 +144,6 @@ function makePort(name, spot, output, input)
 }
   diagram.nodeTemplate =
   $(go.Node, "Auto",
-    new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
-          { selectable: true, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
-          { resizable: true, resizeObjectName: "PANEL", resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
-          { rotatable: true, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
-          new go.Binding("angle").makeTwoWay(),
 
     $(go.Panel, "Auto",
     { name: 'PANEL'},
@@ -250,7 +248,7 @@ function makePort(name, spot, output, input)
 
         click: addNodeAndLink,
       },
-      $(go.TextBlock, "v Expandir o mapa", {
+      $(go.TextBlock, "▼ Expandir o mapa", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
@@ -266,7 +264,7 @@ function makePort(name, spot, output, input)
 
         click: addSummary,
       },
-      $(go.TextBlock, "+ Adicionar Resumo", {
+      $(go.TextBlock, "✦ Gerar resumo", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
@@ -646,5 +644,3 @@ var inspector = new Inspector("myInspectorDiv", diagram, {
     password: { show: Inspector.showIfPresent, type: "password" },
   },
 });
-
-document.getElementById("id-historybutton").style.display = "none";
