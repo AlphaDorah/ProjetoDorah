@@ -573,9 +573,6 @@ div {
   {
     background: #c5445b;
   }
-  &input:hover {
-    transform: scale(1.1);
-  }
 }
 
 #color-button2 {
@@ -589,7 +586,7 @@ div {
   background: #e16432;
   border: none;
   transition: transform 0.3s ease;
-    &:checked
+   &:checked
   {
     transform: scale(0.8);
     border-radius: 8px;
@@ -597,9 +594,6 @@ div {
   &not(:checked)
   {
     background: #e16432;
-  }
-  &input:hover {
-    transform: scale(1.1);
   }
 }
 
@@ -613,13 +607,14 @@ div {
   background: #f2cb2b;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+  &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #f2cb2b;
   }
 }
 
@@ -633,13 +628,14 @@ div {
   background: #71c87a;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #71c87a;
   }
 }
 
@@ -653,13 +649,14 @@ div {
   background: #709bf9;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #709bf9;
   }
 }
 
@@ -673,13 +670,14 @@ div {
   background: #34508f;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #34508f;
   }
 }
 
@@ -693,13 +691,14 @@ div {
   background: #784bd1;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #784bd1;
   }
 }
 
@@ -713,13 +712,14 @@ div {
   background: #dc1587;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #dc1587;
   }
 }
 
@@ -733,13 +733,14 @@ div {
   background: #896952;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #896952;
   }
 }
 
@@ -754,13 +755,14 @@ div {
   border-radius: 0px 8px 8px 0px;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #000000;
   }
 }
 
