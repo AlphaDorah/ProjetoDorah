@@ -552,6 +552,9 @@ div {
 }
 
 #color-button1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -561,37 +564,49 @@ div {
   margin: 0;
   padding: 0;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+  &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &:disable {
-    background: #000;
+  &not(:checked)
+  {
+    background: #c5445b;
+  }
+  &input:hover {
+    transform: scale(1.1);
   }
 }
 
 #color-button2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #e16432;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+    &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #e16432;
+  }
+  &input:hover {
+    transform: scale(1.1);
   }
 }
 
 #color-button3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -609,6 +624,9 @@ div {
 }
 
 #color-button4 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -626,6 +644,9 @@ div {
 }
 
 #color-button5 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -643,6 +664,9 @@ div {
 }
 
 #color-button6 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -660,6 +684,9 @@ div {
 }
 
 #color-button7 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -677,6 +704,9 @@ div {
 }
 
 #color-button8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -694,6 +724,9 @@ div {
 }
 
 #color-button9 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -711,6 +744,9 @@ div {
 }
 
 #color-button10 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;

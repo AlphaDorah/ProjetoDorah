@@ -142,6 +142,8 @@ function makePort(name, spot, output, input)
         cursor: "pointer"  // show a different cursor to indicate potential link point
     });
 }
+
+
   diagram.nodeTemplate =
   $(go.Node, "Auto",{
 
@@ -149,6 +151,7 @@ function makePort(name, spot, output, input)
     fromLinkable: true, toLinkable: true,
     locationSpot: go.Spot.Center
     },
+    new go.Binding("location", "location", go.Point.parse).makeTwoWay(go.Point.stringify),
     $(go.Panel, "Auto",
     { name: 'PANEL'},
         new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
