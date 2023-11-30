@@ -143,8 +143,12 @@ function makePort(name, spot, output, input)
     });
 }
   diagram.nodeTemplate =
-  $(go.Node, "Auto",
+  $(go.Node, "Auto",{
 
+    fromSpot: go.Spot.AllSides, toSpot: go.Spot.AllSides,
+    fromLinkable: true, toLinkable: true,
+    locationSpot: go.Spot.Center
+    },
     $(go.Panel, "Auto",
     { name: 'PANEL'},
         new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
@@ -271,6 +275,7 @@ function makePort(name, spot, output, input)
     ),
   );
 
+
   diagram.linkTemplate =
   $(go.Link,
     {
@@ -282,9 +287,12 @@ function makePort(name, spot, output, input)
       toShortLength: 3,
       reshapable: true,
       curve: go.Link.Orthogonal,
-      selectionAdornmentTemplate: linkSelectionAdornmentTemplate
+      selectionAdornmentTemplate: linkSelectionAdornmentTemplate,
+      adjusting: go.Link.Strech
     },
     new go.Binding("points").makeTwoWay(),
+    new go.Binding("fromSpot", "fromSpot", go.Spot.parse).makeTwoWay(go.Spot.stringify),
+    new go.Binding("toSpot", "toSpot", go.Spot.parse).makeTwoWay(go.Spot.stringify),
     $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
     $(go.Shape, {
       toArrow: "Chevron",
