@@ -580,17 +580,16 @@ function addCommentNote() {
   });
 }
 
-function changeNotesColor(cor) {
-  let node = diagram.findNodeForKey("NotaAdesiva");
 
-  if (node !== null) {
-    if (color === 1) {
-      node.findObject("NotaAdesiva").fill = "#ff7e7e";
+
+function changeColor(index)
+{
+    var color1 = document.getElementById("color-button1");
+
+    if(index == 1)
+    {
+
     }
-    if (cor === 2) {
-      node.findObject("NotaAdesiva").fill = "#ffd97e";
-    }
-  }
 }
 
 function setColorPalette() {
