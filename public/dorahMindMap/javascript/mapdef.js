@@ -154,6 +154,7 @@ function define_diagram() {
   );
 
   function showSmallPorts(node, show) {
+    if (!node || !node.ports) return;
     node.ports.each((port) => {
       if (port.portId !== "") {
         // don't change the default port, which is the big shape
