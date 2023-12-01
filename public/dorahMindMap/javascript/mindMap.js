@@ -1,5 +1,4 @@
 var total_temas = 0;
-pencilColor = 'black';
 note_color = "LightYellow";
 line_color = "#935CFF";
 arrow_color = "#935CFF";
@@ -406,45 +405,16 @@ function makePort(name, spot, output, input)
   diagram.toolManager.mouseMoveTools.insertAt(0, tool);
 }
 
-
 function modePencilDrawing() {
+  var color_pencil = 'black';
   var size_pencil =  3;
   var tool = diagram.toolManager.findTool("FreehandDrawing");
   var pencil = document.getElementById("pencil");
   var highlighter = document.getElementById("highlighter");
   
   if(pencil.checked) {
-  tool.isEnabled = true;
-    if(pencilColor == 0)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#c5445b', strokeWidth: size_pencil };
-
-    if(pencilColor == 1)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#e16432', strokeWidth: size_pencil };
-
-    if(pencilColor == 2)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#f2cb2b', strokeWidth: size_pencil };
-
-    if(pencilColor == 3)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#71c87a', strokeWidth: size_pencil };
-
-    if(pencilColor == 4)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#709bf9', strokeWidth: size_pencil };
-
-    if(pencilColor == 5)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#34508f', strokeWidth: size_pencil };
-
-    if(pencilColor == 6)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#784bd1', strokeWidth: size_pencil };
-
-    if(pencilColor == 7)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#dc1587', strokeWidth: size_pencil };
-
-    if(pencilColor == 8)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: '#896952', strokeWidth: size_pencil };
-
-    if(pencilColor == 9)
-        tool.archetypePartData = { category: "FreehandDrawing", stroke: 'black', strokeWidth: size_pencil };
-
+    tool.archetypePartData = { category: "FreehandDrawing", stroke: color_pencil, strokeWidth: size_pencil };
+    tool.isEnabled = true;
   }
   else{
     tool.isEnabled = false;
@@ -615,164 +585,10 @@ function addCommentNote() {
 function changeColor(index)
 {
     var color1 = document.getElementById("color-button1");
-    var color2 = document.getElementById("color-button2");
-    var color3 = document.getElementById("color-button3");
-    var color4 = document.getElementById("color-button4");
-    var color5 = document.getElementById("color-button5");
-    var color6 = document.getElementById("color-button6");
-    var color7 = document.getElementById("color-button7");
-    var color8 = document.getElementById("color-button8");
-    var color9 = document.getElementById("color-button9");
-    var color10 = document.getElementById("color-button10");
-
-    if(index == 0)
-    {
-       pencilColor = 0;
-       modePencilDrawing();
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
 
     if(index == 1)
     {
-       pencilColor = 1;
-       modePencilDrawing();
-       color1.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
 
-    if(index == 2)
-    {
-       pencilColor = 2;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 3)
-    {
-       pencilColor = 3;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 4)
-    {
-       pencilColor = 4;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 5)
-    {
-       pencilColor = 5;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 6)
-    {
-       pencilColor = 6;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color8.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 7)
-    {
-       pencilColor = 7;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color9.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 8)
-    {
-       pencilColor = 8;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color10.checked = false;
-    }
-
-    if(index == 9)
-    {
-       pencilColor = 9;
-       modePencilDrawing();
-       color1.checked = false;
-       color2.checked = false;
-       color3.checked = false;
-       color4.checked = false;
-       color5.checked = false;
-       color6.checked = false;
-       color7.checked = false;
-       color8.checked = false;
-       color9.checked = false;
     }
 }
 

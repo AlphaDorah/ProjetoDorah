@@ -1,3 +1,4 @@
+import logging
 from flask import (
     Blueprint,
     send_file,
@@ -12,23 +13,31 @@ from src.dorahSearch.google_api import get_links, _google_search
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
+logger = logging.getLogger(__name__)
+
 
 @bp.route("/")
 def index():
     return send_file("public/dorahHome/home.html")
 
 
-@bp.route("/mindmap")
+@bp.route("/mindmap/<theme>")
+def mindmap(theme):
+    logger.info("Tema: %s", theme)
+    return render_template("/dorahMindMap/mindmap.html", theme=theme)
+
+
+@bp.route("/mindmap/url")
 def generate_map():
     nodes = str(request.args.get("topics"))
     nodes = nodes.split(";")
-    if '' in nodes:
-        nodes.remove('')
+    if "" in nodes:
+        nodes.remove("")
 
     summary_nodes = str(request.args.get("summaries"))
     summary_nodes = summary_nodes.split(";")
-    if '' in summary_nodes:
-        summary_nodes.remove('')
+    if "" in summary_nodes:
+        summary_nodes.remove("")
 
     summaries = []
 
@@ -52,10 +61,10 @@ def generate_map():
                 if "generate" not in n:
                     new_url += n + ";"
 
-            new_url = new_url + '&summaries='
+            new_url = new_url + "&summaries="
 
             for s in summary_nodes:
-                new_url += s + ';'
+                new_url += s + ";"
 
             return redirect(new_url)
         else:
@@ -72,7 +81,9 @@ def generate_map():
 
     links = get_links(nodes[0], _google_search)
 
-    return render_template("/dorahMindMap/mindmap.html", nodes=nodes, summaries=summaries, links=links)
+    return render_template(
+        "/dorahMindMap/mindmap.html", nodes=nodes, summaries=summaries, links=links
+    )
 
 
 @bp.route("/flashcards")
@@ -96,6 +107,7 @@ def hello():
 @bp.route("/cadastro")
 def cadastro():
     return render_template("/dorahSignUp/signup.html")
+
 
 @bp.route("/perfil")
 def perfil():

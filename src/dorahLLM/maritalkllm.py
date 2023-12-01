@@ -1,3 +1,4 @@
+import logging
 from typing import Any, List, Mapping, Optional
 
 from langchain.chains import LLMChain
@@ -6,6 +7,9 @@ from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.llms.utils import enforce_stop_tokens
 from maritalk.model import MariTalk
+
+
+logger = logging.getLogger(__name__)
 
 
 class MariTalkLLM(LLM):
@@ -25,6 +29,7 @@ class MariTalkLLM(LLM):
         run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ):
+        logger.info("Gerando texto com MariTalk")
         if stop is None:
             text: str | None = self.pipeline.generate(
                 prompt,
@@ -43,6 +48,8 @@ class MariTalkLLM(LLM):
 
         if stop is not None:
             text = enforce_stop_tokens(text, stop)
+
+        logger.info("Texto gerado com sucesso: %s", text)
 
         return text
 

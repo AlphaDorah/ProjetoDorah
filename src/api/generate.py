@@ -8,6 +8,7 @@ from src.dorahLLM.flashcard.flashcard_summary import FlashcardSummarizer
 
 from src.dorahLLM.flashcard.flashcardgenerator import MaritalkFlashcardGenerator
 from src.dorahLLM.flashcard.textprocessor import MaritalkProcessor
+from src.dorahLLM.maritalk_summary import perform_summary, perform_topics
 
 
 bp = Blueprint("generate", __name__, url_prefix="/api/generate")
@@ -16,6 +17,26 @@ bp = Blueprint("generate", __name__, url_prefix="/api/generate")
 @bp.route("/")
 def index():
     return b"<h2>Hello, World!</h2>"
+
+
+@bp.route("/map/<theme>")
+def generate_map(theme):
+    """
+    Generates a mindmap based on a theme provided in the query.
+
+    Parameters:
+        None
+
+    Returns:
+        A dictionary containing the generated mindmap.
+    """
+    if theme is None:
+        return jsonify({"error": "Missing theme"}), 400
+    topics = perform_topics(theme)
+    summaries = []
+    for topic in topics:
+        summaries.append("Sumário de " + topic)
+    return jsonify({"topics": topics, "summaries": summaries}), 200
 
 
 @bp.route("/flashcard/summary")
