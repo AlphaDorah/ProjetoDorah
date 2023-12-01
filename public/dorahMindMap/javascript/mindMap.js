@@ -3,23 +3,6 @@ note_color = "LightYellow";
 pencilColor = "black";
 line_color = "#935CFF";
 arrow_color = "#935CFF";
-var zoomRange = document.getElementById("zoom");
-if (!zoomRange) {
-  console.log("zoomRange not found");
-}
-
-document.getElementById("id-historybutton").style.display = "none";
-
-zoomRange.addEventListener("input", function () {
-  var percent =
-    ((zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min)) * 100;
-  zoomRange.style.background =
-    "linear-gradient(to right, #0073EA 0%, #0073EA " +
-    percent +
-    "%, white " +
-    percent +
-    "%, white 100%)";
-});
 
 function getColor() {
   return note_color;
@@ -134,30 +117,54 @@ function modeHighlighterDrawing() {
   }
 }
 
+function init_map(theme) {
+  define_diagram();
+
+  var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
+  var linkDataArray = [];
+
+  globalThis.diagram.model = new go.GraphLinksModel(
+    nodeDataArray,
+    linkDataArray
+  );
+
+  onLoadDefs();
+
+  var url = "/api/generate/map/" + theme;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      draw_map(data.topics, data.summaries);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Erro ao gerar o mapa mental, tente novamente.");
+    });
+}
+
 function draw_map(nodes, summaries) {
   total_temas = nodes.length;
 
-  define_diagram();
-
-  var nodeDataArray = [{ key: 0, text: nodes[0], summary: summaries[0] }];
-  for (let i = 1; i < nodes.length; i++) {
-    content = String(nodes[i]).substring(1);
-
-    if (content != nodes[0]) {
-      nodeDataArray.push({
-        key: i,
-        text: content,
-        summary: summaries[i],
-      });
-    }
+  var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
+  for (let i = 0; i < nodes.length; i++) {
+    const content = nodes[i];
+    if (content == theme) continue;
+    nodeDataArray.push({
+      key: i + 1,
+      text: content,
+      summary: summaries[i],
+    });
   }
 
   var linkDataArray = [];
-  for (let i = 1; i < nodes.length; i++) {
-    linkDataArray.push({ to: i, from: nodes[i][0] });
+  for (let i = 1; i < nodes.length + 1; i++) {
+    linkDataArray.push({ to: i, from: 0 });
   }
 
-  diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+  globalThis.diagram.model = new go.GraphLinksModel(
+    nodeDataArray,
+    linkDataArray
+  );
 
   //Setup map controls
   document.getElementById("fitDiagram").addEventListener("click", () => {
@@ -468,17 +475,3 @@ function changeArrowColor(colorNumber) {
     diagram.rebuildParts;
   }
 }
-diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-diagram.model.modelData = { test: true, hello: "world", version: 42 };
-diagram.select(diagram.nodes.first());
-
-var inspector = new Inspector("myInspectorDiv", diagram, {
-  multipleSelection: true,
-  showSize: 4,
-  showAllProperties: true,
-  properties: {
-    color: { show: Inspector.showIfPresent, type: "color" },
-    choices: { show: false },
-    password: { show: Inspector.showIfPresent, type: "password" },
-  },
-});

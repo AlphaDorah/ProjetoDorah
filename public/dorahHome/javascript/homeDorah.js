@@ -67,11 +67,11 @@ function getAnimationButton() {
   }
 }
 
-const historyView = document.getElementById("id-historybutton");
-const downloadView = document.getElementById("id-exportButton");
-const signupView = document.getElementById("id-signupButton");
-
 function getLoginButton() {
+  const historyView = document.getElementById("id-historybutton");
+  const downloadView = document.getElementById("id-exportButton");
+  const signupView = document.getElementById("id-signupButton");
+
   if (loggedUser === false) {
     historyView.style.display = "none";
     downloadView.style.display = "none";
