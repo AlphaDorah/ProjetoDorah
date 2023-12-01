@@ -1,7 +1,24 @@
-let total_temas = 0;
+var total_temas = 0;
 let note_color = "LightYellow";
 let line_color = "#935CFF";
 let arrow_color = "#935CFF";
+var zoomRange = document.getElementById("zoom");
+if (!zoomRange) {
+  console.log("zoomRange not found");
+}
+
+document.getElementById("id-historybutton").style.display = "none";
+
+zoomRange.addEventListener("input", function () {
+  var percent =
+    ((zoomRange.value - zoomRange.min) / (zoomRange.max - zoomRange.min)) * 100;
+  zoomRange.style.background =
+    "linear-gradient(to right, #0073EA 0%, #0073EA " +
+    percent +
+    "%, white " +
+    percent +
+    "%, white 100%)";
+});
 
 function getColor() {
   return note_color;
@@ -212,7 +229,7 @@ function changeNotesColor(cor) {
   let node = globalThis.diagram.findNodeForKey("NotaAdesiva");
 
   if (node !== null) {
-    if (cor === 1) {
+    if (color === 1) {
       node.findObject("NotaAdesiva").fill = "#ff7e7e";
     }
     if (cor === 2) {
