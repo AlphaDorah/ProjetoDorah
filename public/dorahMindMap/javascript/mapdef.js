@@ -9,7 +9,35 @@ function define_diagram() {
     "commandHandler.deletesTree": true,
     "draggingTool.dragsTree": true,
     "grid.visible": false,
-    "animationManager.isEnabled": false,
+    "animationManager.isEnabled": false, // AQUI
+    "linkingTool.isUnconnectedLinkValid": true,
+    "linkingTool.portGravity": 20,
+    "relinkingTool.isUnconnectedLinkValid": true,
+    "relinkingTool.portGravity": 20,
+    "relinkingTool.fromHandleArchetype": $(go.Shape, "Diamond", {
+      segmentIndex: 0,
+      cursor: "pointer",
+      desiredSize: new go.Size(8, 8),
+      fill: "tomato",
+      stroke: "darkred",
+    }),
+    "relinkingTool.toHandleArchetype": $(go.Shape, "Diamond", {
+      segmentIndex: -1,
+      cursor: "pointer",
+      desiredSize: new go.Size(8, 8),
+      fill: "darkred",
+      stroke: "tomato",
+    }),
+    "linkReshapingTool.handleArchetype": $(go.Shape, "Diamond", {
+      desiredSize: new go.Size(7, 7),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    "rotatingTool.handleAngle": 270,
+    "rotatingTool.handleDistance": 30,
+    "rotatingTool.snapAngleMultiple": 15,
+    "rotatingTool.snapAngleEpsilon": 15,
+    "undoManager.isEnabled": true,
     "clickCreatingTool.archetypeNodeData": {
       text: "Clique duas vezes para editar",
       color: "white",
@@ -41,35 +69,194 @@ function define_diagram() {
     $(go.Shape, "Ellipse", { width: 1, height: 1, stroke: "gray" })
   );
 
+  var nodeResizeAdornmentTemplate = $(
+    go.Adornment,
+    "Spot",
+    { locationSpot: go.Spot.Right },
+    $(go.Placeholder),
+    $(go.Shape, {
+      alignment: go.Spot.TopLeft,
+      cursor: "nw-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      alignment: go.Spot.Top,
+      cursor: "n-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      alignment: go.Spot.TopRight,
+      cursor: "ne-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+
+    $(go.Shape, {
+      alignment: go.Spot.Left,
+      cursor: "w-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      alignment: go.Spot.Right,
+      cursor: "e-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+
+    $(go.Shape, {
+      alignment: go.Spot.BottomLeft,
+      cursor: "se-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      alignment: go.Spot.Bottom,
+      cursor: "s-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      alignment: go.Spot.BottomRight,
+      cursor: "sw-resize",
+      desiredSize: new go.Size(6, 6),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    })
+  );
+
+  var nodeRotateAdornmentTemplate = $(
+    go.Adornment,
+    { locationSpot: go.Spot.Center, locationObjectName: "ELLIPSE" },
+    $(go.Shape, "Ellipse", {
+      name: "ELLIPSE",
+      cursor: "pointer",
+      desiredSize: new go.Size(7, 7),
+      fill: "lightblue",
+      stroke: "deepskyblue",
+    }),
+    $(go.Shape, {
+      geometryString: "M3.5 7 L3.5 30",
+      isGeometryPositioned: true,
+      stroke: "deepskyblue",
+      strokeWidth: 1.5,
+      strokeDashArray: [4, 2],
+    })
+  );
+
+  function showSmallPorts(node, show) {
+    node.ports.each((port) => {
+      if (port.portId !== "") {
+        // don't change the default port, which is the big shape
+        port.fill = show ? "rgba(0,0,0,.3)" : null;
+      }
+    });
+  }
+
+  var nodeSelectionAdornmentTemplate = $(
+    go.Adornment,
+    "Auto",
+    $(go.Shape, {
+      fill: null,
+      stroke: "deepskyblue",
+      strokeWidth: 1.5,
+      strokeDashArray: [4, 2],
+    }),
+    $(go.Placeholder)
+  );
+
+  var linkSelectionAdornmentTemplate = $(
+    go.Adornment,
+    "Link",
+    $(go.Shape, {
+      isPanelMain: true,
+      fill: null,
+      stroke: "deepskyblue",
+      strokeWidth: 0,
+    }) // use selection object's strokeWidth
+  );
+
+  function makePort(name, spot, output, input) {
+    return $(go.Shape, "Circle", {
+      fill: null, // not seen, by default; set to a translucent gray by showSmallPorts, defined below
+      stroke: null,
+      desiredSize: new go.Size(7, 7),
+      alignment: spot, // align the port on the main Shape
+      alignmentFocus: spot, // just inside the Shape
+      portId: name, // declare this object to be a "port"
+      fromSpot: spot,
+      toSpot: spot, // declare where links may connect at this port
+      fromLinkable: output,
+      toLinkable: input, // declare whether the user may draw links to/from here
+      cursor: "pointer", // show a different cursor to indicate potential link point
+    });
+  }
+
   diagram.nodeTemplate = $(
     go.Node,
     "Auto",
-    $(
-      go.Shape,
-      "RoundedRectangle",
-      {
-        stroke: "#C5C7D0",
-        strokeWidth: 1,
-        fill: "white",
-        cursor: "pointer",
-        fromLinkable: true,
-        fromLinkableSelfNode: true,
-        fromLinkableDuplicates: true,
-        toLinkable: true,
-        toLinkableSelfNode: true,
-        toLinkableDuplicates: true,
-      },
-      new go.Binding("fill", "color")
+    {
+      fromSpot: go.Spot.AllSides,
+      toSpot: go.Spot.AllSides,
+      fromLinkable: true,
+      toLinkable: true,
+      locationSpot: go.Spot.Center,
+    },
+    new go.Binding("location", "location", go.Point.parse).makeTwoWay(
+      go.Point.stringify
     ),
     $(
-      go.TextBlock,
+      go.Panel,
+      "Auto",
+      { name: "PANEL" },
+      new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(
+        go.Size.stringify
+      ),
+      $(
+        go.Shape,
+        "RoundedRectangle",
+        {
+          stroke: "#C5C7D0",
+          strokeWidth: 1,
+          fill: "white",
+          cursor: "pointer",
+          fromLinkable: true,
+          fromLinkableSelfNode: true,
+          fromLinkableDuplicates: true,
+          toLinkable: true,
+          toLinkableSelfNode: true,
+          toLinkableDuplicates: true,
+        },
+        new go.Binding("fill", "color")
+      ),
+      $(
+        go.TextBlock,
+        {
+          margin: 10,
+          cursor: "pointer",
+          editable: true,
+          font: "18px Figtree, sans-serif",
+        },
+        new go.Binding("text").makeTwoWay()
+      ),
+
+      makePort("T", go.Spot.Top, false, true),
+      makePort("L", go.Spot.Left, true, true),
+      makePort("R", go.Spot.Right, true, true),
+      makePort("B", go.Spot.Bottom, true, false),
       {
-        margin: 10,
-        cursor: "pointer",
-        editable: true,
-        font: "18px Figtree, sans-serif",
-      },
-      new go.Binding("text")
+        mouseEnter: (e, node) => showSmallPorts(node, true),
+        mouseLeave: (e, node) => showSmallPorts(node, false),
+      }
     )
   );
 
@@ -92,6 +279,7 @@ function define_diagram() {
       }),
       $(go.Placeholder, { margin: -2 })
     ),
+
     $(
       go.Panel,
       "Auto",
@@ -100,10 +288,11 @@ function define_diagram() {
         alignmentFocus: go.Spot.Top,
       },
       $(go.Shape, "RoundedRectangle", {
-        fill: "EBEBEB",
+        fill: "#EBEBEB",
         stroke: "black",
-        strokeWidth: 3,
+        strokeWidth: 2,
       }),
+
       $(
         go.TextBlock,
         {
@@ -111,7 +300,8 @@ function define_diagram() {
           editable: true,
           stroke: "#757575",
           margin: 10,
-          editable: true,
+          maxSize: new go.Size(400, NaN),
+          wrap: go.TextBlock.WrapDesiredSize,
         },
         new go.Binding("text", "summary")
       )
@@ -123,11 +313,11 @@ function define_diagram() {
         "ButtonBorder.figure": "RoundedRectangle",
         "ButtonBorder.fill": "#784BD1",
         "ButtonBorder.stroke": null,
-        "ButtonBorder.strokeWidth": 3,
+        "ButtonBorder.strokeWidth": 2,
 
         click: addNodeAndLink,
       },
-      $(go.TextBlock, "v", {
+      $(go.TextBlock, "▼ Expandir o mapa", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
@@ -143,7 +333,7 @@ function define_diagram() {
 
         click: addSummary,
       },
-      $(go.TextBlock, "+", {
+      $(go.TextBlock, "✦ Gerar resumo", {
         font: "bold 15px Figtree, sans-serif",
         stroke: "white",
       })
@@ -153,12 +343,24 @@ function define_diagram() {
   diagram.linkTemplate = $(
     go.Link,
     {
-      routing: go.Link.Orthogonal,
-      corner: 50,
       selectable: true,
       relinkableFrom: true,
       relinkableTo: true,
+      routing: go.Link.Orthogonal,
+      corner: 50,
+      toShortLength: 3,
+      reshapable: true,
+      curve: go.Link.Orthogonal,
+      selectionAdornmentTemplate: linkSelectionAdornmentTemplate,
+      adjusting: go.Link.Strech,
     },
+    new go.Binding("points").makeTwoWay(),
+    new go.Binding("fromSpot", "fromSpot", go.Spot.parse).makeTwoWay(
+      go.Spot.stringify
+    ),
+    new go.Binding("toSpot", "toSpot", go.Spot.parse).makeTwoWay(
+      go.Spot.stringify
+    ),
     $(go.Shape, { strokeWidth: 3, name: "SHAPE", stroke: line_color }), //linhas
     $(go.Shape, {
       toArrow: "Chevron",
@@ -173,7 +375,7 @@ function define_diagram() {
     var adorn = obj.part;
     var oldnode = adorn.adornedPart;
 
-    let link = window.location.href;
+    link = window.location.href;
     link = link.split("&");
 
     if (buttonOn.style.display == "none") {
@@ -194,7 +396,7 @@ function define_diagram() {
     var adorn = obj.part;
     var node = adorn.adornedPart;
 
-    let link = window.location.href;
+    link = window.location.href;
     link = link.split("&");
 
     link[1] += String(node.key) + ";";
