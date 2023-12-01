@@ -70,53 +70,6 @@ CREATE TABLE IF NOT EXISTS tb_MapaMental(
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Table `bd_Dorah`.`tb_tags`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tb_tags(
-  tb_tags_id INT NOT NULL AUTO_INCREMENT,
-  tb_tags_nome VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`tb_tags_id`))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `bd_Dorah`.`tb_tags_MapaMental`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tb_tags_MapaMental(
-  tb_tags_id INT NOT NULL,
-  tb_MapaMental_id INT NOT NULL,
-  PRIMARY KEY (tb_tags_id, tb_MapaMental_id),
-  CONSTRAINT tags_MapaMental_fk_tags_pk
-    FOREIGN KEY (tb_tags_id)
-    REFERENCES tb_tags(tb_tags_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT tags_MapaMental_fk_MapaMental_pk
-    FOREIGN KEY (tb_MapaMental_id)
-    REFERENCES tb_MapaMental(tb_MapaMental_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `bd_Dorah`.`tb_tags_FlashCard`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tb_tags_FlashCard(
-  tb_FlashCard_id INT NOT NULL,
-  tb_tags_id INT NOT NULL,
-  PRIMARY KEY (tb_FlashCard_id, tb_tags_id),
-  CONSTRAINT FlashCard_tags_fk_FlashCard_pk
-    FOREIGN KEY (tb_FlashCard_id)
-    REFERENCES tb_FlashCard(tb_FlashCard_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT FlashCard_tags_fk_tags_pk
-    FOREIGN KEY (tb_tags_id)
-    REFERENCES tb_tags(tb_tags_id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

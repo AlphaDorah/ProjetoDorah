@@ -1,5 +1,5 @@
 from conexao import ConectarBanco, DesconectarBanco
-from converter import convertData
+from converter import convertData, convertToJson
 
 
 def create_mapa(nome,usuario,arq_nome):
@@ -19,12 +19,13 @@ def read_mapa():
     DesconectarBanco(conexao,cursor)
     mapa = list()
     for elemento in resultado:
+        arq=convertToJson(elemento[2])
         mapa.append(
             {
                 'Id':elemento[0],
                 'Nome':elemento[1],
-                'Usuario':elemento[2],
-                'Arquivo':elemento[3]
+                'Arquivo':arq,
+                'Usuario':elemento[3]
             }
         )
     return mapa
