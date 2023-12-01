@@ -36,7 +36,7 @@ function getInput() {
   if (inputTheme == "") {
     alert("Insira um tema para começarmos!");
   } else {
-    link = "/mindmap?topics=" + inputTheme + ";0generate;" + "&summaries=0;";
+    link = "/mindmap/" + inputTheme;
 
     window.open(link, "_self");
   }

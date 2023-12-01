@@ -1,3 +1,5 @@
+from functools import lru_cache
+import logging
 from langchain.chains import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
@@ -12,7 +14,11 @@ from src.dorahSearch.wikipedia_api import _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
 
+logger = logging.getLogger(__name__)
+
+
 def summary_text(input_subject: str, input_text: str) -> str:
+    logger.info("Gerando resumo com Maritalk")
     template = """Você faz um resumo do texto sobre {subject}
 
 Texto sobre Ração animal: ""Ração animal é o alimento dado para animais, tais como gado e animais de estimação.
@@ -94,12 +100,14 @@ Resumo:"""
     chain = LLMChain(prompt=prompt, llm=model)
     output_date = chain(inputs={"subject": input_subject, "input": input_text})
     output = output_date["text"]
+    logger.info("Resumo gerado com sucesso")
     return output
 
 
 def summary_sites(
     term: str, llm_interface, load_interface, links: list[str], wiki_interface
 ) -> str:
+    logger.info("Sumarizando texto usando sites")
     summaries = get_sumary(term, wiki_interface)
 
     try:
@@ -123,10 +131,15 @@ def summary_sites(
     if summaries == "Summary Not Found :(":
         return ""
     final_summary = llm_interface(term, summaries)
+
+    logger.info(
+        f"Texto sumarizado com sucesso {final_summary}",
+    )
     return final_summary
 
 
 def perform_topics(topic):
+    logger.info("Gerando tópicos com Maritalk")
     one_term = topic
     urls = get_links(one_term, _google_search)
 
@@ -136,10 +149,11 @@ def perform_topics(topic):
         one_term, summary_text, get_text_sites, url, _wikipedia_search
     )
     one_topics = generate_topics_from_text(one_summary)
-
+    logger.info(f"Tópicos gerados com sucesso: {one_topics}")
     return one_topics
 
 
+@lru_cache(maxsize=None)
 def perform_summary(topic):
     one_term = topic
     urls = get_links(one_term, _google_search)

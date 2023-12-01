@@ -1,3 +1,4 @@
+import logging
 from flask import (
     Blueprint,
     send_file,
@@ -12,13 +13,21 @@ from src.dorahSearch.google_api import get_links, _google_search
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
+logger = logging.getLogger(__name__)
+
 
 @bp.route("/")
 def index():
     return send_file("public/dorahHome/home.html")
 
 
-@bp.route("/mindmap")
+@bp.route("/mindmap/<theme>")
+def mindmap(theme):
+    logger.info("Tema: %s", theme)
+    return render_template("/dorahMindMap/mindmap.html", theme=theme)
+
+
+@bp.route("/mindmap/url")
 def generate_map():
     nodes = str(request.args.get("topics"))
     nodes = nodes.split(";")
