@@ -32,7 +32,7 @@ function getInput() {
   if (inputTheme == "") {
     alert("Insira um tema para começarmos!");
   } else {
-    link = "/mindmap/?theme=" + inputTheme;
+    link = "/mindmap/" + inputTheme;
 
     window.open(link, "_self");
   }

@@ -1,42 +1,31 @@
-function generateFlashcards() {
-  document.getElementById("generate-flashcards").classList.add("disabled");
-  document.getElementById("generate-flashcards").innerHTML =
-    "Gerando Flashcards...";
-  document.getElementById("generate-flashcards").disabled = true;
-  console.log("Gerando flashcards...");
+async function generateFlashcards() {
+  const generateButton = document.getElementById("generate-flashcards");
+  generateButton.classList.add("disabled");
+  generateButton.innerHTML = "Gerando Flashcards...";
+  generateButton.disabled = true;
 
   try {
-    summarizeText(theme).then((summary) => {
-      console.log("Sumário gerado! " + summary);
-
-      fetch("/api/generate/flashcard", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(summary),
-      }).then(async function (response) {
-        let flashcard = await response.json();
-        localStorage.setItem(
-          "ProjetoDorahFlashcards",
-          JSON.stringify(flashcard)
-        );
-
-        console.log("Flashcards gerados!");
-        document
-          .getElementById("generate-flashcards")
-          .classList.remove("disabled");
-        document.getElementById("generate-flashcards").innerHTML =
-          "Gerar Flashcards";
-        document.getElementById("generate-flashcards").disabled = false;
-        document.getElementById("open-flashcards").classList.remove("disabled");
-        document.getElementById("open-flashcards").disabled = false;
-      });
+    const summary = await summarizeText(theme);
+    const response = await fetch("/api/generate/flashcard", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(summary),
     });
+    const flashcard = await response.json();
+    localStorage.setItem("ProjetoDorahFlashcards", JSON.stringify(flashcard));
+
+    generateButton.classList.remove("disabled");
+    generateButton.innerHTML = "Gerar Flashcards";
+    generateButton.disabled = false;
+
+    document.getElementById("open-flashcards").classList.remove("disabled");
+    document.getElementById("open-flashcards").disabled = false;
   } catch (error) {
     console.log(error);
-    document.getElementById("generate-flashcards").classList.remove("disabled");
-    document.getElementById("generate-flashcards").innerHTML =
-      "Gerar Flashcards";
-    document.getElementById("generate-flashcards").disabled = false;
+
+    generateButton.classList.remove("disabled");
+    generateButton.innerHTML = "Gerar Flashcards";
+    generateButton.disabled = false;
 
     alert("Erro ao gerar flashcards!");
   }

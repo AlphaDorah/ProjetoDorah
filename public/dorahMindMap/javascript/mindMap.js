@@ -56,6 +56,14 @@ function modeHighlighterDrawing() {
 function init_map(theme) {
   define_diagram();
 
+  var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
+  var linkDataArray = [];
+
+  globalThis.diagram.model = new go.GraphLinksModel(
+    nodeDataArray,
+    linkDataArray
+  );
+
   var url = "/api/generate/map/" + theme;
   fetch(url)
     .then((response) => response.json())
