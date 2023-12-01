@@ -554,6 +554,9 @@ div {
 }
 
 #color-button1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -563,156 +566,190 @@ div {
   margin: 0;
   padding: 0;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+  &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &:disable {
-    background: #000;
+  &not(:checked)
+  {
+    background: #c5445b;
   }
 }
 
 #color-button2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #e16432;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #e16432;
   }
 }
 
 #color-button3 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #f2cb2b;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+  &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #f2cb2b;
   }
 }
 
 #color-button4 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #71c87a;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #71c87a;
   }
 }
 
 #color-button5 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #709bf9;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #709bf9;
   }
 }
 
 #color-button6 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #34508f;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #34508f;
   }
 }
 
 #color-button7 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #784bd1;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #784bd1;
   }
 }
 
 #color-button8 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #dc1587;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #dc1587;
   }
 }
 
 #color-button9 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
   background: #896952;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #896952;
   }
 }
 
 #color-button10 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 29.5px;
   height: 90px;
   flex-shrink: 0;
@@ -720,13 +757,14 @@ div {
   border-radius: 0px 8px 8px 0px;
   border: none;
   transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1);
-  }
-  &:focus,
-  &:active {
+   &:checked
+  {
     transform: scale(0.8);
     border-radius: 8px;
+  }
+  &not(:checked)
+  {
+    background: #000000;
   }
 }
 
