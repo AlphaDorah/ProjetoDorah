@@ -246,6 +246,16 @@ div {
   border-radius: 10px;
 }
 
+#info {
+  z-index: 4;
+  position: absolute;
+  display: block;
+  width: 15vw;
+  left: 0;
+  border: none;
+  background-color: #ffffff;
+}
+
 .menu {
   z-index: 4;
   position: absolute;
@@ -566,13 +576,11 @@ div {
   margin: 0;
   padding: 0;
   transition: transform 0.3s ease;
-  &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #c5445b;
   }
 }
@@ -588,13 +596,11 @@ div {
   background: #e16432;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  &:not(:checked) {
     background: #e16432;
   }
 }
@@ -609,13 +615,11 @@ div {
   background: #f2cb2b;
   border: none;
   transition: transform 0.3s ease;
-  &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #f2cb2b;
   }
 }
@@ -630,13 +634,11 @@ div {
   background: #71c87a;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #71c87a;
   }
 }
@@ -651,13 +653,11 @@ div {
   background: #709bf9;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #709bf9;
   }
 }
@@ -672,13 +672,11 @@ div {
   background: #34508f;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #34508f;
   }
 }
@@ -693,13 +691,11 @@ div {
   background: #784bd1;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #784bd1;
   }
 }
@@ -714,13 +710,11 @@ div {
   background: #dc1587;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #dc1587;
   }
 }
@@ -735,13 +729,11 @@ div {
   background: #896952;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #896952;
   }
 }
@@ -757,13 +749,11 @@ div {
   border-radius: 0px 8px 8px 0px;
   border: none;
   transition: transform 0.3s ease;
-   &:checked
-  {
+  &:checked {
     transform: scale(0.8);
     border-radius: 8px;
   }
-  &not(:checked)
-  {
+  :not(:checked) {
     background: #000000;
   }
 }

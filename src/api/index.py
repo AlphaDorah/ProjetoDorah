@@ -27,6 +27,11 @@ def mindmap(theme):
     return render_template("/dorahMindMap/mindmap.html", theme=theme)
 
 
+@bp.route("/mindmap/")
+def mindmapEmpty():
+    return render_template("/dorahMindMap/mindmap.html", theme="")
+
+
 @bp.route("/mindmap/url")
 def generate_map():
     nodes = str(request.args.get("topics"))

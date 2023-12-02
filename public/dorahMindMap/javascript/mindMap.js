@@ -119,27 +119,34 @@ function modeHighlighterDrawing() {
 
 function init_map(theme) {
   define_diagram();
-
-  var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
-  var linkDataArray = [];
-
-  globalThis.diagram.model = new go.GraphLinksModel(
-    nodeDataArray,
-    linkDataArray
-  );
-
   onLoadDefs();
 
-  var url = "/api/generate/map/" + theme;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      draw_map(data.topics, data.summaries);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Erro ao gerar o mapa mental, tente novamente.");
-    });
+  if (theme == "") {
+  } else {
+    var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
+    var linkDataArray = [];
+
+    globalThis.diagram.model = new go.GraphLinksModel(
+      nodeDataArray,
+      linkDataArray
+    );
+
+    document.getElementById("info").style.display = "block";
+
+    var url = "/api/generate/map/" + theme;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        draw_map(data.topics, data.summaries);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Erro ao gerar o mapa mental, tente novamente.");
+      })
+      .finally(() => {
+        document.getElementById("info").style.display = "none";
+      });
+  }
 }
 
 function draw_map(nodes, summaries) {

@@ -1,3 +1,5 @@
+const { GraphLinksModel } = require("gojs");
+
 function define_diagram() {
   const $ = go.GraphObject.make;
 
@@ -371,26 +373,63 @@ function define_diagram() {
     })
   );
 
+  /**
+   * Adds a node and a link to the diagram.
+   *
+   * @param {go.InputEvent} e - The event object.
+   * @param {go.GraphObject} obj - The object parameter.
+   * @return {void} No return value.
+   */
   function addNodeAndLink(e, obj) {
-    let buttonOn = document.getElementById("id-toggleon");
-    var adorn = obj.part;
-    var oldnode = adorn.adornedPart;
+    let data = obj.part.data;
+    let key = obj.part.key;
 
-    link = window.location.href;
-    link = link.split("&");
+    console.log(total_temas);
 
-    if (buttonOn.style.display == "none") {
-      var newdata = {
-        key: total_temas + 1,
-        text: `Novo Subtema ${total_temas}`,
-        sumary: `Resumo do subtema ${total_temas}`,
-      };
-      link[0] += oldnode.key + newdata.text + ";";
-    } else {
-      link[0] += String(oldnode.key) + "generate" + ";";
-    }
+    console.log(data);
+    console.log(key);
 
-    window.open(link[0] + "&" + link[1], "_self");
+    var url = "/api/generate/map/" + data.text + "?theme=" + theme;
+    console.log(url);
+    /** @type {GraphLinksModel} */
+    let model = globalThis.diagram.model;
+
+    document.getElementById("info").style.display = "block";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((newdata) => {
+        for (let i = 0; i < newdata.topics.length; i++) {
+          const content = newdata.topics[i];
+          const summary = newdata.summaries[i];
+
+          if (model.nodeDataArray.find((node) => node.text === content)) {
+            continue;
+          }
+          console.log(content);
+          console.log(model);
+          console.log("addNodeAndLink");
+          model.addNodeData({
+            key: total_temas + 1,
+            text: content,
+            summary: summary,
+          });
+          model.addLinkData({
+            from: key,
+            to: total_temas + 1,
+          });
+          console.log("addNodeAndLink");
+
+          total_temas++;
+        }
+      })
+      .catch((error) => {
+        alert("Erro ao gerar o mapa mental, tente novamente.");
+        throw error;
+      })
+      .finally(() => {
+        document.getElementById("info").style.display = "none";
+      });
   }
 
   function addSummary(e, obj) {
