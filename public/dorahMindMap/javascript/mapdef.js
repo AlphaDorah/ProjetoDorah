@@ -255,7 +255,7 @@ function define_diagram() {
             },
             new go.Binding("text").makeTwoWay(),
           ),
-
+            /*
            $(
             go.TextBlock,
             {
@@ -266,7 +266,7 @@ function define_diagram() {
               font: "16px Figtree, sans-serif",
             },
              new go.Binding("text", "summary")
-          )
+          )*/
       ),
 
 
