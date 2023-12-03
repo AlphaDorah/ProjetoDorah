@@ -241,6 +241,17 @@ function define_diagram() {
         },
         new go.Binding("fill", "color")
       ),
+
+      $(
+      go.TextBlock,
+      {
+        margin: 10,
+        cursor: "pointer",
+        editable: true,
+        font: "18px Figtree, sans-serif",
+      },
+      "\n"
+),
       $(
         go.TextBlock,
         {
@@ -250,6 +261,17 @@ function define_diagram() {
           font: "18px Figtree, sans-serif",
         },
         new go.Binding("text").makeTwoWay()
+      ),
+
+       $(
+        go.TextBlock,
+        {
+          margin: 10,
+          cursor: "pointer",
+          editable: true,
+          font: "18px Figtree, sans-serif",
+        },
+         new go.Binding("text", "summary")
       ),
 
       makePort("T", go.Spot.Top, false, true),

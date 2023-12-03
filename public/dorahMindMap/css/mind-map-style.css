@@ -762,3 +762,34 @@ div {
   pointer-events: none;
   opacity: 0.4;
 }
+
+p
+{
+margin-left: 20px;
+    background: linear-gradient(
+        to right,
+        #DB00FF 20%,
+        #DB00FF 30%,
+        #CD7FF1 70%,
+        #7D00DF 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 5s ease-in-out infinite alternate;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+
+}
+
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
