@@ -1,8 +1,8 @@
 var total_temas = 0;
 note_color = "LightYellow";
 pencilColor = "black";
-line_color = "#935CFF";
-arrow_color = "#935CFF";
+line_color = "#575757";
+arrow_color = "#575757";
 
 function getColor() {
   return note_color;

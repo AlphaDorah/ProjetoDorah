@@ -10,12 +10,30 @@ body {
   overflow: hidden;
 }
 
+.container-logo{
+  position: relative;
+  width: 200px;
+  height: 50px;
+}
+
+.container-logo h1{
+      margin: 0;
+      color: black;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 22px;
+      position: absolute;
+      right: 0;
+      top: 14px;
+}
+
 .logo {
   color: white;
   width: 55px;
   aspect-ratio: 55 / 42;
-  top: 1.5vh;
-  left: 3.5vw;
+  left: 30px;
+  top: 4px;
   position: absolute;
 }
 
@@ -84,6 +102,7 @@ div {
   height: 50px;
   top: 1vh;
   text-align: right;
+  position: relative;
 }
 
 .button-container {

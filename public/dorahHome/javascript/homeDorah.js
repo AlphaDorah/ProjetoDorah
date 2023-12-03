@@ -87,6 +87,10 @@ function getLoginButton() {
   window.open("/login", "_self");
 }
 
+ function getSignupButton(){
+  window.open("/cadastro", "_self");
+ }
+
 document.addEventListener("keydown", function (event) {
   if (event.key === "d" || event.key === "D") {
     const body = document.body;

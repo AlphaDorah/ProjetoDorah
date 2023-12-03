@@ -39,8 +39,11 @@
   </head>
 
   <body onload="init_map('{{theme}}')">
-    {% include "logo.html" %}
     <div class="upper-bar">
+      <section class="container-logo">
+        {% include "logo.html" %}
+        <h1>Dorah</h1>
+      </section>
       <div class="button-container">
         <button class="button-history" id="id-historybutton">
           <svg
