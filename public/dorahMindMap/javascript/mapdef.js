@@ -242,37 +242,33 @@ function define_diagram() {
         new go.Binding("fill", "color")
       ),
 
-      $(
-      go.TextBlock,
-      {
-        margin: 10,
-        cursor: "pointer",
-        editable: true,
-        font: "18px Figtree, sans-serif",
-      },
-      "\n"
-),
-      $(
-        go.TextBlock,
-        {
-          margin: 10,
-          cursor: "pointer",
-          editable: true,
-          font: "18px Figtree, sans-serif",
-        },
-        new go.Binding("text").makeTwoWay()
+        $(
+          go.Panel,
+          "Vertical",
+          $(
+            go.TextBlock,
+            {
+              margin: new go.Margin(10, 10, 10, 10),
+              cursor: "pointer",
+              editable: true,
+              font: "18px Figtree, sans-serif",
+            },
+            new go.Binding("text").makeTwoWay(),
+          ),
+
+           $(
+            go.TextBlock,
+            {
+              margin: new go.Margin(0, 10, 10, 10),
+              cursor: "pointer",
+              stroke: '#1e1f22',
+              editable: true,
+              font: "16px Figtree, sans-serif",
+            },
+             new go.Binding("text", "summary")
+          )
       ),
 
-       $(
-        go.TextBlock,
-        {
-          margin: 10,
-          cursor: "pointer",
-          editable: true,
-          font: "18px Figtree, sans-serif",
-        },
-         new go.Binding("text", "summary")
-      ),
 
       makePort("T", go.Spot.Top, false, true),
       makePort("L", go.Spot.Left, true, true),
