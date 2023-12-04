@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 class MariTalkLLM(LLM):
     pipeline: MariTalk = MariTalk(
-        key="115739193064709385838$fbd58565c39d9a32b7336de9cb4bdc8a572030dd285961d5130aa1a2a71a0e2f"
+        key="109375944891660204854$91c0ea69a163578171c23cb4ddec0ca1b19b007720d3395c75ca1133be6b4f70"
     )
 
     @property

@@ -108,34 +108,29 @@ def summary_sites(
     term: str, llm_interface, load_interface, links: list[str], wiki_interface
 ) -> str:
     logger.info("Sumarizando texto usando sites")
-    summaries = get_sumary(term, wiki_interface)
+    summary = get_sumary(term, wiki_interface)
 
-    try:
-        list_doc = load_interface(links)
-        for text_date in list_doc:
-            length_text = len(text_date.page_content)
-            if length_text < 18:
-                continue
-            page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
-            page_end = 8000 + page_init  # impede limite de tokens da Maritalk
-            if length_text < page_end:
-                page_end = length_text
-            partial_summary = llm_interface(
-                term, text_date.page_content[page_init:page_end]
-            )
-            summaries += partial_summary
-    except (ValueError, TypeError):
-        # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
-        pass
+    list_doc = load_interface(links)
+    for text_date in list_doc:
+        length_text = len(text_date.page_content)
+        page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
+        page_end = 10000  # limite de tokens da Maritalk para agilizar pesquisa
+        partial_summary = summary + text_date.page_content[page_init:]
+        length_text = len(partial_summary)
+        if length_text > page_end:
+            partial_summary = partial_summary[:page_end]
 
-    if summaries == "Summary Not Found :(":
+        summary = llm_interface(
+            term, partial_summary
+        )
+
+    if summary == "Summary Not Found :(":
         return ""
-    final_summary = llm_interface(term, summaries)
 
     logger.info(
-        f"Texto sumarizado com sucesso {final_summary}",
+        f"Texto sumarizado com sucesso {summary}",
     )
-    return final_summary
+    return summary
 
 
 def perform_topics(topic):
