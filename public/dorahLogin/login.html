@@ -18,7 +18,7 @@
   </head>
   <body>
     <div class="header">
-      <div class="logo">
+      <div class="logo" onclick="getHome()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="55"
@@ -98,7 +98,7 @@
             <h2 id="textBV">Bem vindo(a)<br />de volta!</h2>
           </div>
           <h3>Primeira vez por aqui?</h3>
-          <button class="botao-cadastro" typeof="button">Criar Conta</button>
+          <button class="botao-cadastro" typeof="button" onclick="getSignUpButton()">Criar Conta</button>
         </div>
         <div class="login">
           <h1>FAZER LOGIN</h1>
@@ -126,7 +126,7 @@
             typeof="button"
             id="loginButton"
             disabled
-            onclick="getInput()"
+            onclick="getHome()"
           >
             Entrar
           </button>

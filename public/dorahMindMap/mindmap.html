@@ -39,8 +39,11 @@
   </head>
 
   <body onload="init_map('{{theme}}')">
-    {% include "logo.html" %}
     <div class="upper-bar">
+      <section class="container-logo" onclick="getHome()">
+        {% include "logo.html" %}
+        <h1>Dorah</h1>
+      </section>
       <div class="button-container">
         <button class="button-history" id="id-historybutton">
           <svg
@@ -93,7 +96,7 @@
           </svg>
           Fazer Login</button
         ><!--button-login-->
-        <button class="button-signup" id="id-signupButton">
+        <button class="button-signup" id="id-signupButton" onclick="getSignUpButton()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
@@ -114,7 +117,7 @@
 
     <div class="mind-map">
       <div id="info">
-        <p id="generating-info">Gerando tópicos...</p>
+        <p id="generating-info">✦ Gerando tópicos...</p>
       </div>
       <div id="mind-map" class="mind-map"></div>
     </div>
@@ -212,7 +215,7 @@
             alt="toggleoff"
           />
         </button>
-        <p>Recomendações da IA</p>
+        <h3>Recomendações da IA</h3>
       </div>
     </div>
 

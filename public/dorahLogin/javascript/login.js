@@ -74,6 +74,16 @@ document.getElementById("senhaInput").addEventListener("keydown", function (even
         }
     }
 });
+
+function getSignUpButton(){
+    window.open("/cadastro", "_self");
+}
+
+function getHome(){
+    window.open("/", "_self");
+}
+
+
 /*
 function writteanimation()
 {

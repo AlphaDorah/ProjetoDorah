@@ -1,8 +1,8 @@
 var total_temas = 0;
 note_color = "LightYellow";
 pencilColor = "black";
-line_color = "#935CFF";
-arrow_color = "#935CFF";
+line_color = "#575757";
+arrow_color = "#575757";
 
 function getColor() {
   return note_color;
@@ -95,18 +95,82 @@ function modePencilDrawing() {
 }
 
 function modeHighlighterDrawing() {
-  var color_highlighter = "rgb(255, 255, 0, 0.30)";
+
   var size_highlighter = 40;
   var tool = diagram.toolManager.findTool("FreehandDrawing");
   var highlighter = document.getElementById("highlighter");
   var pencil = document.getElementById("pencil");
-
   if (highlighter.checked) {
-    tool.archetypePartData = {
-      category: "FreehandDrawing",
-      stroke: color_highlighter,
-      strokeWidth: size_highlighter,
+  if(pencilColor == 0){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(255, 0, 0, 0.30)",
+        strokeWidth: size_highlighter,
     };
+    }
+     if(pencilColor == 1){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(255, 150, 26, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 2){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(255, 240, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 3){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(184, 246, 0, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 4){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(0, 250, 252, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 5){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(46, 127, 255, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 6){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(172, 47, 255, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 7){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(255, 73, 215, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 8){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(147, 105, 81, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
+     if(pencilColor == 9){
+        tool.archetypePartData = {
+        category: "FreehandDrawing",
+        stroke: "rgb(0, 0, 0, 0.30)",
+        strokeWidth: size_highlighter,
+    };
+    }
     tool.isEnabled = true;
   } else {
     tool.isEnabled = false;
@@ -292,10 +356,20 @@ function changeColor(index) {
   var color8 = document.getElementById("color-button8");
   var color9 = document.getElementById("color-button9");
   var color10 = document.getElementById("color-button10");
+    var highlighter = document.getElementById("highlighter");
+    var pencil = document.getElementById("pencil");
 
   if (index == 0) {
     pencilColor = 0;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color2.checked = false;
     color3.checked = false;
     color4.checked = false;
@@ -309,7 +383,15 @@ function changeColor(index) {
 
   if (index == 1) {
     pencilColor = 1;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color3.checked = false;
     color4.checked = false;
@@ -323,7 +405,15 @@ function changeColor(index) {
 
   if (index == 2) {
     pencilColor = 2;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color4.checked = false;
@@ -337,7 +427,15 @@ function changeColor(index) {
 
   if (index == 3) {
     pencilColor = 3;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -351,7 +449,15 @@ function changeColor(index) {
 
   if (index == 4) {
     pencilColor = 4;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -365,7 +471,15 @@ function changeColor(index) {
 
   if (index == 5) {
     pencilColor = 5;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -379,7 +493,15 @@ function changeColor(index) {
 
   if (index == 6) {
     pencilColor = 6;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -393,7 +515,15 @@ function changeColor(index) {
 
   if (index == 7) {
     pencilColor = 7;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -407,7 +537,15 @@ function changeColor(index) {
 
   if (index == 8) {
     pencilColor = 8;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;
@@ -421,7 +559,15 @@ function changeColor(index) {
 
   if (index == 9) {
     pencilColor = 9;
-    modePencilDrawing();
+    if(highlighter.checked)
+    {
+        modeHighlighterDrawing();
+    } else {
+        if(pencil.checked)
+        {
+            modePencilDrawing();
+        }
+    }
     color1.checked = false;
     color2.checked = false;
     color3.checked = false;

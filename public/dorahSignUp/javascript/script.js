@@ -91,6 +91,14 @@ document.getElementById("senhaInput").addEventListener("keydown", function (even
         }
     }
 });
+
+function getHome(){
+    window.open("/", "_self");
+}
+
+function getLoginButton(){
+    window.open("/login", "_self");
+}
 /*
 function writteanimation()
 {

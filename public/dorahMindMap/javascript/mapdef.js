@@ -20,20 +20,20 @@ function define_diagram() {
       segmentIndex: 0,
       cursor: "pointer",
       desiredSize: new go.Size(8, 8),
-      fill: "tomato",
-      stroke: "darkred",
+      fill: "#D9C6FF",
+      stroke: "#935CFF",
     }),
     "relinkingTool.toHandleArchetype": $(go.Shape, "Diamond", {
       segmentIndex: -1,
       cursor: "pointer",
       desiredSize: new go.Size(8, 8),
-      fill: "darkred",
-      stroke: "tomato",
+      fill: "#D9C6FF",
+      stroke: "#935CFF",
     }),
     "linkReshapingTool.handleArchetype": $(go.Shape, "Diamond", {
       desiredSize: new go.Size(7, 7),
-      fill: "lightblue",
-      stroke: "deepskyblue",
+      fill: "#D9C6FF",
+      stroke: "#935CFF",
     }),
     "rotatingTool.handleAngle": 270,
     "rotatingTool.handleDistance": 30,
@@ -62,6 +62,16 @@ function define_diagram() {
     }),
   });
 
+  const temptonode =
+  $(go.Node,
+    { layerName: "Tool" },
+    $(go.Shape, "RoundedRectangle",
+      { stroke: "#D9C6FF", strokeWidth: 3, fill: 'none',
+        portId: "", width: 1, height: 1 })
+  );
+
+  diagram.toolManager.linkingTool.temporaryToNode = temptonode;
+  diagram.toolManager.linkingTool.temporaryToPort = temptonode.port;
   globalThis.diagram = diagram;
 
   diagram.gridTemplate = $(
@@ -183,7 +193,7 @@ function define_diagram() {
     $(go.Shape, {
       isPanelMain: true,
       fill: null,
-      stroke: "deepskyblue",
+      stroke: "#935CFF",
       strokeWidth: 0,
     }) // use selection object's strokeWidth
   );
@@ -241,16 +251,34 @@ function define_diagram() {
         },
         new go.Binding("fill", "color")
       ),
-      $(
-        go.TextBlock,
-        {
-          margin: 10,
-          cursor: "pointer",
-          editable: true,
-          font: "18px Figtree, sans-serif",
-        },
-        new go.Binding("text").makeTwoWay()
+
+        $(
+          go.Panel,
+          "Vertical",
+          $(
+            go.TextBlock,
+            {
+              margin: new go.Margin(10, 10, 10, 10),
+              cursor: "pointer",
+              editable: true,
+              font: "18px Figtree, sans-serif",
+            },
+            new go.Binding("text").makeTwoWay(),
+          ),
+            /*
+           $(
+            go.TextBlock,
+            {
+              margin: new go.Margin(0, 10, 10, 10),
+              cursor: "pointer",
+              stroke: '#1e1f22',
+              editable: true,
+              font: "16px Figtree, sans-serif",
+            },
+             new go.Binding("text", "summary")
+          )*/
       ),
+
 
       makePort("T", go.Spot.Top, false, true),
       makePort("L", go.Spot.Left, true, true),
@@ -292,8 +320,9 @@ function define_diagram() {
       },
       $(go.Shape, "RoundedRectangle", {
         fill: "#EBEBEB",
-        stroke: "black",
+        stroke: "#C5C7D0",
         strokeWidth: 2,
+        maxSize: new go.Size(500, NaN),
       }),
 
       $(
