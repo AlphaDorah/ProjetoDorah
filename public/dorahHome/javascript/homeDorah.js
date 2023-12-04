@@ -5,15 +5,33 @@ const speed = 100;
 let inputTheme;
 let animationPaused = false;
 let loggedUser = false;
+var items = ["Magia", "Independência do Brasil", "Segunda Guerra Mundial", "Império romano", "Biologia marinha"];
+var textSuggestion = "Sugestão (pressione Tab para usá-la): "
+var item;
 
 document.getElementById("id-historybutton").style.display = "none";
 document.getElementById("id-exportButton").style.display = "none";
+
+setInterval(function(){
+  var input = document.getElementById("themeInput");
+  
+  if(input.value == ""){
+    item = items[Math.floor(Math.random()*items.length)];
+    placeholder = textSuggestion + item;    
+  }
+}, 10000);
 
 document
   .getElementById("themeInput")
   .addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       getInput();
+    }
+    else if(event.key === "Tab"){
+      var input = document.getElementById("themeInput");
+      input.value = item;
+      var buttonInput =  document.getElementById("buttonInput");
+      buttonInput.style.border = "2px solid white";
     }
   });
 
