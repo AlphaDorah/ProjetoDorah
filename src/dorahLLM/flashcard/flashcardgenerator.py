@@ -9,6 +9,8 @@ Para executar o teste de integração:
 """
 
 from abc import ABC, abstractmethod
+import random
+import string
 from langchain.prompts import PromptTemplate
 from src.dorahLLM.flashcard.flashcard import Flashcard
 
@@ -27,6 +29,12 @@ class FlashcardGenerator(ABC):
         pass
 
 
+def random_text(size):
+    return "".join(
+        random.choice(string.ascii_uppercase + string.digits) for _ in range(size)
+    )
+
+
 class MaritalkFlashcardGenerator(FlashcardGenerator):
     def __init__(self, model: LLM = MariTalkLLM(), template="maritalk_flashcard"):
         self.template = PromptTemplate.from_template(self._load_template(template))
@@ -34,6 +42,20 @@ class MaritalkFlashcardGenerator(FlashcardGenerator):
         self.chain = LLMChain(prompt=self.template, llm=self.model)
 
     def generate(self, summary: str) -> list[Flashcard]:
+        random_number_of_flashcards = random.randint(3, 5)
+        questions = [
+            random_text(random_number_of_flashcards)
+            for _ in range(random_number_of_flashcards)
+        ]
+        answers = [
+            random_text(random_number_of_flashcards)
+            for _ in range(random_number_of_flashcards)
+        ]
+
+        flashcards = []
+        for i in range(len(questions)):
+            flashcards.append(Flashcard(questions[i], answers[i]))
+        return flashcards
         res = self.chain(inputs={"summary": summary})
         return self._parse_flashcards(res["text"])
 

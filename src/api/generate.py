@@ -9,7 +9,8 @@ from src.dorahLLM.flashcard.flashcard_summary import FlashcardSummarizer
 from src.dorahLLM.flashcard.flashcardgenerator import MaritalkFlashcardGenerator
 from src.dorahLLM.flashcard.textprocessor import MaritalkProcessor
 from src.dorahLLM.maritalk_summary import perform_summary, perform_topics
-
+import random
+import string
 
 bp = Blueprint("generate", __name__, url_prefix="/api/generate")
 
@@ -17,6 +18,12 @@ bp = Blueprint("generate", __name__, url_prefix="/api/generate")
 @bp.route("/")
 def index():
     return b"<h2>Hello, World!</h2>"
+
+
+def random_text(size):
+    return "".join(
+        random.choice(string.ascii_uppercase + string.digits) for _ in range(size)
+    )
 
 
 @bp.route("/map/<theme>")
@@ -32,10 +39,13 @@ def generate_map(theme):
     """
     if theme is None:
         return jsonify({"error": "Missing theme"}), 400
-    topics = perform_topics(theme)
-    summaries = []
-    for topic in topics:
-        summaries.append("Sumário de " + topic)
+    random_number_of_topics = random.randint(5, 10)
+    topics = [
+        random_text(random_number_of_topics) for _ in range(random_number_of_topics)
+    ]
+    summaries = [
+        random_text(random_number_of_topics) for _ in range(random_number_of_topics)
+    ]
     return jsonify({"topics": topics, "summaries": summaries}), 200
 
 
@@ -53,7 +63,7 @@ def generate_summary():
     term = request.args.get("term")
     if term is None:
         return jsonify({"error": "Missing term"}), 400
-    summary = FlashcardSummarizer().summary(term)
+    summary = random_text(100)
     return jsonify({"summary": summary}), 200
 
 
