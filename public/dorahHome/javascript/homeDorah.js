@@ -5,7 +5,7 @@ const speed = 100;
 let inputTheme;
 let animationPaused = false;
 let loggedUser = false;
-var items = ["Magia", "Independência do Brasil", "Segunda Guerra Mundial", "Império romano", "Biologia marinha"];
+var items = ["Magia", "Independência do Brasil", "Segunda Guerra Mundial", "Revolução Russa", "Python"];
 var textSuggestion = "Sugestão (pressione Tab para usá-la): "
 var item;
 
