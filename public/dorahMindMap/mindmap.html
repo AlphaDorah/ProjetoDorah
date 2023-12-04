@@ -40,7 +40,7 @@
 
   <body onload="init_map('{{theme}}')">
     <div class="upper-bar">
-      <section class="container-logo">
+      <section class="container-logo" onclick="getHome()">
         {% include "logo.html" %}
         <h1>Dorah</h1>
       </section>
@@ -96,7 +96,7 @@
           </svg>
           Fazer Login</button
         ><!--button-login-->
-        <button class="button-signup" id="id-signupButton">
+        <button class="button-signup" id="id-signupButton" onclick="getSignUpButton()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"

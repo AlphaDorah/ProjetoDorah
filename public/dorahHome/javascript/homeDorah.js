@@ -105,7 +105,7 @@ function getLoginButton() {
   window.open("/login", "_self");
 }
 
- function getSignupButton(){
+ function getSignUpButton(){
   window.open("/cadastro", "_self");
  }
 

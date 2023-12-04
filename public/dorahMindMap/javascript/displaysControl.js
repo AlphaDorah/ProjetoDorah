@@ -39,3 +39,15 @@ function sugestionButton(){
         buttonOff.style.display = "block";
     }
 }
+
+function getLoginButton(){
+    window.open("/login", "_self")
+}
+
+function getSignUpButton(){
+    window.open("/cadastro", "_self");
+}
+
+function getHome(){
+    window.open("/", "_self");
+}

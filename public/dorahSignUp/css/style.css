@@ -158,6 +158,12 @@ body
     margin-bottom: 14.25rem;
 }
 
+@media (max-width: 1280px){
+    .texto-cadastro{
+        margin-bottom: 12rem;
+    }
+}
+
 .cadastro h1
 {
     color: #ffffff;
@@ -190,13 +196,6 @@ body
     letter-spacing: 2px;
     margin-bottom: 19px;
 }
-
-
-.cadastro-texto-botao
-{
-    margin-bottom: 14.25rem;
-}
-
 
 .botao-cadastro
 {
@@ -265,7 +264,7 @@ body
 .cadastrar h1,
 .email-cadastro,
 .senha-cadastro{
-    margin-bottom: 4%;
+    margin-bottom: 3%;
 }
 
 .email-cadastro:focus {
