@@ -62,12 +62,17 @@ function define_diagram() {
     }),
   });
 
-  const temptonode =
-  $(go.Node,
+  const temptonode = $(
+    go.Node,
     { layerName: "Tool" },
-    $(go.Shape, "RoundedRectangle",
-      { stroke: "#D9C6FF", strokeWidth: 3, fill: 'none',
-        portId: "", width: 1, height: 1 })
+    $(go.Shape, "RoundedRectangle", {
+      stroke: "#D9C6FF",
+      strokeWidth: 3,
+      fill: "none",
+      portId: "",
+      width: 1,
+      height: 1,
+    })
   );
 
   diagram.toolManager.linkingTool.temporaryToNode = temptonode;
@@ -252,20 +257,20 @@ function define_diagram() {
         new go.Binding("fill", "color")
       ),
 
+      $(
+        go.Panel,
+        "Vertical",
         $(
-          go.Panel,
-          "Vertical",
-          $(
-            go.TextBlock,
-            {
-              margin: new go.Margin(10, 10, 10, 10),
-              cursor: "pointer",
-              editable: true,
-              font: "18px Figtree, sans-serif",
-            },
-            new go.Binding("text").makeTwoWay(),
-          ),
-            /*
+          go.TextBlock,
+          {
+            margin: new go.Margin(10, 10, 10, 10),
+            cursor: "pointer",
+            editable: true,
+            font: "18px Figtree, sans-serif",
+          },
+          new go.Binding("text").makeTwoWay()
+        )
+        /*
            $(
             go.TextBlock,
             {
@@ -278,7 +283,6 @@ function define_diagram() {
              new go.Binding("text", "summary")
           )*/
       ),
-
 
       makePort("T", go.Spot.Top, false, true),
       makePort("L", go.Spot.Left, true, true),
@@ -462,15 +466,32 @@ function define_diagram() {
   }
 
   function addSummary(e, obj) {
-    var adorn = obj.part;
-    var node = adorn.adornedPart;
+    /** @type {GraphLinksModel} */
+    let model = globalThis.diagram.model;
+    let data = obj.part.data;
+    let key = obj.part.key;
 
-    link = window.location.href;
-    link = link.split("&");
+    console.log(data);
+    console.log(key);
 
-    link[1] += String(node.key) + ";";
+    let url = "/api/generate/summary/" + data.text;
 
-    window.open(link[0] + "&" + link[1], "_self");
+    document.getElementById("info").style.display = "block";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((newdata) => {
+        console.log(newdata.summary);
+        model.setDataProperty(data, "summary", newdata.summary);
+        console.log(obj);
+      })
+      .catch((error) => {
+        alert("Erro ao gerar o resumo, tente novamente.");
+        throw error;
+      })
+      .finally(() => {
+        document.getElementById("info").style.display = "none";
+      });
   }
 
   function nodeStyle() {
@@ -531,7 +552,12 @@ function define_diagram() {
       { reshapable: true },
       $(
         go.Shape,
-        { name: "SHAPE", fill: null, strokeWidth: 1, geometryString: "F M0 0 C10 30 40 30 50 0 C60 30 90 30 100 0",},
+        {
+          name: "SHAPE",
+          fill: null,
+          strokeWidth: 1,
+          geometryString: "F M0 0 C10 30 40 30 50 0 C60 30 90 30 100 0",
+        },
         new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(
           go.Size.stringify
         ),
