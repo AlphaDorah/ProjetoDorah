@@ -522,7 +522,7 @@ function define_diagram() {
         selectionAdornmentTemplate: $(
           go.Adornment,
           "Auto",
-          $(go.Shape, { stroke: "dodgerblue", fill: null }),
+          $(go.Shape, { stroke: "#935CFF", fill: null }),
           $(go.Placeholder, { margin: -1 })
         ),
       },
@@ -531,7 +531,7 @@ function define_diagram() {
       { reshapable: true },
       $(
         go.Shape,
-        { name: "SHAPE", fill: null, strokeWidth: 1.5 },
+        { name: "SHAPE", fill: null, strokeWidth: 1, geometryString: "F M0 0 C10 30 40 30 50 0 C60 30 90 30 100 0",},
         new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(
           go.Size.stringify
         ),
@@ -547,7 +547,7 @@ function define_diagram() {
   tool.archetypePartData = {
     category: "FreehandDrawing",
     stroke: "black",
-    strokeWidth: 4,
+    strokeWidth: 2,
   };
   tool.isBackgroundOnly = false;
   tool.isEnabled = false;
