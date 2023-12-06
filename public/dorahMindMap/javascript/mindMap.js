@@ -184,6 +184,14 @@ function init_map(theme) {
   define_diagram();
   onLoadDefs();
 
+  if (load_from_local_storage()) {
+    document.getElementById("generating-info").style.display = "none";
+    return;
+  }
+
+  console.log("autosave not found");
+  console.log(theme);
+
   if (theme == "") {
   } else {
     var nodeDataArray = [{ key: 0, text: theme, summary: "" }];
@@ -209,7 +217,41 @@ function init_map(theme) {
       .finally(() => {
         document.getElementById("generating-info").style.display = "none";
       });
+
+    save_to_local_storage();
   }
+}
+
+function load_from_local_storage() {
+  var map = localStorage.getItem("<map>" + theme);
+
+  if (map == null || JSON.parse(map).model.nodeDataArray.length == 0) {
+    return false;
+  }
+
+  let json = JSON.parse(map);
+
+  globalThis.diagram.initialPosition = go.Point.parse(json.position || "0 0");
+  globalThis.diagram.model = go.Model.fromJson(json.model);
+  globalThis.diagram.model.undoManager.isEnabled = true;
+
+  return true;
+}
+
+function save_to_local_storage() {
+  var map =
+    '{ "position": "' +
+    go.Point.stringify(globalThis.diagram.position) +
+    '",\n  "model": ' +
+    globalThis.diagram.model.toJson() +
+    " }";
+  localStorage.setItem("<map>" + theme, map);
+
+  console.log("Saved to local storage");
+
+  setTimeout(() => {
+    save_to_local_storage();
+  }, 30000);
 }
 
 function draw_map(nodes, summaries) {

@@ -1,4 +1,6 @@
-const { GraphLinksModel } = require("gojs");
+if (typeof model === "function") {
+  const { GraphLinksModel } = require("gojs");
+}
 
 function define_diagram() {
   const $ = go.GraphObject.make;
