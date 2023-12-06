@@ -51,6 +51,7 @@
         </button>
         <!--button-history-->
         <button
+          title="Export"
           class="button-export"
           id="id-exportButton"
           onclick="openDownloadMenu()"
@@ -58,10 +59,11 @@
           {% include "/exportButton.html" %} Exportar
         </button>
         <!--button-export-->
-        <button class="button-login" onclick="getLoginButton()">
+        <button title="Sign In" class="button-login" onclick="getLoginButton()">
           {% include "/loginButton.html" %} Fazer Login</button
         ><!--button-login-->
         <button
+          title="Sign Up"
           class="button-signup"
           id="id-signupButton"
           onclick="getSignUpButton()"
@@ -82,16 +84,17 @@
     </div>
 
     <div class="bottom-left-bar">
-      <input type="checkbox" id="pencil" onclick="modePencilDrawing()" />
+      <input title="Pencil" type="checkbox" id="pencil" onclick="modePencilDrawing()" />
       <input
+        title="Highlighter"
         type="checkbox"
         id="highlighter"
         onclick="modeHighlighterDrawing()"
       />
-      <button id="addNotes" onclick="addCommentNote()"></button>
-      <button id="washitape"></button>
-      <button id="addText"></button>
-      <button id="eraser"></button>
+      <button title="Notes" id="addNotes" onclick="addCommentNote()"></button>
+      <button title="Washitape" id="washitape"></button>
+      <button title="Text" id="addText"></button>
+      <button title="Eraser" id="eraser"></button>
       <class class="vertical-bar"></class>
       <class id="color-group">
         <input type="checkbox" id="color-button1" onclick="changeColor(0)" />
@@ -119,7 +122,7 @@
         step="0.01"
       />
 
-      <button id="fitDiagram" class="ico-button">
+      <button title="Fit" id="fitDiagram" class="ico-button">
         <i class="bx bx-collapse-alt"></i>
       </button>
 
@@ -127,17 +130,17 @@
     </div>
 
     <div id="downloadMenu" class="menu">
-      <button id="close" class="ico-button" onclick="closeDownloadMenu()">
+      <button title="Close" id="close" class="ico-button" onclick="closeDownloadMenu()">
         <i class="bx bx-x"></i>
       </button>
       <h2>Mapa mental</h2>
-      <button id="button-mindmap-json" class="button-menu">JSON</button>
-      <button id="button-mindmap-pdf" class="button-menu">
+      <button title="Json" id="button-mindmap-json" class="button-menu">JSON</button>
+      <button title="Pdf" id="button-mindmap-pdf" class="button-menu">
         Imprimir (PDF)
       </button>
-      <button id="button-mindmap-png" class="button-menu">Imagem (PNG)</button>
+      <button title="Png" id="button-mindmap-png" class="button-menu">Imagem (PNG)</button>
       <h2>Flashcards</h2>
-      <button class="button-menu">Download</button>
+      <button title="Download" class="button-menu">Download</button>
       <h2 id="importText">Importar Mapa Mental</h2>
       <label for="importMindMap" class="button-menu">Mapa Mental</label>
       <input
@@ -167,7 +170,7 @@
       />
       <h2>Configurações</h2>
       <div class="controlIA">
-        <button class="toggle-button" onclick="sugestionButton()">
+        <button title="Suggest" class="toggle-button" onclick="sugestionButton()">
           <img
             id="id-toggleon"
             style="display: flex"
@@ -186,12 +189,12 @@
     </div>
 
     <div class="controlExtraArea" style="display: flex">
-      <button class="ico-button" onclick="openExtraArea()">
+      <button title="Open" class="ico-button" onclick="openExtraArea()">
         <i class="bx bx-chevron-left"></i>
       </button>
     </div>
     <div id="controlExtraArea" class="controlExtraArea">
-      <button class="ico-button" onclick="closeExtraArea()">
+      <button title="Close" class="ico-button" onclick="closeExtraArea()">
         <i class="bx bx-chevron-right"></i>
       </button>
     </div>
