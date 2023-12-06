@@ -258,8 +258,8 @@ div {
 
 .mind-map {
   width: 99vw;
-  height: 78vh;
-  bottom: 14vh;
+  height: 80vh;
+  bottom: 8vh;
   background: white;
   border-radius: 10px;
 }
@@ -272,6 +272,14 @@ div {
   left: 0;
   border: none;
   background-color: #ffffff;
+
+  #links-info {
+    display: none;
+  }
+
+  #summary-info {
+    display: none;
+  }
 }
 
 .menu {

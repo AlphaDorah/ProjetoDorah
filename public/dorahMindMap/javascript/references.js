@@ -4,6 +4,8 @@ function loadReferences() {
   if (loaded_references) {
     return;
   }
+  let info = document.getElementById("links-info");
+  info.style.display = "block";
   fetch("/api/generate/links/" + theme)
     .then((response) => response.json())
     .then((data) => {
@@ -20,12 +22,16 @@ function loadReferences() {
 
         referenceArea.appendChild(referenceLink);
       }
+
+      loaded_references = true;
     })
     .catch((error) => {
       console.error("Error:", error);
+    })
+    .finally(() => {
+      let info = document.getElementById("links-info");
+      info.style.display = "none";
     });
-
-  loaded_references = true;
 }
 
 function addReference() {

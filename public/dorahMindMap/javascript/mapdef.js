@@ -427,7 +427,7 @@ function define_diagram() {
     /** @type {GraphLinksModel} */
     let model = globalThis.diagram.model;
 
-    document.getElementById("info").style.display = "block";
+    document.getElementById("generating-info").style.display = "block";
 
     fetch(url)
       .then((response) => response.json())
@@ -461,7 +461,7 @@ function define_diagram() {
         throw error;
       })
       .finally(() => {
-        document.getElementById("info").style.display = "none";
+        document.getElementById("generating-info").style.display = "none";
       });
   }
 
@@ -476,7 +476,7 @@ function define_diagram() {
 
     let url = "/api/generate/summary/" + data.text;
 
-    document.getElementById("info").style.display = "block";
+    document.getElementById("summary-info").style.display = "block";
 
     fetch(url)
       .then((response) => response.json())
@@ -490,7 +490,7 @@ function define_diagram() {
         throw error;
       })
       .finally(() => {
-        document.getElementById("info").style.display = "none";
+        document.getElementById("summary-info").style.display = "none";
       });
   }
 
