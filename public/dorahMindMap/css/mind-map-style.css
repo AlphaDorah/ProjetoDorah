@@ -108,7 +108,7 @@ div {
   position: absolute;
   height: 40px;
   top: 1px;
-  right: 66px;
+  right: 6px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -258,7 +258,7 @@ div {
 
 .mind-map {
   width: 99vw;
-  height: 80vh;
+  bottom: calc(13vh + 6px);
   top: 56px;
   background: white;
   border-radius: 10px;
