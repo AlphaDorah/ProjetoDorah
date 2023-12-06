@@ -42,7 +42,6 @@ body {
 }
 
 div {
-  overflow: hidden;
   position: absolute;
 }
 
@@ -148,7 +147,7 @@ div {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 16px;
   display: inline-flex;
   padding: 11px 16px;
   justify-content: center;
@@ -165,7 +164,7 @@ div {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 16px;
   display: inline-flex;
   padding: 11px 16px;
   justify-content: center;
@@ -256,12 +255,17 @@ div {
   flex-direction: row;
 }
 
-.mind-map {
+.mind-map-container {
   width: 99vw;
   bottom: calc(13vh + 6px);
   top: 56px;
   background: white;
   border-radius: 10px;
+}
+
+.mind-map {
+  width: 100%;
+  height: 100%;
 }
 
 #info {
