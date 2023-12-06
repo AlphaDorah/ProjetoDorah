@@ -13,7 +13,7 @@ body {
 .container-logo {
   position: relative;
   width: 200px;
-  height: 50px;
+  height: 47px;
 }
 
 .container-logo h1 {
@@ -25,15 +25,15 @@ body {
   line-height: 22px;
   position: absolute;
   right: 0;
-  top: 14px;
+  top: 12px;
+  cursor: pointer;
 }
 
 .logo {
   color: white;
-  width: 55px;
+  height: 47px;
   aspect-ratio: 55 / 42;
   left: 30px;
-  top: 4px;
   position: absolute;
 }
 
@@ -99,14 +99,14 @@ div {
 
 .upper-bar {
   width: 100vw;
-  height: 55px;
+  height: 47px;
   text-align: right;
   position: relative;
 }
 
 .button-container {
   position: absolute;
-  height: 48px;
+  height: 40px;
   top: 1px;
   right: 66px;
   display: flex;
@@ -116,22 +116,22 @@ div {
 
 .button-history {
   width: 151px;
-  height: 48px;
+  height: 40px;
 }
 
 .button-export {
   width: 146px;
-  height: 48px;
+  height: 40px;
 }
 
 .button-login {
   width: 179px;
-  height: 48px;
+  height: 40px;
 }
 
 .button-signup {
   width: 174px;
-  height: 48px;
+  height: 40px;
 }
 
 .button-signup,
@@ -259,7 +259,7 @@ div {
 .mind-map {
   width: 99vw;
   height: 80vh;
-  bottom: 8vh;
+  top: 56px;
   background: white;
   border-radius: 10px;
 }

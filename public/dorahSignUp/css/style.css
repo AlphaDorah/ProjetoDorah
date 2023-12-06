@@ -37,6 +37,7 @@ body
     top: 55px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .logo h1
