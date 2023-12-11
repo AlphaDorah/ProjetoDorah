@@ -1,8 +1,13 @@
 from langchain.document_loaders import BrowserlessLoader
 from langchain.schema.document import Document
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 def get_text_sites(urls: list) -> list[Document]:
+    typeurl = type(urls)
+    logger.info(f"Entrando no site. Confere  tipo da lista: {typeurl}")
     loader = BrowserlessLoader(
         api_token="106e87dd-9a75-44a9-b7cf-c961b88a61de",
         urls=urls,

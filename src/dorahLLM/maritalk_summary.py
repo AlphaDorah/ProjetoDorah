@@ -110,19 +110,23 @@ def summary_sites(
     logger.info("Sumarizando texto usando sites")
     summary = get_sumary(term, wiki_interface)
 
-    list_doc = load_interface(links)
-    for text_date in list_doc:
-        length_text = len(text_date.page_content)
-        page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
-        page_end = 10000  # limite de tokens da Maritalk para agilizar pesquisa
-        partial_summary = summary + text_date.page_content[page_init:]
-        length_text = len(partial_summary)
-        if length_text > page_end:
-            partial_summary = partial_summary[:page_end]
+    try:
+        list_doc = load_interface(links)
+        for text_date in list_doc:
+            length_text = len(text_date.page_content)
+            page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
+            page_end = 10000  # limite de tokens da Maritalk para agilizar pesquisa
+            partial_summary = summary + text_date.page_content[page_init:]
+            length_text = len(partial_summary)
+            if length_text > page_end:
+                partial_summary = partial_summary[:page_end]
 
-        summary = llm_interface(
-            term, partial_summary
-        )
+            summary = llm_interface(
+                term, partial_summary
+            )
+    except (ValueError, TypeError):
+    # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
+        pass
 
     if summary == "Summary Not Found :(":
         return ""
