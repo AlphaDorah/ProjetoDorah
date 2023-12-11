@@ -1,5 +1,5 @@
 from conexao import ConectarBanco, DesconectarBanco
-from converter import convertData
+from converter import convertData,convertToJson
 
 def create_card(colecao,arq_nome):
     arq_blob=convertData(arq_nome)
@@ -17,11 +17,12 @@ def read_card():
     DesconectarBanco(conexao,cursor)
     cards = list()
     for elemento in resultado:
+        arq = convertToJson(elemento[1])
         cards.append(
             {
                 'Id':elemento[0],
-                'Colecao':elemento[1],
-                'Arquivo':elemento[2]
+                'Arquivo': arq,
+                'Colecao':elemento[2]
             }
         )
     return cards

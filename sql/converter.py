@@ -12,3 +12,7 @@ def convertData(filename):
 def convertToImage(arqBlob):
     image = Image.open(io.BytesIO(arqBlob))
     return image
+
+def convertToJson(arqBlob):
+    arqJson = json.loads(arqBlob)
+    return arqJson
