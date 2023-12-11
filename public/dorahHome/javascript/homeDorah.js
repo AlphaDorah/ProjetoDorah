@@ -13,7 +13,7 @@ var items = [
   "Python",
 ];
 var textSuggestion = "Sugestão (pressione Tab para usá-la): ";
-var item;
+var item = "Python";
 
 document.getElementById("id-historybutton").style.display = "none";
 document.getElementById("id-exportButton").style.display = "none";

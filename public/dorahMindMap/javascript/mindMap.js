@@ -1,8 +1,9 @@
 var total_temas = 0;
-note_color = "LightYellow";
-pencilColor = "black";
-line_color = "#575757";
-arrow_color = "#575757";
+var note_color = "LightYellow";
+var pencilColor = 9; // cor padrao ao entrar na pagina é preto
+var line_color = "#575757";
+var arrow_color = "#575757";
+var colorPalette = false;
 
 function getColor() {
   return note_color;
@@ -117,7 +118,7 @@ function modeHighlighterDrawing() {
     if (pencilColor == 2) {
       tool.archetypePartData = {
         category: "FreehandDrawing",
-        stroke: "rgb(255, 240, 0.30)",
+        stroke: "rgb(255, 240, 0, 0.30)",
         strokeWidth: size_highlighter,
       };
     }
@@ -371,8 +372,6 @@ function loadImportMindMap() {
     reader.readAsText(file);
   }
 }
-
-colorPalette = false;
 
 function addCommentNote() {
   colorPalette = true;
