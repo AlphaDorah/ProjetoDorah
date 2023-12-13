@@ -1,12 +1,11 @@
 from .conexao import ConectarBanco,DesconectarBanco
 from .converter import convertData,convertToImage
 
-def create_usuario(login,senha,email,foto_name):
-    foto_blob=convertData(foto_name)
+def create_usuario(login,senha,email):
     conexao,cursor=ConectarBanco()
     sql = """ INSERT INTO tb_usuario(tb_usuario_login, tb_usuario_senha, tb_usuario_email, tb_usuario_foto)\
-    VALUES (%s,%s,%s,%s)"""
-    cursor.execute(sql, (login, senha, email, foto_blob))
+    VALUES (%s,%s,%s)"""
+    cursor.execute(sql, (login, senha, email))
     conexao.commit()
     DesconectarBanco(conexao,cursor)
 
@@ -18,7 +17,9 @@ def read_usuario():
     DesconectarBanco(conexao,cursor)
     usuarios = list()
     for elemento in resultado:
-        image=convertToImage(elemento[4])
+        image=None
+        if elemento[4] != None:
+            image=convertToImage(elemento[4])
         usuarios.append(
             {
                 'Id':elemento[0],

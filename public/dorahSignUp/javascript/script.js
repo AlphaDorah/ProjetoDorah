@@ -21,7 +21,20 @@ function getInput()
         alert(inputEmail + "\n" + inputPassword + "\n" + inputConfirmPassword);
     } else
     {
-        alert(inputEmail + "\n" + inputPassword + "\n" + inputConfirmPassword);
+        const usuario={
+            email: inputEmail,
+            senha: inputPassword
+        }
+        
+        fetch("cadastrar",{
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body:JSON.stringify(usuario)
+        })
+        .then(function(response){
+            alert(response.ok);
+        })
+        
     }
 
 

@@ -9,6 +9,7 @@ from flask import (
 
 from src.dorahLLM.maritalk_summary import perform_summary, perform_topics
 from src.dorahSearch.google_api import get_links, _google_search
+from sql.UsuarioBanco import create_usuario,read_usuario
 
 bp = Blueprint("index", __name__, url_prefix="/")
 
@@ -87,6 +88,13 @@ def flashcard():
 def open_login():
     return render_template("/dorahLogin/login.html")
 
+def logar(email,senha):
+    lista = read_usuario()
+    for user in lista:
+        if user["email"]==email and user["senha"]==senha:
+            return user["id"]
+    return "Email ou senha incorretos"
+
 
 @bp.route("/hello")
 def hello():
@@ -97,6 +105,12 @@ def hello():
 def cadatro():
     return render_template("/dorahSignUp/signup.html")
 
+@bp.route("/cadastrar",methods=['POST'])
+def cadastrar():
+    email=request.get_json()
+    print(type(email),email)
+    return request
+    
 
 @bp.route("/<path:path>")
 def public(path):

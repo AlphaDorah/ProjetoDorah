@@ -6,6 +6,7 @@ def ConectarBanco():
         database='railway',
         user='root',
         password='ba-dGCbfc-G-2GcfBFfb2ccggafc4A13',
+        port='54303'
     )
     if conexao.is_connected():
         print("Conectado com sucesso")
