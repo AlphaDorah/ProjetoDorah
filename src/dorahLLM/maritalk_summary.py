@@ -1,3 +1,5 @@
+from functools import lru_cache
+import logging
 from langchain.chains import LLMChain
 from src.dorahLLM.maritalkllm import MariTalkLLM
 from langchain.prompts import PromptTemplate
@@ -11,9 +13,12 @@ from src.dorahSearch.google_api import get_links, _google_search
 from src.dorahSearch.wikipedia_api import _wikipedia_search
 from src.dorahLLM.maritalk_topics import generate_topics_from_text
 
-from random import randint
+
+logger = logging.getLogger(__name__)
+
 
 def summary_text(input_subject: str, input_text: str) -> str:
+    logger.info("Gerando resumo com Maritalk")
     template = """Você faz um resumo do texto sobre {subject}
 
 Texto sobre Ração animal: ""Ração animal é o alimento dado para animais, tais como gado e animais de estimação.
@@ -23,8 +28,8 @@ A ração é indicado como o principal alimento para os animais.
 Produção brasileira
 A evolução do setor de alimentação animal acompanha, impulsiona e reflete em outros setores da economia,
 caracterizando-se como um importante elo dentro da agroindústria brasileira.
-Em 2011, o setor de alimentação animal consumiu 35% da produção nacional de farelo de soja e
-quase 60% da produção nacional de milho, sendo que para este último há projeções de consumo de 60 milhões de toneladas
+Em 2011, o setor de alimentação animal consumiu 35%% da produção nacional de farelo de soja e
+quase 60%% da produção nacional de milho, sendo que para este último há projeções de consumo de 60 milhões de toneladas
 para 2020. [1] Além do envolvimento com mercado de grãos e outras matérias-primas, movimenta ainda a indústria
 química de produção de insumos, vitaminas e minerais, e a indústria alimentícia humana, por integrar a principal
 fonte de produção de proteína animal destinada ao consumo humano.
@@ -33,8 +38,8 @@ importância da tecnologia de rações.
 Tipos de Rações
 As rações para animais podem ser classificadas em vários tipos, dependendo do teor de humidade, qualidade da ração,
 pela indicação para um estadio de vida, ou pelos ingredientes utilizados.[2]
-As rações classificam-se pelo teor de humidade em rações secas, com teores até 10%, e rações húmidas,
-com teores até 70%. Todas as rações que se apresentem no rótulo como "completas e equilibradas" deverão proporcionar
+As rações classificam-se pelo teor de humidade em rações secas, com teores até 10%%, e rações húmidas,
+com teores até 70%%. Todas as rações que se apresentem no rótulo como "completas e equilibradas" deverão proporcionar
 uma nutrição equilibrada.
 ""
 
@@ -95,60 +100,97 @@ Resumo:"""
     chain = LLMChain(prompt=prompt, llm=model)
     output_date = chain(inputs={"subject": input_subject, "input": input_text})
     output = output_date["text"]
+    logger.info("Resumo gerado com sucesso")
     return output
 
 
-def summary_sites(term: str, llm_interface, load_interface, links: list[str], wiki_interface) -> str:
-    summaries = get_sumary(term, wiki_interface)
+def summary_sites(
+    term: str, llm_interface, load_interface, links: list[str], wiki_interface
+) -> str:
+    logger.info("Sumarizando texto usando sites")
+    summary = get_sumary(term, wiki_interface)
 
     try:
         list_doc = load_interface(links)
         for text_date in list_doc:
             length_text = len(text_date.page_content)
-            if length_text < 18:
-                continue
             page_init = int(float(length_text) * 0.0560)  # evitar cabeçalho
-            page_end = 8000 + page_init  # impede limite de tokens da Maritalk
-            if length_text < page_end:
-                page_end = length_text
-            partial_summary = llm_interface(term, text_date.page_content[page_init:page_end])
-            summaries += partial_summary
+            page_end = 10000  # limite de tokens da Maritalk para agilizar pesquisa
+            partial_summary = summary + text_date.page_content[page_init:]
+            length_text = len(partial_summary)
+            if length_text > page_end:
+                partial_summary = partial_summary[:page_end]
+
+            summary = llm_interface(
+                term, partial_summary
+            )
     except (ValueError, TypeError):
-        # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
+    # Impedir que erro do BrowserlessLoader atrapalhe se já acessou o wikipedia
         pass
 
-    if summaries == "Summary Not Found :(":
-        return ''
-    final_summary = llm_interface(term, summaries)
-    return final_summary
+    if summary == "Summary Not Found :(":
+        return ""
+
+    logger.info(
+        f"Texto sumarizado com sucesso {summary}",
+    )
+    return summary
 
 
 def perform_topics(topic):
+    logger.info("Gerando tópicos com Maritalk")
     one_term = topic
     urls = get_links(one_term, _google_search)
 
-    url = urls[0]
+    url = [urls[0]]
 
-    one_summary = summary_sites(one_term, summary_text, get_text_sites, url, _wikipedia_search)
+    one_summary = summary_sites(
+        one_term, summary_text, get_text_sites, url, _wikipedia_search
+    )
     one_topics = generate_topics_from_text(one_summary)
-    
+    logger.info(f"Tópicos gerados com sucesso: {one_topics}")
     return one_topics
 
 
-def summary_text_test(input_subject: str, input_text: str) -> str:
-    if input_subject == "" or input_subject == "assunto não especificado" or input_text == "Texto incorente":
-        return ''
+@lru_cache(maxsize=None)
+def perform_summary(topic):
+    one_term = topic
+    urls = get_links(one_term, _google_search)
 
-    responses = ["Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."]
+    url = [urls[0]]
+
+    one_summary = summary_sites(
+        one_term, summary_text, get_text_sites, url, _wikipedia_search
+    )
+
+    return one_summary
+
+
+def summary_text_test(input_subject: str, input_text: str) -> str:
+    if (
+        input_subject == ""
+        or input_subject == "assunto não especificado"
+        or input_text == "Texto incorente"
+    ):
+        return ""
+
+    responses = [
+        "Final Answer: A Independência do Brasil foi o processo histórico de separação entre o então Reino do Brasil e o Reino de Portugal e Algarves, que ocorreu no período de 1821 a 1825, colocando em violenta oposição as duas partes (pessoas a favor e contra). As Cortes Gerais e Extraordinárias da Nação Portuguesa, instaladas em 1820, como consequência da Revolução Liberal do Porto, tomaram decisões que tinham como objetivo reduzir a autonomia adquirida pelo Brasil. O processo de independência foi liderado por Dom Pedro I, que se tornou o primeiro imperador do Brasil. A proclamação foi realizada no dia 7 de setembro e foi seguida por um período de transição, com a formação de um governo provisório e a convocação de uma Assembleia Constituinte. Durante esse período, ocorreram conflitos entre os partidários de Dom Pedro I e os que defendiam uma maior autonomia das províncias. A independência foi finalmente reconhecida por Portugal em 1825, após a assinatura de um tratado de paz."
+    ]
     llm = FakeListLLM(responses=responses)
     tools = load_tools(["python_repl"])
-    agent = initialize_agent(tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
+    agent = initialize_agent(
+        tools=tools, llm=llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION
+    )
     return agent.run("Você faz um resumo do texto")
+
 
 if __name__ == "__main__":
     one_term = "Brasil"
     urls = get_links(one_term, _google_search)
-    one_summary = summary_sites(one_term, summary_text, get_text_sites, urls, _wikipedia_search)
+    one_summary = summary_sites(
+        one_term, summary_text, get_text_sites, urls, _wikipedia_search
+    )
     print(f"Resumo: \n{one_summary}\n")
     one_topics = generate_topics_from_text(one_summary)
     print(f"Tópicos: \n{one_topics}")

@@ -159,3 +159,11 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 .vscode/
+node_modules/
+package-lock.json
+package.json
+yarn.lock
+yarn-error.log
+bun.lockb
+
+coverage.lcov

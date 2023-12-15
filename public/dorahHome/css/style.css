@@ -1,86 +1,81 @@
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Figtree", sans-serif;
-    max-width: 1920px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Figtree", sans-serif;
+  max-width: 1920px;
 }
 
-body
-{
-    font-family: "Figtree", sans-serif;
-    background: #ba9afc;
-    overflow: hidden;
+body {
+  font-family: "Figtree", sans-serif;
+  background: #ba9afc;
+  overflow: hidden;
 }
 
-.body
-{
-    height: 100%; 
+.body {
+  height: 100%;
 }
 
-.header
-{
-    position: relative;
-    width: 100vw;
-    height: 120px;
+.header {
+  position: relative;
+  width: 100vw;
+  height: 120px;
 }
 
-.logo
-{
-    position: absolute;
-    width: 200px;
-    height: 42px;
-    left: 66px;
-    top: 55px;
-    display: flex;
-    align-items: center;
+.logo {
+  position: absolute;
+  width: 200px;
+  height: 42px;
+  left: 66px;
+  top: 55px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-.logo h1
-{
-    padding-left: 19px;
-    color: #FFF;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 22px;
+.logo svg {
+  width: 55px;
+  aspect-ratio: 55/42;
 }
 
-.button-container
-{
-    position: absolute;
-    height: 48px;
-    top: 50px;
-    right: 66px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+.logo h1 {
+  padding-left: 19px;
+  color: #fff;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
 }
 
-.button-history
-{
-    width: 151px;
-    height: 48px;
+.button-container {
+  position: absolute;
+  height: 48px;
+  top: 50px;
+  right: 66px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
-.button-export
-{
-    width: 146px;
-    height: 48px;
+.button-history {
+  width: 151px;
+  height: 48px;
 }
 
-.button-login
-{
-    width: 176px;
-    height: 48px;
+.button-export {
+  width: 146px;
+  height: 48px;
 }
 
-.button-signup
-{
-    width: 174px;
-    height: 48px;
+.button-login {
+  width: 176px;
+  height: 48px;
+}
+
+.button-signup {
+  width: 174px;
+  height: 48px;
 }
 
 .button-signup,
@@ -88,289 +83,264 @@ body
 .button-animation,
 .button-download,
 .button-export,
-.button-history
-{
-    margin-left: 29px;
+.button-history {
+  margin-left: 29px;
 }
 
 .button-animation,
-.button-login
-{
-    color: white;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    display: inline-flex;
-    padding: 11px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 11px;
-    border-radius: 8px;
-    border-color: transparent;
-    background-color: transparent;
-    fill: #000;
-    cursor: pointer;
+.button-login {
+  color: white;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  display: inline-flex;
+  padding: 11px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: transparent;
+  fill: #000;
+  cursor: pointer;
 }
 
-.button-history
-{
-    color: white;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    display: inline-flex;
-    padding: 11px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 11px;
-    border-radius: 8px;
-    border-color: transparent;
-    background-color: transparent;
-    fill: #000;
-    cursor: pointer;
+.button-history {
+  color: white;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  display: inline-flex;
+  padding: 11px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: transparent;
+  fill: #000;
+  cursor: pointer;
 }
 
-.button-export
-{
-    color: white;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    display: inline-flex;
-    padding: 11px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 11px;
-    border-radius: 8px;
-    border-color: transparent;
-    background-color: transparent;
-    fill: #000;
-    cursor: pointer;
+.button-export {
+  color: white;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  display: inline-flex;
+  padding: 11px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: transparent;
+  fill: #000;
+  cursor: pointer;
 }
 
-.button-animation
-{
-    width: 113px;
-    height: 48px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.button-animation {
+  width: 113px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button-animation svg
-{
-    min-height: 26px;
-    min-width: 26px;
+.button-animation svg {
+  min-height: 26px;
+  min-width: 26px;
 }
 
-.button-animation img
-{
-    width: 41px;
-    height: 24px;
+.button-animation img {
+  width: 41px;
+  height: 24px;
 }
 
 .button-history:hover path,
 .button-export:hover path,
 .button-animation:hover path,
-.button-login:hover path
-{
-    fill: black;
+.button-login:hover path {
+  fill: black;
 }
 
 .button-history:hover,
 .button-export:hover,
 .button-animation:hover,
-.button-login:hover
-{
-    color: black;
-    background-color: white;
+.button-login:hover {
+  color: black;
+  background-color: white;
 }
 
-.button-signup
-{
-    color: white;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    display: inline-flex;
-    padding: 11px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 11px;
-    border-radius: 8px;
-    border: 1px solid #FFF;
-    background-color: transparent;
-    cursor: pointer;
+.button-signup {
+  color: white;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  display: inline-flex;
+  padding: 11px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  border-radius: 8px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.button-signup:hover
-{
-    color: black;
-    background-color: white;
+.button-signup:hover {
+  color: black;
+  background-color: white;
 }
 
-.button-signup:hover path
-{
-    fill: black;
+.button-signup:hover path {
+  fill: black;
 }
 
-.container
-{
-    width: 73vw;
-    max-width: 1294px;
-    height: 55vh;
-    max-height: 582px;
-    margin-top: 3%;
-    border-radius: 30px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    background: rgba(52, 1, 255, 0.10);
-    box-shadow: -80px 80px 100px rgba(0,0,0,0.35);
-    backdrop-filter: blur(50px);
-    z-index: 1;
+.container {
+  width: 73vw;
+  max-width: 1294px;
+  height: 55vh;
+  max-height: 582px;
+  margin-top: 3%;
+  border-radius: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(52, 1, 255, 0.1);
+  box-shadow: -80px 80px 100px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(50px);
+  z-index: 1;
 }
 
-.searchcontainer h1
-{
-    color: #FFF;
-    text-align: center;
-    font-size: 2.8125rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 3.25rem; /* 115.556% */
-    letter-spacing: -0.025rem;
+.searchcontainer h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 2.8125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3.25rem; /* 115.556% */
+  letter-spacing: -0.025rem;
 }
 
-.searchcontainer h2
-{
-    color: #FFF;
-    text-align: center;
-    font-size: 1.5rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 3.25rem; /* 216.667% */
-    letter-spacing: -0.025rem;
+.searchcontainer h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 3.25rem; /* 216.667% */
+  letter-spacing: -0.025rem;
 }
 
-.searchcontainer
-{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 50px;
-    align-items: center;
-    transform: translate(-50%, -50%);
-    margin-bottom: 59px;
-    top: 50%;
-    left: 50%;
+.searchcontainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  margin-bottom: 59px;
+  top: 50%;
+  left: 50%;
 }
 
-.searchbar
-{
-    width: 57vw;
-    height: 86px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: white;
+.searchbar {
+  width: 57vw;
+  height: 86px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: white;
 }
 
-.buttonsearch
-{
-    display: flex;
-    gap: 16px;
+.buttonsearch {
+  display: flex;
+  gap: 16px;
 }
 
-input[type="text"]
-{
-    font-family: "Figtree", sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-    flex-shrink: 0;
-    width: 56vw;
-    height: 86px;
-    background: transparent;
-    stroke: none;
-    border: none;
-    outline: none;
-    padding-left: 31px;
+input[type="text"] {
+  font-family: "Figtree", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  flex-shrink: 0;
+  width: 56vw;
+  height: 86px;
+  background: transparent;
+  stroke: none;
+  border: none;
+  outline: none;
+  padding-left: 31px;
 }
 
-.button.primary
-{
-    display: flex;
-    width: 86px;
-    height: 86px;
-    padding: 14px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background:#784BD1;
-    border: none;
-    outline: none;
-    cursor: pointer;
+.button.primary {
+  display: flex;
+  width: 86px;
+  height: 86px;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #784bd1;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.button.primary:hover
-{
-    background-color: #4F2D92;
-    border: none;
-    outline: none;
-    visibility: visible;
+.button.primary:hover {
+  background-color: #4f2d92;
+  border: none;
+  outline: none;
+  visibility: visible;
 }
 
-.center
-{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
+.center {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.footer
-{
-    width: 600px;
-    height: 22px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: absolute;
-    align-items: center;
-    text-align: center;
-    bottom: 41px;
+.footer {
+  width: 600px;
+  height: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  bottom: 41px;
 }
 
-.link-footer
-{
-    color: #FFF;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    background: transparent;
-    outline: none;
-    border: none;
-    cursor: pointer;
+.link-footer {
+  color: #fff;
+  font-feature-settings: "clig" off, "liga" off;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
-.link-footer:hover
-{
-    text-decoration-line: underline;
+.link-footer:hover {
+  text-decoration-line: underline;
 }
 
-@media (max-width:1200px) {
-    .logo > h1{
-        display: none;
-    }
+@media (max-width: 1200px) {
+  .logo > h1 {
+    display: none;
+  }
 }

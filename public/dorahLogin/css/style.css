@@ -36,15 +36,16 @@ body
     top: 55px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .logo h1
 {
     padding-left: 19px;
-    color: #FFF;
+    color: #fff;
     font-size: 36px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 22px;
 }
 
@@ -124,8 +125,9 @@ body
 {
     display: inline-block;
     width: 80vw;
-    max-width: 1280px;
+    max-width: 1024px;
     height: 70vh;
+    max-height: 512px;
     border-radius: 30px;
     background: rgba(169, 148, 255, 0.10);
     box-shadow: -80px 80px 100px 0 rgba(0, 0, 0, 0.35);
@@ -157,7 +159,7 @@ body
 
 .texto-cadastro
 {
-    margin-bottom: 24vh;
+    margin-bottom: 20vh;
 }
 
 .cadastro h1
@@ -241,7 +243,7 @@ body
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.5625rem;
-    margin-bottom: 6.13rem;
+    margin-bottom: 5%;
 }
 
 .email-login,

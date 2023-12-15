@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="/flashcardViewer/style.css" />
+  </head>
+  <body>
+    <div class="logo-flashcard">{% include "/logo.html" %}</div>
+    <div class="flashcard-container">
+      {% for flashcard in flashcards %}
+      <div class="flip flashcard">
+        <div class="front">
+          <h1>{{flashcard.question}}</h1>
+        </div>
+        <div class="back">
+          <h1>{{flashcard.answer}}</h1>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="flashcard-button-list">
+      <button title="Flip" class="backgroundless flip-button" onclick="flipFlashcard()">
+        Flip
+      </button>
+      <button
+        title="Back"
+        class="backgroundless previous-button"
+        onclick="previousFlashcard()"
+      >
+        Anterior
+      </button>
+      <button title="Next" class="backgroundless next-button" onclick="nextFlashcard()">
+        Próximo
+      </button>
+    </div>
+  </body>
+  <script src="/flashcardViewer/flashcard.js"></script>
+</html>
